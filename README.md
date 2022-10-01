@@ -1,2 +1,2 @@
 # netology_dev_ops
-Netology Practice
+Домашние задания по курсу DevOps-инженер с нуля
