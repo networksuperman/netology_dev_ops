@@ -12,3 +12,8 @@
 №4 - [Основы работы с командной строкой](https://github.com/networksuperman/netology_dev_ops/blob/5f988b1c0778c4c26d943699f184cbc350970d13/SLINA-19/IT%20System%20and%20OS%20Linux/2-02.md)  
 
 №5 - [Процессы, управление процессами](https://github.com/networksuperman/netology_dev_ops/blob/9d3fd8cec9631ac13ad720d57dbe98765c5dd428/SLINA-19/IT%20System%20and%20OS%20Linux/2-03.md)  
+
+№6 - [Память, управление памятью]()
+
+№7 - [Шедулер]()
+
