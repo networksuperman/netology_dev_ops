@@ -15,5 +15,5 @@
 
 №6 - [Память, управление памятью](https://github.com/networksuperman/netology_dev_ops/blob/369b4d3492a01ac37f3363559d5d6a170c165af4/SLINA-19/IT%20System%20and%20OS%20Linux/2-04.md)
 
-№7 - [Шедулер]()
+№7 - [Шедулер](https://github.com/networksuperman/netology_dev_ops/blob/88444a9cf4953c714fba1b0beb38ebddacdc49d7/SLINA-19/IT%20System%20and%20OS%20Linux/2-05.md)
 
