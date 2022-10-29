@@ -17,4 +17,6 @@
 
 №7 - [Шедулер](https://github.com/networksuperman/netology_dev_ops/blob/88444a9cf4953c714fba1b0beb38ebddacdc49d7/SLINA-19/IT%20System%20and%20OS%20Linux/2-05.md)
 
-№8 - [https://github.com/networksuperman/netology_dev_ops/blob/73b9f286de030e186babf106845e1be9714d5544/SLINA-19/IT%20System%20and%20OS%20Linux/2-06.md)
+№8 - [Дисковые системы](https://github.com/networksuperman/netology_dev_ops/blob/73b9f286de030e186babf106845e1be9714d5544/SLINA-19/IT%20System%20and%20OS%20Linux/2-06.md)
+
+№9 - [Файловые системы]()
