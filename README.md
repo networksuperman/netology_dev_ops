@@ -21,4 +21,4 @@
 
 №9 - [Файловые системы](https://github.com/networksuperman/netology_dev_ops/blob/13c7be1afa69f4732fa8499060e7c95af94f60b1/SLINA-19/IT%20System%20and%20OS%20Linux/2-07.md)
 
-№9 - [Ядро операционной системы]()
+№9 - [Ядро операционной системы](https://github.com/networksuperman/netology_dev_ops/blob/82cdac89d8f56fd3dcf348063d67c4f89be7a613/SLINA-19/IT%20System%20and%20OS%20Linux/2-08.md)
