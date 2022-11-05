@@ -23,4 +23,4 @@
 
 №9 - [Ядро операционной системы](https://github.com/networksuperman/netology_dev_ops/blob/82cdac89d8f56fd3dcf348063d67c4f89be7a613/SLINA-19/IT%20System%20and%20OS%20Linux/2-08.md)
 
-№10 - [Загрузка ОС]()
+№10 - [Загрузка ОС](https://github.com/networksuperman/netology_dev_ops/blob/a6d7739fa78261b26eae4f8163c648f37f2813ce/SLINA-19/IT%20System%20and%20OS%20Linux/2-09.md)
