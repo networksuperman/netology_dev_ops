@@ -11,6 +11,8 @@
 
 №4 - [Основы работы с командной строкой](https://github.com/networksuperman/netology_dev_ops/blob/5f988b1c0778c4c26d943699f184cbc350970d13/SLINA-19/IT%20System%20and%20OS%20Linux/2-02.md)  
 
+### Операционная система Linux
+
 №5 - [Процессы, управление процессами](https://github.com/networksuperman/netology_dev_ops/blob/9d3fd8cec9631ac13ad720d57dbe98765c5dd428/SLINA-19/IT%20System%20and%20OS%20Linux/2-03.md)  
 
 №6 - [Память, управление памятью](https://github.com/networksuperman/netology_dev_ops/blob/369b4d3492a01ac37f3363559d5d6a170c165af4/SLINA-19/IT%20System%20and%20OS%20Linux/2-04.md)
@@ -24,3 +26,7 @@
 №9 - [Ядро операционной системы](https://github.com/networksuperman/netology_dev_ops/blob/82cdac89d8f56fd3dcf348063d67c4f89be7a613/SLINA-19/IT%20System%20and%20OS%20Linux/2-08.md)
 
 №10 - [Загрузка ОС](https://github.com/networksuperman/netology_dev_ops/blob/a6d7739fa78261b26eae4f8163c648f37f2813ce/SLINA-19/IT%20System%20and%20OS%20Linux/2-09.md)
+
+
+### Администрирование операционной системы Linux
+№11 - [Типы дистрибутивов Linux]()
