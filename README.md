@@ -31,4 +31,4 @@
 ### Администрирование операционной системы Linux
 №11 - [Типы дистрибутивов Linux](https://github.com/networksuperman/netology_dev_ops/blob/2e505429163dce90c8c77d1d38fcca769b319b40/SLINA-19/IT%20System%20and%20OS%20Linux/3-01.md)  
 №12 - [Управление пакетами](https://github.com/networksuperman/netology_dev_ops/blob/ca4629ed8c4951629ac8a9231e8e229cf5631fff/SLINA-19/IT%20System%20and%20OS%20Linux/3-02.md)  
-№13 - [Инициализация системы, Init, systemd]()
+№13 - [Инициализация системы, Init, systemd](https://github.com/networksuperman/netology_dev_ops/blob/5ba2a02fcde336311d1c2fefa8bdeb1ea11b8746/SLINA-19/IT%20System%20and%20OS%20Linux/3-03.md)
