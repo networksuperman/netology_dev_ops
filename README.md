@@ -38,3 +38,7 @@
 №14 - [Управление пользователями](https://github.com/networksuperman/netology_dev_ops/blob/00dd8c7ab81ae9039bddfa7185ca117d6d335489/SLINA-19/IT%20System%20and%20OS%20Linux/3-04.md)
 
 №15 - [Производительность системы](https://github.com/networksuperman/netology_dev_ops/blob/ce188bd2e912af832c4a8291f5ad6cef062f4b08/SLINA-19/IT%20System%20and%20OS%20Linux/3-05.md)
+
+№16 - [Производительность системы. Часть 2]()
+
+
