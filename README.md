@@ -42,3 +42,6 @@
 №16 - [Производительность системы. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/ec9ae3da22269461b935881d2b928d3fe8654195/SLINA-19/IT%20System%20and%20OS%20Linux/3-06.md)
 
 
+### Сеть, сетевые протоколы
+№17 - []()
+
