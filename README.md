@@ -39,7 +39,7 @@
 
 №15 - [Производительность системы](https://github.com/networksuperman/netology_dev_ops/blob/ce188bd2e912af832c4a8291f5ad6cef062f4b08/SLINA-19/IT%20System%20and%20OS%20Linux/3-05.md)
 
-№16 - [Производительность системы. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/64d4f4061798d27d88754fba4e3bad8f7f49cac8/SLINA-19/IT%20System%20and%20OS%20Linux/3-06.md)
+№16 - [Производительность системы. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/3250acd4977d5207c26cdbc9159d0ad8f9fc41dd/SLINA-19/IT%20System%20and%20OS%20Linux/3-06.md)
 
 
 ### Сеть, сетевые протоколы
