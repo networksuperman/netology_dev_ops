@@ -45,4 +45,7 @@
 ### Сеть, сетевые протоколы
 №17 - [4.5. Сеть и сетевые протоколы: Firewall](https://github.com/networksuperman/netology_dev_ops/blob/217d6d20ca82cf4ac21d9bedaa0e79393784dd1b/SLINA-19/IT%20System%20and%20OS%20Linux/4-09.md)
 
+№18 - [4.5. NAT]()
+№18.1 - [Сеть и сетевые протоколы: NAT]()
+
 
