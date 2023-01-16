@@ -47,5 +47,5 @@
 
 №18 - [4.5. NAT](https://github.com/networksuperman/netology_dev_ops/blob/8778371156e5dd663c093fc884e80e7b20cf0a14/SLINA-19/IT%20System%20and%20OS%20Linux/4-05.md)
 
-№19 - [4.6. VPN]()
+№19 - [4.6. VPN](https://github.com/networksuperman/netology_dev_ops/blob/be579dadc72d017c62ca7239c133233f54503e0f/SLINA-19/IT%20System%20and%20OS%20Linux/4-06.md)
 
