@@ -49,3 +49,4 @@
 
 №19 - [4.6. VPN](https://github.com/networksuperman/netology_dev_ops/blob/be579dadc72d017c62ca7239c133233f54503e0f/SLINA-19/IT%20System%20and%20OS%20Linux/4-06.md)
 
+№20 - [4.7 Высокоуровневые протоколы]()
