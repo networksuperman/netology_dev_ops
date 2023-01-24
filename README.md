@@ -52,3 +52,5 @@
 №20 - [4.7 Высокоуровневые протоколы](https://github.com/networksuperman/netology_dev_ops/blob/6801b22928c99c00255d8fa8f3e786013f3b105a/SLINA-19/IT%20System%20and%20OS%20Linux/4-07.md)
 
 №21 - [4.8. Траблшутинг](https://github.com/networksuperman/netology_dev_ops/blob/03ece00dff7da86b174f3041bb1c13039e2fd693/SLINA-19/IT%20System%20and%20OS%20Linux/4-08.md)
+
+№22 - [4.10. DHCP, PXE]()
