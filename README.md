@@ -53,4 +53,4 @@
 
 №21 - [4.8. Траблшутинг](https://github.com/networksuperman/netology_dev_ops/blob/03ece00dff7da86b174f3041bb1c13039e2fd693/SLINA-19/IT%20System%20and%20OS%20Linux/4-08.md)
 
-№22 - [4.10. DHCP, PXE]()
+№22 - [4.10. DHCP, PXE](https://github.com/networksuperman/netology_dev_ops/blob/786ded306450fc32991307d791a68afb36c8866f/SLINA-19/IT%20System%20and%20OS%20Linux/4-10.md)
