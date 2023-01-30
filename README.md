@@ -56,3 +56,5 @@
 №22 - [4.10. DHCP, PXE](https://github.com/networksuperman/netology_dev_ops/blob/786ded306450fc32991307d791a68afb36c8866f/SLINA-19/IT%20System%20and%20OS%20Linux/4-10.md)
 
 №23 - [4.11. DNS](https://github.com/networksuperman/netology_dev_ops/blob/bd2fafd9376fb1af0fc45b1ba0c4d4e60733c7fe/SLINA-19/IT%20System%20and%20OS%20Linux/4-11.md)
+
+№24 - [4.12 HTTP/HTTPS]()
