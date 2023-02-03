@@ -60,3 +60,7 @@
 №24 - [4.12 HTTP/HTTPS](https://github.com/networksuperman/netology_dev_ops/blob/882c0627339c77de550771cd15f042d129be7c07/SLINA-19/IT%20System%20and%20OS%20Linux/4-12.md)
 
 №25 - [4.13. IPv6](https://github.com/networksuperman/netology_dev_ops/blob/0a131d43c02924020aac524459c899fe4f1d3ccc/SLINA-19/IT%20System%20and%20OS%20Linux/4-13.md)
+
+### Программирование на Bash  
+
+
