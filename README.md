@@ -63,4 +63,4 @@
 
 ### Программирование на Bash  
 
-№26 - [Переменные и условные операторы]()  
+№26 - [Переменные и условные операторы](https://github.com/networksuperman/netology_dev_ops/blob/657eba19237e8619b3278f90888229f08571726f/SLINA-19/IT%20System%20and%20OS%20Linux/5-01.md)  
