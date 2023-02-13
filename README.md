@@ -64,3 +64,5 @@
 ### Программирование на Bash  
 
 №26 - [Переменные и условные операторы](https://github.com/networksuperman/netology_dev_ops/blob/a9ee8344762625d97ef731284b9b1a433e88da39/SLINA-19/IT%20System%20and%20OS%20Linux/5-01.md)  
+
+№27 - [Циклы и функции]()
