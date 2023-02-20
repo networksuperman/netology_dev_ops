@@ -68,3 +68,5 @@
 №27 - [Циклы и функции](https://github.com/networksuperman/netology_dev_ops/blob/391c9adeee4a0e823993e7e9c66fcfa0c69b066b/SLINA-19/IT%20System%20and%20OS%20Linux/5_2.md)
 
 №28 - [Regexp и его использование для синтаксического анализа](https://github.com/networksuperman/netology_dev_ops/blob/1b241b8d734ed68fc8526cc087e379e603fb7e3c/SLINA-19/IT%20System%20and%20OS%20Linux/5-03.md)
+
+№29 - [Работа с текстовыми утилитами]()
