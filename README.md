@@ -69,4 +69,4 @@
 
 №28 - [Regexp и его использование для синтаксического анализа](https://github.com/networksuperman/netology_dev_ops/blob/1b241b8d734ed68fc8526cc087e379e603fb7e3c/SLINA-19/IT%20System%20and%20OS%20Linux/5-03.md)
 
-№29 - [Работа с текстовыми утилитами]()
+№29 - [Работа с текстовыми утилитами](https://github.com/networksuperman/netology_dev_ops/blob/736cd658e054b331f22f55791e9b8ec59b0e8bd5/SLINA-19/IT%20System%20and%20OS%20Linux/5-04.md)
