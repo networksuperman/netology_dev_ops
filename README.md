@@ -72,3 +72,5 @@
 №29 - [Работа с текстовыми утилитами](https://github.com/networksuperman/netology_dev_ops/blob/736cd658e054b331f22f55791e9b8ec59b0e8bd5/SLINA-19/IT%20System%20and%20OS%20Linux/5-04.md)
 
 №30 - [Разбор скриптов и и их написание](https://github.com/networksuperman/netology_dev_ops/blob/6f9af9d2e21f159710708cb5742fe73adca5b37e/SLINA-19/IT%20System%20and%20OS%20Linux/5-05.md)
+
+№31 - [Виртуализация и облачные решения: AWS, GCP, Yandex Cloud, OpenStack]()
