@@ -78,3 +78,5 @@
 №32 - [6.2. Типы виртуализации: KVM, QEMU](https://github.com/networksuperman/netology_dev_ops/blob/824bccd68fb3fffe2ec4f6fed1dd6502aa47256a/SLINA-19/IT%20System%20and%20OS%20Linux/6-02.md)
 
 №33 - [6.3. Docker. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/fe09a41fcf39fa3f2477cd66dd39b2523b4e6f4a/SLINA-19/IT%20System%20and%20OS%20Linux/6-03.md)
+
+№34 - [6.4. Docker. Часть 2]()
