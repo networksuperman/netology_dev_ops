@@ -73,6 +73,8 @@
 
 №30 - [Разбор скриптов и и их написание](https://github.com/networksuperman/netology_dev_ops/blob/6f9af9d2e21f159710708cb5742fe73adca5b37e/SLINA-19/IT%20System%20and%20OS%20Linux/5-05.md)
 
+### Виртуализация
+
 №31 - [Виртуализация и облачные решения: AWS, GCP, Yandex Cloud, OpenStack](https://github.com/networksuperman/netology_dev_ops/blob/0b33a48041375c3ed5bdca1da839b5885e963a2f/SLINA-19/IT%20System%20and%20OS%20Linux/6-01.md)
 
 №32 - [6.2. Типы виртуализации: KVM, QEMU](https://github.com/networksuperman/netology_dev_ops/blob/824bccd68fb3fffe2ec4f6fed1dd6502aa47256a/SLINA-19/IT%20System%20and%20OS%20Linux/6-02.md)
