@@ -82,3 +82,5 @@
 №33 - [6.3. Docker. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/fe09a41fcf39fa3f2477cd66dd39b2523b4e6f4a/SLINA-19/IT%20System%20and%20OS%20Linux/6-03.md)
 
 №34 - [6.4. Docker. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/d4437a52133557fd125984a1b80172d3991d1467/SLINA-19/IT%20System%20and%20OS%20Linux/6-04.md)
+
+№35 - [6.5. Kubernetes. Часть 1]()
