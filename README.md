@@ -85,4 +85,4 @@
 
 №35 - [6.5. Kubernetes. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/63836d15e3df48e3ac4cb3d88d81db0e2e5dcf88/SLINA-19/IT%20System%20and%20OS%20Linux/6-05.md)
 
-№36 - [6.6. Kubernetes. Часть 2]()
+№36 - [6.6. Kubernetes. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/0d7e9cce600ed1987f25ba47f3e64df72e8b991a/SLINA-19/IT%20System%20and%20OS%20Linux/6-06.md)
