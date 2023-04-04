@@ -87,4 +87,5 @@
 
 №36 - [6.6. Kubernetes. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/0d7e9cce600ed1987f25ba47f3e64df72e8b991a/SLINA-19/IT%20System%20and%20OS%20Linux/6-06.md)
 
-№37 - [7.1. Ansible. Часть 1]()
+### Автоматизация и CI/СD
+№37 - [7.1. Ansible. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/9334ef0799c0e952534b40b9c7bf440810710e27/SLINA-19/IT%20System%20and%20OS%20Linux/7-01.md)
