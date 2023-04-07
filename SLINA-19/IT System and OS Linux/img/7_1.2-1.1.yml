@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: "Get archive"
+      get_url:
+        url: https://downloads.apache.org/kafka/3.4.0/kafka-3.4.0-src.tgz
+        dest: /tmp/archive.tgz
+        mode: '777'
+
+    - name: "Create dir"
+      ansible.builtin.file:
+        path: /tmp/newdir
+        state: directory
+        mode: '777'
+
+    - name: "Unzip file"
+      ansible.builtin.unarchive:
+        src: /tmp/archive.tgz
+        dest: /tmp/newdir
+        remote_src: yes
+...

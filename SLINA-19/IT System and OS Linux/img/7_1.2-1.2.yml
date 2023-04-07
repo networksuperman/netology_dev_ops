@@ -1,0 +1,15 @@
+---
+- hosts: "all"
+  become: true
+  tasks:
+  - name: "Install tuned"
+    ansible.builtin.apt:
+      name: "tuned"
+      state: "latest"
+      update_cache: true
+
+  - name: "Run tuned"
+    service:
+      name: tuned
+      state: started
+      enabled: true

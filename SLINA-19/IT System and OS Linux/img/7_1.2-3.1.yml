@@ -1,0 +1,17 @@
+---
+- name: Deploy Apache web server
+  hosts: all
+  become: true
+  roles:
+    - apache
+
+- name: Check if web server is running
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check web server status
+      uri:
+        url: "http://localhost/"
+        return_content: yes
+      register: response
+      failed_when: response.status != 200

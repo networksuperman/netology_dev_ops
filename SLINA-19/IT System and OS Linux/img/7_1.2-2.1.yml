@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: "Change motd"
+    copy:
+      dest: "/etc/motd"
+      content: "{{ ansible_facts.default_ipv4.address }} {{ ansible_facts.hostname }}  Hello, {{ ansible_facts.user_id }}\n"
+...

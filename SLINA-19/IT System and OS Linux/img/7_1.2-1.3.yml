@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: "Change motd"
+    vars:
+      motd: "Hello, Netology"
+    copy:
+      dest: "/etc/motd"
+      content: "{{ motd }}\n"
+...
