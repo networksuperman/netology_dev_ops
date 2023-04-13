@@ -1,0 +1,28 @@
+---
+- name: Play for dz7-3
+  hosts: yac_tf
+  tasks:
+
+    - name: Install nginx 2 terraform1 @ ya.cloud
+      apt:
+        name: nginx
+        state: latest
+        update_cache: yes
+
+    - name: Enable nginx.service
+      service:
+        name: nginx
+        state: started
+
+    - name: Check page status 200
+      uri:
+        url: "http://{{ ansible_host }}:80"
+        follow_redirects: none
+      register: _result
+      until: _result.status == 200
+      retries: 720
+      delay: 3
+
+    - name: Show result
+      debug:
+        msg: "{{ _result }}"
