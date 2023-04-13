@@ -1,0 +1,62 @@
+---
+- name: Install web server
+  hosts: web
+  remote_user: root
+  become: true
+  tasks:
+    - name: Install epel-repo
+      yum:
+        name: epel-release
+        state: latest
+
+    - name: Update yum cache
+      yum:
+        update_cache: yes
+
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Get nginx status
+      systemd:
+        name: "nginx"
+      register: nginx_status
+
+    - debug:
+        var: nginx_status.status.ActiveState
+
+
+- name: Install database server
+  hosts: db
+  remote_user: root
+  become: true
+  tasks:
+    - name: Update yum cache
+      yum:
+        update_cache: yes
+
+    - name: Install database
+      yum:
+        name: mariadb-server
+        state: present
+
+    - name: Start mariadb
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: get databse server status
+      systemd:
+        name: "mariadb"
+      register: db_status
+
+    - debug:
+        var: db_status.status.ActiveState
