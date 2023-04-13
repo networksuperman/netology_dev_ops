@@ -93,3 +93,5 @@
 №38 - [Ansible.Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/3013a1158836a46e6b470b66af38a7ad34080795/SLINA-19/IT%20System%20and%20OS%20Linux/7.1_part_2.md)
 
 №39 - [Terraform](https://github.com/networksuperman/netology_dev_ops/blob/39233ce6b30798837889db256f19fa523b1277aa/SLINA-19/IT%20System%20and%20OS%20Linux/7-02.md)
+
+№40 - [Подъём инфраструктуры в Yandex Cloud]()
