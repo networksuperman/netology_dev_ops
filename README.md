@@ -98,4 +98,4 @@
 
 ### Введение в DevOps
 
-№41 - [Git]()
+№41 - [Git](https://github.com/networksuperman/8-01/blob/main/README.md)
