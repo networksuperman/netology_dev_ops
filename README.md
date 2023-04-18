@@ -96,4 +96,6 @@
 
 №40 - [Подъём инфраструктуры в Yandex Cloud](https://github.com/networksuperman/netology_dev_ops/blob/de11a25e3739091af9fb3320b9c00b16671eb3a8/SLINA-19/IT%20System%20and%20OS%20Linux/7-03.md)
 
+### Введение в DevOps
+
 №41 - [Git]()
