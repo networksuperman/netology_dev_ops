@@ -95,3 +95,5 @@
 №39 - [Terraform](https://github.com/networksuperman/netology_dev_ops/blob/39233ce6b30798837889db256f19fa523b1277aa/SLINA-19/IT%20System%20and%20OS%20Linux/7-02.md)
 
 №40 - [Подъём инфраструктуры в Yandex Cloud](https://github.com/networksuperman/netology_dev_ops/blob/de11a25e3739091af9fb3320b9c00b16671eb3a8/SLINA-19/IT%20System%20and%20OS%20Linux/7-03.md)
+
+№41 - [Git]()
