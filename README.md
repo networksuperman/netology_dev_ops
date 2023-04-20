@@ -99,3 +99,6 @@
 ### Введение в DevOps
 
 №41 - [Git](https://github.com/networksuperman/8-01/blob/main/README.md)
+
+№42 - [Что такое DevOps. СI/СD]()
+
