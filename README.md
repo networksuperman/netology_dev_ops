@@ -100,5 +100,5 @@
 
 №41 - [Git](https://github.com/networksuperman/8-01/blob/main/README.md)
 
-№42 - [Что такое DevOps. СI/СD]()
+№42 - [Что такое DevOps. СI/СD](https://github.com/networksuperman/netology_dev_ops/blob/ec8eae430cadd29dca82cb7d00f01dcd9c480169/SLINA-19/IT%20System%20and%20OS%20Linux/8-02.md)
 
