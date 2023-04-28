@@ -104,3 +104,4 @@
 
 №43 - [GitLab](https://github.com/networksuperman/netology_dev_ops/blob/41a8fbd30377f9820f28a4aae21d083e01e73919/SLINA-19/IT%20System%20and%20OS%20Linux/8-03.md)
 
+### Мониторинг
