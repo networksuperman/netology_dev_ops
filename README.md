@@ -109,4 +109,4 @@
 
 №45 - [Система мониторинга Zabbix](https://github.com/networksuperman/netology_dev_ops/blob/aead6cda27706fcb839a05789c5891a310addadd/SLINA-19/IT%20System%20and%20OS%20Linux/9-02.md)
 
-№46 - [Система мониторинга Zabbix. Часть 2]()
+№46 - [Система мониторинга Zabbix. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/fe9a6f68f0ba667915e95605ab685f2e0fd85d71/SLINA-19/IT%20System%20and%20OS%20Linux/9-03.md)
