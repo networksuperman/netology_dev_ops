@@ -25,14 +25,14 @@ echo '        print(result[0])' >> /etc/zabbix/test_python_script.py
 echo 'elif (sys.argv[1] == "-simple_print"):' >> /etc/zabbix/test_python_script.py
 echo '        print(sys.argv[2])' >> /etc/zabbix/test_python_script.py
 echo 'elif (sys.argv[1] == '1'):'
-echo  		'print(f"Burmistrov Oleg Vladimirovich")'
+echo  		'print(f"Panarin I A")'
 echo 'elif (sys.argv[1] == '2'):'
 echo  		'print(f"{today}")'
 echo 'else:' >> /etc/zabbix/test_python_script.py
 echo '        print(f"unknown input: {sys.argv[1]}")' >> /etc/zabbix/test_python_script.py
 echo '#!/bin/bash' >> /etc/zabbix/echo_date_fio.sh
 echo 'if [[ $1 = 1 ]]; then' >> /etc/zabbix/echo_date_fio.sh
-echo		'echo "Burmistrov Oleg Vladimirovich"' >> /etc/zabbix/echo_date_fio.sh
+echo		'echo "Panarin I A"' >> /etc/zabbix/echo_date_fio.sh
 echo 'elif [[ $1 = 2 ]]; then' >> /etc/zabbix/echo_date_fio.sh
 echo        'echo `date `' >> /etc/zabbix/echo_date_fio.sh
 echo 'fi' >> /etc/zabbix/echo_date_fio.sh
