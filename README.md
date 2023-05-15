@@ -111,6 +111,6 @@
 
 №46 - [Система мониторинга Zabbix. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/fe9a6f68f0ba667915e95605ab685f2e0fd85d71/SLINA-19/IT%20System%20and%20OS%20Linux/9-03.md)
 
-№47 - [Система мониторинга Prometheus]()
+№47 - [Система мониторинга Prometheus](https://github.com/networksuperman/netology_dev_ops/blob/061491c6e76d1c76eafdf627f7e298c38a39576a/SLINA-19/IT%20System%20and%20OS%20Linux/9-04.md)
 
 
