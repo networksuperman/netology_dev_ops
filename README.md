@@ -113,5 +113,5 @@
 
 №47 - [Система мониторинга Prometheus](https://github.com/networksuperman/netology_dev_ops/blob/061491c6e76d1c76eafdf627f7e298c38a39576a/SLINA-19/IT%20System%20and%20OS%20Linux/9-04.md)
 
-№48 - [Prometheus. Часть 2]()
+№48 - [Prometheus. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/5c76e99169ada34a746abe0ec57a293ee7931118/SLINA-19/IT%20System%20and%20OS%20Linux/9-05.md)
 
