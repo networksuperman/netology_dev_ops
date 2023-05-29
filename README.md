@@ -115,3 +115,5 @@
 
 №48 - [Prometheus. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/5c76e99169ada34a746abe0ec57a293ee7931118/SLINA-19/IT%20System%20and%20OS%20Linux/9-05.md)
 
+### Отказоустойчивость
+№49 - [Disaster recovery и Keepalived]()
