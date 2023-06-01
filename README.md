@@ -117,4 +117,4 @@
 
 ### Отказоустойчивость
 №49 - [Disaster recovery и Keepalived](https://github.com/networksuperman/netology_dev_ops/blob/46c40bc8b6bc8511801318b0bcb44dc4a83cb80a/fault_tolerance/10_1/10_1.md)
-№50 - [Кластеризация и балансировка нагрузки]()
+№50 - [Кластеризация и балансировка нагрузки](https://github.com/networksuperman/netology_dev_ops/blob/2f357904acaa0b96107dd0ebc030bd714f3547f8/fault_tolerance/10_2/10_2.md)
