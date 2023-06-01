@@ -116,5 +116,5 @@
 №48 - [Prometheus. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/5c76e99169ada34a746abe0ec57a293ee7931118/SLINA-19/IT%20System%20and%20OS%20Linux/9-05.md)
 
 ### Отказоустойчивость
-№49 - [Disaster recovery и Keepalived](https://github.com/networksuperman/netology_dev_ops/blob/46c40bc8b6bc8511801318b0bcb44dc4a83cb80a/fault_tolerance/10_1/10_1.md)
-№50 - [Кластеризация и балансировка нагрузки](https://github.com/networksuperman/netology_dev_ops/blob/2f357904acaa0b96107dd0ebc030bd714f3547f8/fault_tolerance/10_2/10_2.md)
+№49 - [Disaster recovery и Keepalived](https://github.com/networksuperman/netology_dev_ops/blob/46c40bc8b6bc8511801318b0bcb44dc4a83cb80a/fault_tolerance/10_1/10_1.md)  
+№50 - [Кластеризация и балансировка нагрузки](https://github.com/networksuperman/netology_dev_ops/blob/2f357904acaa0b96107dd0ebc030bd714f3547f8/fault_tolerance/10_2/10_2.md)  
