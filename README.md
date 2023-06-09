@@ -121,3 +121,6 @@
 №50 - [Кластеризация и балансировка нагрузки](https://github.com/networksuperman/netology_dev_ops/blob/2f357904acaa0b96107dd0ebc030bd714f3547f8/fault_tolerance/10_2/10_2.md)  
 
 №51 - [Резервное копирование](https://github.com/networksuperman/netology_dev_ops/blob/ecb096f3df2515d98d26647d437683a5777af0c8/fault_tolerance/10_3/10_3.md)  
+
+№52 - [Отказоустойчивость в облаке]()
+
