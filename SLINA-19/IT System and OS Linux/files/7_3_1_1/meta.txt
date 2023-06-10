@@ -5,5 +5,5 @@ users:
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZTUsUs8mkxS8WYxM5POhf3/v3XJFXjpbOGa2EogZOg root@vm1
+      - ssh-ed25519 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx root@vm1
       
