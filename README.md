@@ -122,5 +122,5 @@
 
 №51 - [Резервное копирование](https://github.com/networksuperman/netology_dev_ops/blob/ecb096f3df2515d98d26647d437683a5777af0c8/fault_tolerance/10_3/10_3.md)  
 
-№52 - [Отказоустойчивость в облаке]()
+№52 - [Отказоустойчивость в облаке](https://github.com/networksuperman/netology_dev_ops/blob/754cc5b11bd8fee0162c64cf17a4e65dc0d15880/fault_tolerance/10_4/10_4.md)  
 
