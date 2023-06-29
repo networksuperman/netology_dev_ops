@@ -125,5 +125,5 @@
 №52 - [Отказоустойчивость в облаке](https://github.com/networksuperman/netology_dev_ops/blob/754cc5b11bd8fee0162c64cf17a4e65dc0d15880/fault_tolerance/10_4/10_4.md)  
 
 ### Системы хранения и передачи данных  
-№53 - [Базы данных, их типы]()  
+№53 - [Базы данных, их типы](https://github.com/networksuperman/netology_dev_ops/blob/151b8b083a33dd44a28c96b0cf3a99cb39cd1040/DB_types/11_1/11_1.md)  
 
