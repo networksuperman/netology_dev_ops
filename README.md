@@ -127,3 +127,4 @@
 ### Системы хранения и передачи данных  
 №53 - [Базы данных, их типы](https://github.com/networksuperman/netology_dev_ops/blob/151b8b083a33dd44a28c96b0cf3a99cb39cd1040/DB_types/11_1/11_1.md)  
 
+№54 - [Кеширование Redis/memcached]()  
