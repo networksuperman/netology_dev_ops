@@ -131,3 +131,5 @@
 
 №55 - [ELK](https://github.com/networksuperman/netology_dev_ops/blob/ded602956c8e6b806919748ce67b19cd3a44fd60/DB_types/11_3/11_3.md)  
 
+№56 - [Очереди RabbitMQ]()  
+
