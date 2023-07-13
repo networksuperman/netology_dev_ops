@@ -133,3 +133,6 @@
 
 №56 - [Очереди RabbitMQ](https://github.com/networksuperman/netology_dev_ops/blob/0a6efad85bf544396262c4b8a58ce44c80d37c58/DB_types/11_4/11-4.md)  
 
+### Реляционные базы данных и администрирование баз данных
+
+
