@@ -135,4 +135,5 @@
 
 ### Реляционные базы данных и администрирование баз данных
 
+№57 - [Базы данных](https://github.com/networksuperman/netology_dev_ops/blob/1ca7dcd5075894a2ddc97ce1df56684fdfdb6e8e/rel_bd/12_1/12_1.md)  
 
