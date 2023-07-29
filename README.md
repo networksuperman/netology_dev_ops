@@ -140,3 +140,5 @@
 №58 - [Работа с данными (DDL/DML)](https://github.com/networksuperman/netology_dev_ops/blob/f9105e6d71ffdc61ee3e4626aaba783ffcdf84c6/rel_bd/12_1/12_2/12_2.md)    
 
 №59 - [SQL. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/4c8e49c06a56b66283c3d89b169f6a2b66a9c8e5/rel_bd/12_1/12_3/12_3.md)  
+
+№60 - [SQL. Часть 2]()  
