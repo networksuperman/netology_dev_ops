@@ -143,4 +143,4 @@
 
 №60 - [SQL. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/180611cc1493b77910ccc421bbece9e8d140ac31/rel_bd/12_1/12_4.md)  
 
-№61 - [Индексы](https://github.com/networksuperman/netology_dev_ops/blob/545df3d881211da40de14795d920566783430712/rel_bd/12_1/12_5.md)  
+№61 - [Индексы](https://github.com/networksuperman/netology_dev_ops/blob/9ece068eb935e4f45d3fd3a3ff6778d8b6f3fa28/rel_bd/12_1/12_5.md)  
