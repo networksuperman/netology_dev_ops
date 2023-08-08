@@ -146,3 +146,7 @@
 №61 - [Индексы](https://github.com/networksuperman/netology_dev_ops/blob/9ece068eb935e4f45d3fd3a3ff6778d8b6f3fa28/rel_bd/12_1/12_5.md)  
 
 №62 - [Репликация и масштабирование. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/a8d0a2d5330f9176b69841886ade84857bf002b9/rel_bd/12_6/12_6.md)  
+
+№63 - [Репликация и масштабирование. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/2f1dd8a3e819515560e5a29cf6d15f9449a0739a/rel_bd/12_7/12_7.md)  
+
+
