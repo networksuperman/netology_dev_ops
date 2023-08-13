@@ -149,5 +149,5 @@
 
 №63 - [Репликация и масштабирование. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/2f1dd8a3e819515560e5a29cf6d15f9449a0739a/rel_bd/12_7/12_7.md)  
 
-№64- [Резервное копирование баз данных]()  
+№64- [Резервное копирование баз данных](https://github.com/networksuperman/netology_dev_ops/blob/cf56dd1bb6600fcd99405991a1937a23d28d734c/rel_bd/12_8/12_8.md)  
 
