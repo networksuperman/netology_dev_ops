@@ -151,3 +151,4 @@
 
 №64- [Резервное копирование баз данных](https://github.com/networksuperman/netology_dev_ops/blob/cf56dd1bb6600fcd99405991a1937a23d28d734c/rel_bd/12_8/12_8.md)  
 
+№65 - [Базы данных в облаке]()  
