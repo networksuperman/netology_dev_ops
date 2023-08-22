@@ -152,3 +152,7 @@
 №64- [Резервное копирование баз данных](https://github.com/networksuperman/netology_dev_ops/blob/cf56dd1bb6600fcd99405991a1937a23d28d734c/rel_bd/12_8/12_8.md)  
 
 №65 - [Базы данных в облаке](https://github.com/networksuperman/netology_dev_ops/blob/ff2a7c9e7dc4cd2118316d1dc4c649c3ee5edfd7/rel_bd/12_9/12_9.md)    
+
+№66 - [Уязвимости и атаки на информационные системы]()  
+
+
