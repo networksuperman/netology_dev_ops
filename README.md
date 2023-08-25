@@ -156,4 +156,4 @@
 ### Информационная безопасность  
 №66 - [Уязвимости и атаки на информационные системы](https://github.com/networksuperman/netology_dev_ops/blob/49c1fa24b60ba8bbb7b3d6249df0caca23351ea9/vuln_and_attacks/13_1.md)  
 
-№67 - [Защита хоста]()  
+№67 - [Защита хоста](https://github.com/networksuperman/netology_dev_ops/blob/e127c057532a010ba6955b8ee40e4eba3e99bbbf/vuln_and_attacks/13_2.md)  
