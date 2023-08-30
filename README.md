@@ -158,5 +158,5 @@
 
 №67 - [Защита хоста](https://github.com/networksuperman/netology_dev_ops/blob/e127c057532a010ba6955b8ee40e4eba3e99bbbf/vuln_and_attacks/13_2.md)  
 
-№68 - [Защита сети]()  
+№68 - [Защита сети](https://github.com/networksuperman/netology_dev_ops/blob/774aa9bf7c56fd4ffe5648c5920617636f0e187b/vuln_and_attacks/13_3.md)    
 
