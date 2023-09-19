@@ -164,3 +164,7 @@
 №69 - [Системы контроля версий](https://github.com/networksuperman/devops-netology)  
 
 №70 - [Основы Git](https://github.com/networksuperman/devops-netology/blob/913a7bdb1d6693b52385d3c7209cb2548e97d4f3/README.md)   
+
+№71 - [Ветвления в Git](https://github.com/networksuperman/devops-netology/blob/9b9cb8fee6c2a88745438a901b5de91c90b43884/README.md)  
+
+
