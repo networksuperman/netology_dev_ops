@@ -38,3 +38,21 @@ git show -s --pretty=%P b8d720
 ![]()  
 4. Перечислите хеши и комментарии всех коммитов, которые были сделаны между тегами v0.12.23 и v0.12.24
 ```
+git log v0.12.23..v0.12.24 --pretty=oneline
+```
+![]()  
+5. Найдите коммит, в котором была создана функция func providerSource, её определение в коде выглядит так: func providerSource(...) (вместо троеточия перечислены аргументы)  
+```
+git log -S 'func providerSource'
+```
+![]()  
+6. Найдите все коммиты, в которых была изменена функция globalPluginDirs.  
+```
+git log -GglobalPluginDirs --stat
+```
+![]()  
+7. Кто автор функции synchronizedWriters?  
+```
+git log -S synchronizedWriters --pretty=format:"%h %an"
+```
+![]()  
