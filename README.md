@@ -168,3 +168,5 @@
 №71 - [Ветвления в Git](https://github.com/networksuperman/devops-netology/blob/9b9cb8fee6c2a88745438a901b5de91c90b43884/README.md)  
 
 №72 - [Ветвления в Git](https://github.com/networksuperman/devops-netology/blob/9b9cb8fee6c2a88745438a901b5de91c90b43884/README.md)  
+
+№73 - [Инструменты Git]()  
