@@ -21,7 +21,7 @@ git show aefea
 ```
 git log -1 85024d3
 ```
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/git/img-git-4/git4_2.png)
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/git/img-git-4/git4_2.png)  
 3. Сколько родителей у коммита b8d720? Напишите их хеши  
 Простой git log вызов для фиксации слияния показывает сокращенные хэши своих родителей:  
 ```
