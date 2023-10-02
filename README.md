@@ -170,3 +170,6 @@
 №72 - [Ветвления в Git](https://github.com/networksuperman/devops-netology/blob/9b9cb8fee6c2a88745438a901b5de91c90b43884/README.md)  
 
 №73 - [Инструменты Git](https://github.com/networksuperman/netology_dev_ops/blob/782c8cf5354c59c01a33fa5cd248ff86f8d0d987/git/02-git-04-tools.md)  
+
+### Администрирование баз данных  
+№74 - [Типы и структура СУБД](https://github.com/netology-code/bd-dev-homeworks/tree/068102c31a963de8fd12af397f578f4c386f8266/06-db-01-basics)  
