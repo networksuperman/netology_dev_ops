@@ -172,4 +172,4 @@
 №73 - [Инструменты Git](https://github.com/networksuperman/netology_dev_ops/blob/782c8cf5354c59c01a33fa5cd248ff86f8d0d987/git/02-git-04-tools.md)  
 
 ### Администрирование баз данных  
-№74 - [Типы и структура СУБД](https://github.com/networksuperman/netology_dev_ops/blob/6fb42e24196515410245cbf32124cf9b61b7a6d3/bd_dev_10/06_db_01_basics/README.md)  
+№74 - [Типы и структура СУБД](https://github.com/networksuperman/netology_dev_ops/blob/40925746eb6bcb1ee1c2c155cead9da095c53f21/bd_dev_10/06_db_01_basics/README.md)  
