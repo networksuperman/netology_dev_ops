@@ -69,7 +69,4 @@ id (serial primary key)
 страна проживания (string, index)
 заказ (foreign key orders)
 
-Приведите:
-итоговый список БД после выполнения пунктов выше,
-
 
