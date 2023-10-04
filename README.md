@@ -171,3 +171,5 @@
 
 ### Администрирование баз данных  
 №73 - [Типы и структура СУБД](https://github.com/networksuperman/netology_dev_ops/blob/40925746eb6bcb1ee1c2c155cead9da095c53f21/bd_dev_10/06_db_01_basics/README.md)  
+
+№74 - [SQL]()  
