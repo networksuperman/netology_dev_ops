@@ -284,4 +284,122 @@ WHERE "заказ" IS NOT null;
 Используется фильтр "заказ" IS NOT NULL
 
 ### Задача 6
+Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. Задачу 1).
 
+```
+docker exec -it root-postgres-1 /bin/bash
+
+pg_dump -U postgres -F t test_db > /data/backup/postgres/test_db.tar
+```
+Остановите контейнер с PostgreSQL (но не удаляйте volumes).
+```
+[root@kuber-node02 ~]# docker ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS          PORTS                                                           NAMES
+0f1193246f0e   postgres:12                     "docker-entrypoint.s…"   46 minutes ago   Up 46 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp                       root-postgres-1
+
+
+[root@kuber-node02 ~]# docker stop  root-postgres-1
+root-postgres-1
+[root@kuber-node02 ~]#  docker ps -a
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS                     PORTS                                                           NAMES
+0f1193246f0e   postgres:12                     "docker-entrypoint.s…"   47 minutes ago   Exited (0) 8 seconds ago                                                                   root-postgres-1
+
+[root@kuber-node02 ~]#  docker ps -a
+CONTAINER ID   IMAGE                           COMMAND                  CREATED          STATUS                          PORTS                                                           NAMES
+0f1193246f0e   postgres:12                     "docker-entrypoint.s…"   49 minutes ago   Exited (0) About a minute ago                                                                   root-postgres-1
+
+```
+Поднимите новый пустой контейнер с PostgreSQL.
+```
+[root@kuber-node02 docker2]# docker ps
+CONTAINER ID   IMAGE                           COMMAND                  CREATED         STATUS         PORTS                                                           NAMES
+a6b13ccf5231   postgres:12                     "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp                       docker2-postgres-1
+```
+Восстановите БД test_db в новом контейнере.
+```
+docker exec -it docker2-postgres-1 psql -U postgres
+
+postgres=# CREATE USER "test-admin-user" WITH LOGIN;
+CREATE ROLE
+postgres=# CREATE USER "test-simple-user" WITH LOGIN;
+CREATE ROLE
+```
+```
+[root@kuber-node02 backup]# docker exec -it docker2-postgres-1 /bin/bash
+root@f0336e751d0c:/# pg_restore -U postgres --verbose -C -d postgres /data/backup/postgres/test_db.tar
+pg_restore: connecting to database for restore
+pg_restore: creating DATABASE "test_db"
+pg_restore: connecting to new database "test_db"
+pg_restore: creating TABLE "public.clients"
+pg_restore: creating SEQUENCE "public.clients_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "public.clients_id_seq"
+pg_restore: creating TABLE "public.orders"
+pg_restore: creating SEQUENCE "public.orders_id_seq"
+pg_restore: creating SEQUENCE OWNED BY "public.orders_id_seq"
+pg_restore: creating DEFAULT "public.clients id"
+pg_restore: creating DEFAULT "public.orders id"
+pg_restore: processing data for table "public.clients"
+pg_restore: processing data for table "public.orders"
+pg_restore: executing SEQUENCE SET clients_id_seq
+pg_restore: executing SEQUENCE SET orders_id_seq
+pg_restore: creating CONSTRAINT "public.clients clients_pkey"
+pg_restore: creating CONSTRAINT "public.orders orders_pkey"
+pg_restore: creating INDEX "public.idx_country"
+pg_restore: creating FK CONSTRAINT "public.clients clients_заказ_fkey"
+pg_restore: creating ACL "DATABASE test_db"
+pg_restore: creating ACL "public.TABLE clients"
+pg_restore: creating ACL "public.TABLE orders"
+
+
+docker exec -it docker2-postgres-1 psql -U postgres
+
+postgres=# \l
+                                     List of databases
+   Name    |  Owner   | Encoding |  Collate   |   Ctype    |       Access privileges
+-----------+----------+----------+------------+------------+--------------------------------
+ postgres  | postgres | UTF8     | en_US.utf8 | en_US.utf8 |
+ template0 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres                   +
+           |          |          |            |            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =c/postgres                   +
+           |          |          |            |            | postgres=CTc/postgres
+ test_db   | postgres | UTF8     | en_US.utf8 | en_US.utf8 | =Tc/postgres                  +
+           |          |          |            |            | postgres=CTc/postgres         +
+           |          |          |            |            | "test-admin-user"=CTc/postgres
+
+
+
+postgres=# \c test_db
+You are now connected to database "test_db" as user "postgres".
+
+test_db=# \d orders
+                                    Table "public.orders"
+    Column    |       Type        | Collation | Nullable |              Default
+--------------+-------------------+-----------+----------+------------------------------------
+ id           | integer           |           | not null | nextval('orders_id_seq'::regclass)
+ наименование | character varying |           |          |
+ цена         | integer           |           |          |
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE "clients" CONSTRAINT "clients_заказ_fkey" FOREIGN KEY ("заказ") REFERENCES orders(id)
+
+
+test_db=# \d clients
+                                       Table "public.clients"
+      Column       |       Type        | Collation | Nullable |               Default
+-------------------+-------------------+-----------+----------+-------------------------------------
+ id                | integer           |           | not null | nextval('clients_id_seq'::regclass)
+ фамилия           | character varying |           |          |
+ страна проживания | character varying |           |          |
+ заказ             | integer           |           |          |
+Indexes:
+    "clients_pkey" PRIMARY KEY, btree (id)
+    "idx_country" btree ("страна проживания")
+Foreign-key constraints:
+    "clients_заказ_fkey" FOREIGN KEY ("заказ") REFERENCES orders(id)
+
+
+
+
+
+```
