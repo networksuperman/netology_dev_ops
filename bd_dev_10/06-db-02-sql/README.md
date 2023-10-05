@@ -4,7 +4,6 @@
 Используя Docker, поднимите инстанс PostgreSQL (версию 12) c 2 volume, в который будут складываться данные БД и бэкапы.
 Приведите получившуюся команду или docker-compose-манифест.
 
-#### Ответ:  
 ```
 version: '3.9'
 services:
@@ -27,7 +26,6 @@ NAME              IMAGE         COMMAND                           SERVICE    CRE
 root-postgres-1   postgres:12   "docker-entrypoint.sh postgres"   postgres   23 seconds ago   Up 20 seconds   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
 
 ```
-![]()  
 
 ### Задача 2  
 В БД из задачи 1:
@@ -135,5 +133,100 @@ WHERE table_name in ('orders','clients');
 ```
 список пользователей с правами над таблицами test_db
 ```
-
+test_db=# SELECT grantee, table_name, privilege_type
+FROM information_schema.role_table_grants
+WHERE table_name in ('orders','clients');
+     grantee      | table_name | privilege_type
+------------------+------------+----------------
+ postgres         | orders     | INSERT
+ postgres         | orders     | SELECT
+ postgres         | orders     | UPDATE
+ postgres         | orders     | DELETE
+ postgres         | orders     | TRUNCATE
+ postgres         | orders     | REFERENCES
+ postgres         | orders     | TRIGGER
+ test-simple-user | orders     | INSERT
+ test-simple-user | orders     | SELECT
+ test-simple-user | orders     | UPDATE
+ test-simple-user | orders     | DELETE
+ test-admin-user  | orders     | INSERT
+ test-admin-user  | orders     | SELECT
+ test-admin-user  | orders     | UPDATE
+ test-admin-user  | orders     | DELETE
+ test-admin-user  | orders     | TRUNCATE
+ test-admin-user  | orders     | REFERENCES
+ test-admin-user  | orders     | TRIGGER
+ postgres         | clients    | INSERT
+ postgres         | clients    | SELECT
+ postgres         | clients    | UPDATE
+ postgres         | clients    | DELETE
+ postgres         | clients    | TRUNCATE
+ postgres         | clients    | REFERENCES
+ postgres         | clients    | TRIGGER
+ test-simple-user | clients    | INSERT
+ test-simple-user | clients    | SELECT
+ test-simple-user | clients    | UPDATE
+ test-simple-user | clients    | DELETE
+ test-admin-user  | clients    | INSERT
+ test-admin-user  | clients    | SELECT
+ test-admin-user  | clients    | UPDATE
+ test-admin-user  | clients    | DELETE
+ test-admin-user  | clients    | TRUNCATE
+ test-admin-user  | clients    | REFERENCES
+ test-admin-user  | clients    | TRIGGER
+(36 rows)
 ```
+### Задача 3
+Используя SQL синтаксис - наполните таблицы следующими тестовыми данными:
+
+Таблица orders
+
+Наименование	цена
+Шоколад	10
+Принтер	3000
+Книга	500
+Монитор	7000
+Гитара	4000
+
+Добавление данных в таблицу orders
+```
+INSERT INTO orders (наименование, цена )
+VALUES 
+    ('Шоколад', '10'),
+    ('Принтер', '3000'),
+    ('Книга', '500'),
+    ('Монитор', '7000'),
+    ('Гитара', '4000')
+;
+```
+Добавление данных в таблицу clients
+```
+INSERT INTO clients ("фамилия", "страна проживания")
+VALUES 
+    ('Иванов Иван Иванович', 'USA'),
+    ('Петров Петр Петрович', 'Canada'),
+    ('Иоганн Себастьян Бах', 'Japan'),
+    ('Ронни Джеймс Дио', 'Russia'),
+    ('Ritchie Blackmore', 'Russia')
+;
+```
+Используя SQL синтаксис:
+
+вычислите количество записей для каждой таблицы
+приведите в ответе:
+запросы
+результаты их выполнения.
+```
+test_db=# SELECT 'orders' AS name_table,  COUNT(*) AS number_rows FROM orders
+UNION ALL
+SELECT 'clients' AS name_table,  COUNT(*) AS number_rows  FROM clients;
+ name_table | number_rows
+------------+-------------
+ orders     |           5
+ clients    |           5
+(2 rows)
+```
+
+### Задача 4
+
+
