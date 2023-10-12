@@ -174,4 +174,6 @@
 
 №74 - [SQL](https://github.com/networksuperman/netology_dev_ops/blob/6200873fece6e22c59aa715118e518114b4a34c3/bd_dev_10/06-db-02-sql/README.md)  
 
-№75 - [MySQL]()  
+№75 - [MySQL](https://github.com/networksuperman/netology_dev_ops/blob/5165cc17974165f36e5d32ba1552aa2798c284e7/bd_dev_10/06-db-03-mysql/README.md)  
+
+№76 - [PostgreSQL]()  
