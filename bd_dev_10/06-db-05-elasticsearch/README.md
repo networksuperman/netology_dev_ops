@@ -18,7 +18,69 @@
 ответ Elasticsearch на запрос пути / в json-виде.  
 
 #### Ответ:  
+Dockerfile
+```
+FROM centos:7
+#
 
+RUN yum -y install wget \
+#    && yum -y install perl-Digest-SHA \
+    && wget -o /dev/null https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.0-linux-x86_64.tar.gz \
+    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.0-linux-x86_64.tar.gz.sha512 \
+#    && shasum -a 512 -c elasticsearch-7.17.0-linux-x86_64.tar.gz.sha512 \
+    && tar -xzf elasticsearch-7.17.0-linux-x86_64.tar.gz
+
+ADD elasticsearch.yml /elasticsearch-7.17.0/config/
+ENV JAVA_HOME=/elasticsearch-7.17.0/jdk/
+ENV ES_HOME=/elasticsearch-7.17.0
+
+RUN groupadd elasticsearch \
+    && useradd -g elasticsearch elasticsearch \
+    && mkdir /var/lib/logs \
+    && chown elasticsearch:elasticsearch /var/lib/logs \
+    && mkdir /var/lib/data \
+    && chown elasticsearch:elasticsearch /var/lib/data \
+    && chown -R elasticsearch:elasticsearch /elasticsearch-7.17.0 \
+    && mkdir /elasticsearch-7.17.0/snapshots \
+    && chown elasticsearch:elasticsearch /elasticsearch-7.17.0/snapshots
+
+USER elasticsearch
+CMD ["/usr/sbin/init"]
+CMD ["/elasticsearch-7.17.0/bin/elasticsearch"]
+```
+elasticsearch.yml
+```
+cluster.name: netology_test
+discovery.type: single-node
+path.data: /var/lib/data
+path.logs: /var/lib/logs
+path.repo: /elasticsearch-7.17.0/snapshots
+network.host: 0.0.0.0
+discovery.seed_hosts: ["127.0.0.1", "[::1]"]
+```
+Образ в репозитории DockerHub
+
+
+Ответ elasticsearch на запрос пути / в json виде
+```
+{
+  "name" : "44707c71aa4e",
+  "cluster_name" : "netology_test",
+  "cluster_uuid" : "yNQgsK7wSMKIAgiyOisViQ",
+  "version" : {
+    "number" : "7.17.0",
+    "build_flavor" : "default",
+    "build_type" : "tar",
+    "build_hash" : "bee86328705acaa9a6daede7140defd4d9ec56bd",
+    "build_date" : "2022-01-28T08:36:04.875279988Z",
+    "build_snapshot" : false,
+    "lucene_version" : "8.11.1",
+    "minimum_wire_compatibility_version" : "6.8.0",
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
 
 ### Задача 2  
 В этом задании вы научитесь:  
