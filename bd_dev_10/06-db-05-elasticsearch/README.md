@@ -59,7 +59,7 @@ network.host: 0.0.0.0
 discovery.seed_hosts: ["127.0.0.1", "[::1]"]
 ```
 Образ в репозитории DockerHub
-
+[DockerHub]()
 
 Ответ elasticsearch на запрос пути / в json виде
 ```
@@ -72,7 +72,7 @@ discovery.seed_hosts: ["127.0.0.1", "[::1]"]
     "build_flavor" : "default",
     "build_type" : "tar",
     "build_hash" : "bee86328705acaa9a6daede7140defd4d9ec56bd",
-    "build_date" : "2022-01-28T08:36:04.875279988Z",
+    "build_date" : "2023-10-22T15:36:04.875279988Z",
     "build_snapshot" : false,
     "lucene_version" : "8.11.1",
     "minimum_wire_compatibility_version" : "6.8.0",
