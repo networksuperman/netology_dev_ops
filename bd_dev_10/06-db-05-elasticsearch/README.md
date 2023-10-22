@@ -233,4 +233,76 @@ sh-4.2$
 Приведите в ответе запрос к API восстановления и итоговый список индексов.  
 
 #### Ответ:  
-
+Регистрируем директорию netology_backup
+```
+sh-4.2$ curl -X POST localhost:9200/_snapshot/netology_backup?pretty -H 'Content-Type: application/json' -d'{"type": "fs", "settings": { "location":"/elasticsearch-7.17.0/snapshots" }}'
+{
+  "acknowledged" : true
+}
+sh-4.2$
+```
+Создаем индекс test с 0 реплик и 1 шардом.
+```
+curl -X PUT localhost:9200/test -H 'Content-Type: application/json' -d'{ "settings": { "number_of_replicas": 0, "number_of_shards": 1 }}'
+```
+```
+sh-4.2$  curl -X GET 'http://localhost:9200/_cat/indices?v'
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test  QtwnianWTh25QgobZtPGng   1   0          0            0       226b           226b
+```
+Создаем snapshot.
+```
+sh-4.2$ curl -X PUT localhost:9200/_snapshot/netology_backup/elasticsearch?wait_for_completion=true
+{"snapshot":{"snapshot":"elasticsearch","uuid":"P57ew79TS3ObZ_8qk8iMIQ","repository":"netology_backup","version_id":7170099,"version":"7.17.0","indices":["test",".ds-.logs-deprecation.elasticsearch-default-2022.02.28-000001",".ds-ilm-history-5-2022.02.28-000001"],"data_streams":["ilm-history-5",".logs-deprecation.elasticsearch-default"],"include_global_state":true,"state":"SUCCESS","start_time":"2022-02-28T11:09:28.190Z","start_time_in_millis":1646046568190,"end_time":"2022-02-28T11:09:28.595Z","end_time_in_millis":1646046568595,"duration_in_millis":405,"failures":[],"shards":{"total":3,"failed":0,"successful":3},"feature_states":[]}}
+```
+```
+sh-4.2$ ls -la /elasticsearch-7.17.0/snapshots/
+total 60
+drwxr-xr-x 1 elasticsearch elasticsearch  4096 Feb 28 11:09 .
+drwxr-xr-x 1 elasticsearch elasticsearch  4096 Feb 28 10:57 ..
+-rw-r--r-- 1 elasticsearch elasticsearch  1168 Feb 28 11:09 index-0
+-rw-r--r-- 1 elasticsearch elasticsearch     8 Feb 28 11:09 index.latest
+drwxr-xr-x 5 elasticsearch elasticsearch  4096 Feb 28 11:09 indices
+-rw-r--r-- 1 elasticsearch elasticsearch 28816 Feb 28 11:09 meta-P57ew79TS3ObZ_8qk8iMIQ.dat
+-rw-r--r-- 1 elasticsearch elasticsearch   625 Feb 28 11:09 snap-P57ew79TS3ObZ_8qk8iMIQ.dat
+sh-4.2$
+```
+Удаляем индекс test и создаем индекс test-2.
+```
+sh-4.2$ curl -X DELETE 'http://localhost:9200/test?pretty'
+{
+  "acknowledged" : true
+}
+sh-4.2$ curl -X PUT localhost:9200/test-2 -H 'Content-Type: application/json' -d'{ "settings": { "number_of_replicas": 0, "number_of_shards": 1 }}'
+{"acknowledged":true,"shards_acknowledged":true,"index":"test-2"} 
+sh-4.2$ curl -X GET 'http://localhost:9200/_cat/indices?v'
+health status index  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test-2 7pVzzsWXQoiIP_YI1x8kag   1   0          0            0       226b           226b
+sh-4.2$
+```
+Восстановление состояние кластера elasticsearch из snapshot, созданного ранее."
+```
+curl -X POST "localhost:9200/.*/_close?pretty"
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "indices" : {
+    ".ds-ilm-history-5-2022.02.28-000001" : {
+      "closed" : true
+    },
+    ".ds-.logs-deprecation.elasticsearch-default-2022.02.28-000001" : {
+      "closed" : true
+    }
+  }
+}
+sh-4.2$ curl -X POST localhost:9200/_snapshot/netology_backup/elasticsearch/_restore?wait_for_completion=true
+{"snapshot":{"snapshot":"elasticsearch","indices":["test",".ds-ilm-history-5-2022.02.28-000001",".ds-.logs-deprecation.elasticsearch-default-2022.02.28-000001"],"shards":{"total":3,"failed":0,"successful":3}}}sh-4.2$
+```
+Итоговый список индексов.
+```
+sh-4.2$ curl -X GET 'http://localhost:9200/_cat/indices?v'
+health status index  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test-2 7pVzzsWXQoiIP_YI1x8kag   1   0          0            0       226b           226b
+green  open   test   G_0ihRykQQ6micKT2MKYoA   1   0          0            0       226b           226b
+sh-4.2$ 
+```
