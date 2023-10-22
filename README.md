@@ -178,4 +178,4 @@
 
 №76 - [PostgreSQL](https://github.com/networksuperman/netology_dev_ops/blob/24af95985b8f1fec8777c80dd47144f20c1dce77/bd_dev_10/06-db-04-postgresql/README.md)  
 
-№77 - [Elasticsearch]()  
+№77 - [Elasticsearch](https://github.com/networksuperman/netology_dev_ops/blob/a3978fbc2c9534faa34754f9368f0cfa797d7cde/bd_dev_10/06-db-05-elasticsearch/README.md)  
