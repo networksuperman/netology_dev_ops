@@ -58,7 +58,7 @@ path.repo: /elasticsearch-7.17.0/snapshots
 network.host: 0.0.0.0
 discovery.seed_hosts: ["127.0.0.1", "[::1]"]
 ```
-Образ в репозитории DockerHub
+Образ в репозитории DockerHub  
 [DockerHub](https://hub.docker.com/layers/networkdockering/netology-devops-elastic/latest/images/sha256-a1dbf1086162a2381f6e703719e29d73771975cb2617e98ad3e5bcd495e2d720?context=repo)
 
 Ответ elasticsearch на запрос пути / в json виде
