@@ -180,4 +180,4 @@
 
 №77 - [Elasticsearch](https://github.com/networksuperman/netology_dev_ops/blob/a3978fbc2c9534faa34754f9368f0cfa797d7cde/bd_dev_10/06-db-05-elasticsearch/README.md)  
 
-№78 - [Troubleshooting](https://github.com/networksuperman/netology_dev_ops/blob/c3db4e9a328bd2acfd3f4faef780a0bf2a3dcb7c/bd_dev_10/06-db-06-troobleshooting/README.md)  
+№78 - [Troubleshooting](https://github.com/networksuperman/netology_dev_ops/blob/ab610fb32f7fb54e1530d908b82d7af0b5566066/bd_dev_10/06-db-06-troobleshooting/README.md)  
