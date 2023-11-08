@@ -182,6 +182,6 @@
 
 №78 - [Troubleshooting](https://github.com/networksuperman/netology_dev_ops/blob/ab610fb32f7fb54e1530d908b82d7af0b5566066/bd_dev_10/06-db-06-troobleshooting/README.md)  
 
-№79 - [Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения]()  
+№79 - [Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения](https://github.com/networksuperman/netology_dev_ops/blob/95a23ccdb392835da8485e3b2e278e6c64172c3d/virtd-homeworks/05-virt-01-basics/README.md)  
 
 
