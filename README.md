@@ -181,3 +181,7 @@
 №77 - [Elasticsearch](https://github.com/networksuperman/netology_dev_ops/blob/a3978fbc2c9534faa34754f9368f0cfa797d7cde/bd_dev_10/06-db-05-elasticsearch/README.md)  
 
 №78 - [Troubleshooting](https://github.com/networksuperman/netology_dev_ops/blob/ab610fb32f7fb54e1530d908b82d7af0b5566066/bd_dev_10/06-db-06-troobleshooting/README.md)  
+
+#79 - [Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения]()  
+
+
