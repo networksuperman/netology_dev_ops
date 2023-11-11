@@ -184,4 +184,4 @@
 
 №79 - [Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения](https://github.com/networksuperman/netology_dev_ops/blob/95a23ccdb392835da8485e3b2e278e6c64172c3d/virtd-homeworks/05-virt-01-basics/README.md)  
 
-
+№80 - [Применение принципов IaaC в работе с виртуальными машинами]()  
