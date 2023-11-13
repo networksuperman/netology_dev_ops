@@ -130,7 +130,38 @@ Docker подходит, так как данный стек не требова
 Подключитесь во второй контейнер и отобразите листинг и содержание файлов в /data контейнера.
 
 #### Ответ:  
+```
+vagrant@ubuntu-20:~/docker$ docker run -it -d -v /data:/data --name centos centos
+Unable to find image 'centos:latest' locally
+latest: Pulling from library/centos
+a1d0c7532777: Pull complete
+Digest: sha256:a27fd8080b517143cbbbab9dfb7c8571c40d67d534bbdee55bd6c473f432b177
+Status: Downloaded newer image for centos:latest
+4a62e37e3fab7336cee36f1b5f55d5e48e1bde5b3d04984ee1d2854fa0369650
 
+vagrant@ubuntu-20:~/docker$ docker run -it -d -v /data:/data --name debian debian
+Unable to find image 'debian:latest' locally
+latest: Pulling from library/debian
+6aefca2dc61d: Pull complete
+Digest: sha256:6846593d7d8613e5dcc68c8f7d8b8e3179c7f3397b84a47c5b2ce989ef1075a0
+Status: Downloaded newer image for debian:latest
+165279f1c4adf4af063d85e8ab43158dc31a7a1bad68d16ee6ad05565e1d9976
+
+vagrant@ubuntu-20:~/docker$ docker exec -it centos bash
+[root@4a62e37e3fab /]# touch /data/test_centos.txt
+[root@4a62e37e3fab /]# exit
+exit
+
+vagrant@ubuntu-20:~/docker$ sudo touch /data/test_host.txt
+
+vagrant@ubuntu-20:~/docker$ docker exec -it debian bash
+root@165279f1c4ad:/# ls /data
+
+test_centos.txt  test_host.txt
+
+root@165279f1c4ad:/# exit
+exit
+```
 
 ### Задача 4 (*)
 Воспроизведите практическую часть лекции самостоятельно.
