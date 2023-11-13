@@ -56,7 +56,28 @@ REPOSITORY        TAG       IMAGE ID       CREATED              SIZE
 networkdockering/panarin.netology   latest    36447e0733b1   About a minute ago   142MB
 nginx             latest    fa5269854a5e   25 hours ago         142MB
 ```
+Проверяем результат в браузере  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/virtd-homeworks/05-virt-03-docker/img/05_03_1.jpg)  
 
+Отправляем в DockerHub  
+```
+vagrant@ubuntu-20:~/docker$ docker login -u networkdockering
+Password:
+Login Succeeded
+
+vagrant@ubuntu-20:~/docker$ docker push networkdockering/panarin.netology
+The push refers to repository [docker.io/networkdockering/panarin.netology]
+806b424a8071: Pushed
+b6812e8d56d6: Mounted from library/nginx
+7046505147d7: Mounted from library/nginx
+c876aa251c80: Mounted from library/nginx
+f5ab86d69014: Mounted from library/nginx
+4b7fffa0f0a4: Mounted from library/nginx
+9c1b6dd6c1e6: Mounted from library/nginx
+1.0: digest: sha256:d398004a5fbe1daae5254860a16b7bab21aed4d82663da6e198a68d1539dfc7f size: 1777
+```
+Ссылка на репозиторий  
+![](https://hub.docker.com/repository/docker/networkdockering/panarin.netology)  
 
 ### Задача 2
 Посмотрите на сценарий ниже и ответьте на вопрос: «Подходит ли в этом сценарии использование Docker-контейнеров или лучше подойдёт виртуальная машина, физическая машина? Может быть, возможны разные варианты?»
