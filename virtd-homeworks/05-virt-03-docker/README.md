@@ -78,7 +78,7 @@ f5ab86d69014: Mounted from library/nginx
 1.0: digest: sha256:d398004a5fbe1daae5254860a16b7bab21aed4d82663da6e198a68d1539dfc7f size: 1777
 ```
 Ссылка на репозиторий  
-[](https://hub.docker.com/repository/docker/networkdockering/panarin.netology)  
+[DockerHub](https://hub.docker.com/repository/docker/networkdockering/panarin.netology)  
 
 ### Задача 2
 Посмотрите на сценарий ниже и ответьте на вопрос: «Подходит ли в этом сценарии использование Docker-контейнеров или лучше подойдёт виртуальная машина, физическая машина? Может быть, возможны разные варианты?»
