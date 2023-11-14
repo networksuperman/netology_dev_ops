@@ -168,4 +168,4 @@ exit
 Соберите Docker-образ с Ansible, загрузите на Docker Hub и пришлите ссылку вместе с остальными ответами к задачам.
 
 #### Ответ:  
-
+[DockerHub](https://hub.docker.com/repository/docker/networkdockering/panarin.ansible)  
