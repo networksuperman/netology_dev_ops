@@ -187,3 +187,5 @@
 №79 - [Введение в виртуализацию. Типы и функции гипервизоров. Обзор рынка вендоров и областей применения](https://github.com/networksuperman/netology_dev_ops/blob/95a23ccdb392835da8485e3b2e278e6c64172c3d/virtd-homeworks/05-virt-01-basics/README.md)  
 
 №80 - [Применение принципов IaaC в работе с виртуальными машинами](https://github.com/networksuperman/netology_dev_ops/tree/d4c3c0746d75f15358949c616778c2f9a8171a22/virtd-homeworks/05-virt-02-iaac)  
+
+№81 - [Введение. Экосистема. Архитектура. Жизненный цикл Docker-контейнера](https://github.com/networksuperman/netology_dev_ops/blob/30ba9c614956f52f6152451eea97bc53f777e64d/virtd-homeworks/05-virt-03-docker/README.md)  
