@@ -5,23 +5,23 @@
 Чтобы получить зачёт, вам нужно предоставить скриншот страницы с созданным образом из личного кабинета YandexCloud.  
 
 #### Ответ: 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/virtd-homeworks/05-virt-04-docker-compose/img/1.1.png)  
+
 
 ### Задача 2  
 2.1. Создайте вашу первую виртуальную машину в YandexCloud с помощью web-интерфейса YandexCloud.  
 
 #### Ответ: 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/virtd-homeworks/05-virt-04-docker-compose/img/2.1.png)  
 
-### 2.2.* (Необязательное задание)  
-Создайте вашу первую виртуальную машину в YandexCloud с помощью Terraform (вместо использования веб-интерфейса YandexCloud). Используйте Terraform-код в директории (src/terraform).  
-Чтобы получить зачёт, вам нужно предоставить вывод команды terraform apply и страницы свойств, созданной ВМ из личного кабинета YandexCloud.  
-
-#### Ответ: 
 
 ### Задача 3  
 С помощью Ansible и Docker Compose разверните на виртуальной машине из предыдущего задания систему мониторинга на основе Prometheus/Grafana. Используйте Ansible-код в директории (src/ansible).  
 Чтобы получить зачёт, вам нужно предоставить вывод команды "docker ps" , все контейнеры, описанные в docker-compose, должны быть в статусе "Up".  
 
 #### Ответ: 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/virtd-homeworks/05-virt-04-docker-compose/img/3.1.png)  
+
 
 ### Задача 4  
 Откройте веб-браузер, зайдите на страницу http://<внешний_ip_адрес_вашей_ВМ>:3000.  
@@ -32,10 +32,6 @@
 скриншот работающего веб-интерфейса Grafana с текущими метриками, как на примере ниже.  
 
 #### Ответ: 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/virtd-homeworks/05-virt-04-docker-compose/img/4.1.png)  
 
-Задача 5 (*)  
-Создайте вторую ВМ и подключите её к мониторингу, развёрнутому на первом сервере.  
-Чтобы получить зачёт, предоставьте:  
-скриншот из Grafana, на котором будут отображаться метрики добавленного вами сервера.  
 
-#### Ответ: 
