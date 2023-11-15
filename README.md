@@ -189,3 +189,5 @@
 №80 - [Применение принципов IaaC в работе с виртуальными машинами](https://github.com/networksuperman/netology_dev_ops/tree/d4c3c0746d75f15358949c616778c2f9a8171a22/virtd-homeworks/05-virt-02-iaac)  
 
 №81 - [Введение. Экосистема. Архитектура. Жизненный цикл Docker-контейнера](https://github.com/networksuperman/netology_dev_ops/blob/30ba9c614956f52f6152451eea97bc53f777e64d/virtd-homeworks/05-virt-03-docker/README.md)  
+
+№82 - [Оркестрация группой Docker-контейнеров на примере Docker Compose](https://github.com/networksuperman/netology_dev_ops/blob/e3f30cc473501954e1449a40ff835b37ab56c301/virtd-homeworks/05-virt-04-docker-compose/README.md)  
