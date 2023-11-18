@@ -33,3 +33,4 @@ docker service ls
 docker swarm update --autolock=true  
 
 #### Ответ:  
+Насколько я понял из документации. Docker swarm шифрует логи raft и трафик между нодами и когда docker перезапускается он автоматически загружает эту информацию. Команда docker swarm update --autolock=true позволяет блокировать функцию загрузки при запуске/перезапуске docker и в этом случае, для загрузки docker, будет необходимо разблокировать docker при помощи команды docker swarm unlock и ключа предоставленного во время выполнения команды docker swarm update --autolock=true
