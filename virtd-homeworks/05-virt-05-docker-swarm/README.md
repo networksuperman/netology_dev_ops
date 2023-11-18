@@ -17,7 +17,7 @@
 docker node ls  
 
 #### Ответ:  
-![]([)](https://github.com/networksuperman/netology_dev_ops/blob/main/virtd-homeworks/05-virt-05-docker-swarm/img/2.1.jpg)  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/virtd-homeworks/05-virt-05-docker-swarm/img/2.1.jpg)  
 
 ### Задача 3  
 Создайте ваш первый, готовый к боевой эксплуатации кластер мониторинга, состоящий из стека микросервисов.  
