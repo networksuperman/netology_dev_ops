@@ -192,7 +192,7 @@
 
 №82 - [Оркестрация группой Docker-контейнеров на примере Docker Compose](https://github.com/networksuperman/netology_dev_ops/blob/e3f30cc473501954e1449a40ff835b37ab56c301/virtd-homeworks/05-virt-04-docker-compose/README.md)  
 
-№83 - [Оркестрация кластером Docker контейнеров на примере Docker Swarm]()  
+№83 - [Оркестрация кластером Docker контейнеров на примере Docker Swarm](https://github.com/networksuperman/netology_dev_ops/blob/a3aa186e5773b02bb37c33cfa5c9bf8685f1456a/virtd-homeworks/05-virt-05-docker-swarm/README.md)  
 
 ### Облачная инфраструктура. Terraform
 
