@@ -29,7 +29,7 @@ docker service ls
 
 ### Задача 4 (*)  
 Выполните на лидере Docker Swarm-кластера команду, указанную ниже, и дайте письменное описание её функционала — что она делает и зачем нужна:  
-# см.документацию: https://docs.docker.com/engine/swarm/swarm_manager_locking/  
+см.документацию: https://docs.docker.com/engine/swarm/swarm_manager_locking/  
 docker swarm update --autolock=true  
 
 #### Ответ:  
