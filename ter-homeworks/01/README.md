@@ -50,10 +50,10 @@
 Опасность команды terraform apply -auto-approve заключается в том, что будет выполняться пропуск планирования ресурсов и вопрос о применении кода не будет задан, что грозит риском потерять уже развернутые ресурсы. В моем случае был удален контейнер и создан новый.  
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_8.png)  
 
-Командой terraform destroy уничтожаю все ресурсы, на вопрос отвечаю yes и вижу, что все описанные в main.tf ресурсы уничтожены:  
+Командой ```terraform destroy``` уничтожаю все ресурсы, на вопрос отвечаю yes и вижу, что все описанные в main.tf ресурсы уничтожены:  
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_9.png)  
 
-Файл terraform.tfstate принял следующий вид:
+Файл terraform.tfstate принял следующий вид:  
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_10.png)  
 
 Но при этом создался файл terraform.tfstate.backup, содержащий в себе данные до уничтожения ресурсов.  
