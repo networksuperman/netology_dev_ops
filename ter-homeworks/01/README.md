@@ -30,11 +30,12 @@
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_4.png)  
 
 Раскомментировал блок кода, расположенный на строках 24 - 37. Командой terraform validate проверяю код, который будет выполняться при запуске terraform apply.  
+
 Нашел следующие ошибки в коде:  
 
-Не было указано имя ресурса docker_image, написал nginx: resource "docker_image" "nginx" {  
-Имя контейнера Docker было написано неправильно - 1nginx, правильный вариант: resource "docker_container" "nginx" {  
-В строке name = "example_${random_password.random_string_FAKE.resulT}" _FAKE оказалось лишним, т.к. создавался ресурс resource "random_password" "random_string" { и ключ resulT написан с буквой T в верхнем регистре, должно быть написано с буквой в нижнем регистре.  
+- Не было указано имя ресурса docker_image, написал nginx: resource "docker_image" "nginx" {  
+- Имя контейнера Docker было написано неправильно - 1nginx, правильный вариант: resource "docker_container" "nginx" {  
+- В строке name = "example_${random_password.random_string_FAKE.resulT}" _FAKE оказалось лишним, т.к. создавался ресурс resource "random_password" "random_string" { и ключ resulT написан с буквой T в верхнем регистре, должно быть написано с буквой в нижнем регистре.  
 Исправленный фрагмент кода выглядит так:  
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_5.png)  
 
