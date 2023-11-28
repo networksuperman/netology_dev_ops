@@ -11,23 +11,23 @@
 Объясните, почему при этом не был удалён docker-образ nginx:latest. Ответ обязательно подкрепите строчкой из документации terraform провайдера docker. (ищите в классификаторе resource docker_image )  
 
 #### Ответ:
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/0_1.png)  
 
 Склонировал репозиторий домашнего задания:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_1.png)  
 
 Проверяю содержимое каталога src. Из зависимостей в файле main.tf вижу только Terraform версии 0.13 или более новую, но не ниже и kreuzwerker/terraform-provider-docker версии 3.0 или выше.  
 Находясь в каталоге с файлом main.tf командой terraform init произвожу инициализацию рабочего каталога и скачиваю зависимости, указанные в файле:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_2.png)  
 
 Изучаю файл .gitignore. Этот файл необходим для указания списка других файлов или папок, которые Git будет игнорировать при работе. Возможно применение внутри файла шаблонов, например, .tfstate.*. В данном конкретном файле .gitignore указан файл personal.auto.tfvars как возможное хранилище для секретной информации.  
 
 Выполняю код из файла main.tf командой terraform apply на вопрос отвечаю yes:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_3.png)  
 
 Проверяю файл terraform.tfstate, в который записалась информация после выполнения кода Terraform. Был создан 16-изначный случайный пароль, в котором минимальное количество символов в нижнем регистре равно 1, минимальное количество символов в верхнем регистре равно 1, минимальное количество цифр равно 1. Каждый раз пароль будет уникальным, т.к. есть условия рандомности.  
 В результате был создан пароль в ключе "result":  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_4.png)  
 
 Раскомментировал блок кода, расположенный на строках 24 - 37. Командой terraform validate проверяю код, который будет выполняться при запуске terraform apply.
 Нашел следующие ошибки в коде:  
@@ -36,24 +36,24 @@
 Имя контейнера Docker было написано неправильно - 1nginx, правильный вариант: resource "docker_container" "nginx" {  
 В строке name = "example_${random_password.random_string_FAKE.resulT}" _FAKE оказалось лишним, т.к. создавался ресурс resource "random_password" "random_string" { и ключ resulT написан с буквой T в верхнем регистре, должно быть написано с буквой в нижнем регистре.  
 Исправленный фрагмент кода выглядит так:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_5.png)  
 
 Выполняю исправленный код. В результате получаю запущенный контейнер nginx с именем example_2OqpvBcXrFi19pkS:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_6.png)  
 
 Меняю в блоке resource "docker_container" "nginx" { имя контейнера на hello_world и выполняю команду terraform apply -auto-approve:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_7.png)  
 
 В итоге получаю следующее: так как используется один и тот же образ, контейнер с именем example_2OqpvBcXrFi19pkS был удален и был создан контейнер с именем hello_world.  
 
 Опасность команды terraform apply -auto-approve заключается в том, что будет выполняться пропуск планирования ресурсов и вопрос о применении кода не будет задан, что грозит риском потерять уже развернутые ресурсы. В моем случае был удален контейнер и создан новый.  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_8.png)  
 
 Командой terraform destroy уничтожаю все ресурсы, на вопрос отвечаю yes и вижу, что все описанные в main.tf ресурсы уничтожены:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_9.png)  
 
 Файл terraform.tfstate принял следующий вид:
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_10.png)  
 
 Но при этом создался файл terraform.tfstate.backup, содержащий в себе данные до уничтожения ресурсов.  
 
@@ -69,8 +69,8 @@
 Ознакомился с документом Virtualbox Provider от shekeriev, увидел, что Terraform можно применять к Virtualbox.  
 
 С помощью кода из документации создаю виртуальную машину Archlinux:  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/2_1.png)  
 
 В итоге получаю созданную виртуальную машину Arch Linux с одним ядом CPU, 512 mb оперативной памяти в запущенном состоянии.  
-![]()  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/2_2.png)  
 
