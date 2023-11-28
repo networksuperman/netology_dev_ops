@@ -196,5 +196,5 @@
 
 ### Облачная инфраструктура. Terraform
 
-№84 - [Введение в Terraform]()  
+№84 - [Введение в Terraform](https://github.com/networksuperman/netology_dev_ops/blob/9406721f66366c445f7d6ab72a4682343cab2b12/ter-homeworks/01/README.md)  
 
