@@ -29,7 +29,7 @@
 В результате был создан пароль в ключе "result":  
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/01/img/1_4.png)  
 
-Раскомментировал блок кода, расположенный на строках 24 - 37. Командой terraform validate проверяю код, который будет выполняться при запуске terraform apply.
+Раскомментировал блок кода, расположенный на строках 24 - 37. Командой terraform validate проверяю код, который будет выполняться при запуске terraform apply.  
 Нашел следующие ошибки в коде:  
 
 Не было указано имя ресурса docker_image, написал nginx: resource "docker_image" "nginx" {  
