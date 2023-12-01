@@ -37,10 +37,13 @@
 Параметр ```core_fraction=5``` указывает базовую производительность ядра в процентах. Указывается для экономии ресурсов.  
 
 Виртуальная машина успешно создана:  
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/1_2.png)  
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/1_3.png)  
 
 Подключение по протоколу SSH работает:  
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/1_4.png)  
 
 ### Задание 2  
@@ -51,11 +54,16 @@
 
 #### Ответ:  
 - Изучил файлы проекта. Проект разбит на отдельные файлы, описывающие ядро проекта, сетевую часть, описание общих переменных, блок провайдера, блок вывода информации.  
-- Заменил хардкод-значения для ресурсов yandex_compute_image и yandex_compute_instance с добавлением префикса vm_web_:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/2_1.png)  
-- Объявил переменные в файле variables.tf:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/2_2.png)  
-- Выполнил ```terraform plan```, появилось сообщение о том, что terraform не нашел отличий от действующей инфраструктуры:  
+- Заменил хардкод-значения для ресурсов yandex_compute_image и yandex_compute_instance с добавлением префикса vm_web_:
+-  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/2_1.png)
+
+- Объявил переменные в файле variables.tf:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/2_2.png)
+
+- Выполнил ```terraform plan```, появилось сообщение о том, что terraform не нашел отличий от действующей инфраструктуры:
+- 
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/2_3.png)  
 
 ### Задание 3  
@@ -64,13 +72,20 @@
 Примените изменения.  
 
 #### Ответ:  
-- Создал в корне проекта файл 'vms_platform.tf'. Перенес в него все переменные первой ВМ:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/3_1.png)  
-- В блоке ресурса создал вторую ВМ с указанными параметрами и объявил её переменные с префиксом vm_db_ в файле vms_platform.tf:  
+- Создал в корне проекта файл 'vms_platform.tf'. Перенес в него все переменные первой ВМ:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/3_1.png)
+
+- В блоке ресурса создал вторую ВМ с указанными параметрами и объявил её переменные с префиксом vm_db_ в файле vms_platform.tf:
+- 
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/3_3.png)
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/3_4.png)  
-- Применяю конфигурацию, вносится изменение в текущую инфраструктуру, создается еще одна виртуальная машина:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/3_5.png)  
+
+- Применяю конфигурацию, вносится изменение в текущую инфраструктуру, создается еще одна виртуальная машина:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/3_5.png)
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/3_6.png)  
 
 
@@ -80,9 +95,12 @@
 В качестве решения приложите вывод значений ip-адресов команды ```terraform output```.  
 
 #### Ответ:  
-- Объявил в outputs.tf output типа map, получился следующий output:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/4_1.png)  
-- Применил изменения, ```terraform output``` показал следующее:  
+- Объявил в outputs.tf output типа map, получился следующий output:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/4_1.png)
+
+- Применил изменения, ```terraform output``` показал следующее:
+- 
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/4_2.png)  
 
 
@@ -92,11 +110,16 @@
 Примените изменения.  
 
 #### Ответ:  
-- В файле locals.tf применил интерполяцию, в одном блоке описал имена ВМ:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/5_1.png)  
-- Закомментировал старые variables с именами, в main сослался на созданный local:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/5_2.png)  
+- В файле locals.tf применил интерполяцию, в одном блоке описал имена ВМ:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/5_1.png)
+
+- Закомментировал старые variables с именами, в main сослался на созданный local:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/5_2.png)
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/5_3.png)  
+
 - Применил изменения  
 
 
@@ -107,18 +130,29 @@
 Проверьте terraform plan. Изменений быть не должно.    
 
 #### Ответ:  
-- Описываю переменные ".._cores",".._memory",".._core_fraction" в vms_platform.tf:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_1.png)  
-- В main.tf в блоке resources применяю описанные выше переменные:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_2.png)  
+- Описываю переменные ".._cores",".._memory",".._core_fraction" в vms_platform.tf:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_1.png)
+
+- В main.tf в блоке resources применяю описанные выше переменные:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_2.png)
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_3.png)  
-- Для блока metadata описываю переменные:  
+
+- Для блока metadata описываю переменные:
+- 
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_4.png)
+
 В main.tf в блоке resources применяю описанные выше переменные:
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_5.png)
-- Нашел и удалил неиспользуемые переменные.  
-- Команда ```terraform plan``` изменение не выявила:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_6.png)  
+
+- Нашел и удалил неиспользуемые переменные.
+- Команда ```terraform plan``` изменение не выявила:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/6_6.png)
+
 
 
 Дополнительное задание (со звёздочкой*)  
@@ -133,12 +167,18 @@
 В качестве решения предоставьте необходимые команды и их вывод.  
 
 #### Ответ:  
-- Поскольку нумерация идем со значения 0, то второй элемент можно отобразить командой ```local.test_list[1]```:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_1.png)  
-- Длину списка test_list можно узнать командой ```length(["develop", "staging", "production"])```. Длина списка равна 3:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_2.png)  
-- Отобразить значение ключа admin из map test_map можно командой ```local.test_map["admin"]```:  
-![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_3.png)  
+- Поскольку нумерация идем со значения 0, то второй элемент можно отобразить командой ```local.test_list[1]```:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_1.png)
+
+- Длину списка test_list можно узнать командой ```length(["develop", "staging", "production"])```. Длина списка равна 3:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_2.png)
+
+- Отобразить значение ключа admin из map test_map можно командой ```local.test_map["admin"]```:
+- 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_3.png)
+
 - Для выполнения этого пункта я написал в output такое выражение:  
 output "admin_server_info" { value = "${local.test_map.admin} is admin for  
 ${local.test_list[length(local.test_list)-1]} server based on OS  
@@ -147,7 +187,11 @@ ${local.servers[local.test_list[length(local.test_list)-1]]["cpu"]} vcpu,
 ${local.servers[local.test_list[length(local.test_list)-1]]["ram"]} ram, and  
 ${local.servers.production["disks"][0]}, ${local.servers.production["disks"][1]},  
 ${local.servers.production["disks"][2]},  
-${local.servers.production["disks"][3]} virtual disks." }  
+${local.servers.production["disks"][3]} virtual disks." }
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_4.png)  
+
 Команда ```terraform output``` выводит нужный текст:  
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/img/7_5.png)  
+
