@@ -32,7 +32,7 @@
 Примените изменения.  
 
 #### Ответ:  
-[](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/src/vms_platform.tf)  
+https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/src/vms_platform.tf  
 
 ### Задание 4  
 Объявите в файле outputs.tf output типа map, содержащий { instance_name = external_ip } для каждой из ВМ.  
@@ -49,7 +49,7 @@
 Примените изменения.  
 
 #### Ответ:  
-[](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/src/locals.tf)  
+https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/02/src/locals.tf  
 
 ### Задание 6  
 Вместо использования трёх переменных ".._cores",".._memory",".._core_fraction" в блоке resources {...}, объедините их в переменные типа map с именами "vm_web_resources" и "vm_db_resources". В качестве продвинутой практики попробуйте создать одну map-переменную vms_resources и уже внутри неё конфиги обеих ВМ — вложенный map.    
