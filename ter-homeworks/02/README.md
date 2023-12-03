@@ -1,5 +1,8 @@
 ## Домашнее задание к занятию «Основы Terraform. Yandex Cloud»  
 
+Код  
+https://github.com/networksuperman/netology_dev_ops/tree/main/ter-homeworks/02/src  
+
 ### Задание 1  
 Изучите проект. В файле variables.tf объявлены переменные для Yandex provider.  
 Переименуйте файл personal.auto.tfvars_example в personal.auto.tfvars. Заполните переменные: идентификаторы облака, токен доступа. Благодаря .gitignore этот файл не попадёт в публичный репозиторий. Вы можете выбрать иной способ безопасно передать секретные данные в terraform.  
