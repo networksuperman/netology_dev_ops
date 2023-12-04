@@ -1,5 +1,7 @@
 ## Домашнее задание к занятию «Управляющие конструкции в коде Terraform»  
 
+[Код](https://github.com/networksuperman/netology_dev_ops/tree/main/ter-homeworks/03/src)  
+
 ### Задание 1  
 Изучите проект.  
 Заполните файл personal.auto.tfvars.  
