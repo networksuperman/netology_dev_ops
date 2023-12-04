@@ -200,4 +200,5 @@
 
 №85 - [Основы Terraform. Yandex Cloud](https://github.com/networksuperman/netology_dev_ops/blob/76241e3be3ed9282a7e31e9293891cf7664541b0/ter-homeworks/02/README.md)  
 
+№86 - [Управляющие конструкции в коде Terraform]()  
 
