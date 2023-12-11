@@ -202,3 +202,4 @@
 
 №86 - [Управляющие конструкции в коде Terraform](https://github.com/networksuperman/netology_dev_ops/blob/41c36778a0ed9f43b6f42371a42acc130ebaa927/ter-homeworks/03/README.md)  
 
+№87 - [Продвинутые методы работы с Terraform]()  
