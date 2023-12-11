@@ -132,4 +132,5 @@ module "vpc_dev" {
 
 #### Ответ:  
 Код можно посмотреть [здесь](https://github.com/networksuperman/netology_dev_ops/tree/main/ter-homeworks/04/src/modules/vpc). Отдельно его не выделял. [Ссылка](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/04/src/tfplan.txt) на план выполнения  
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/04/img/4_1.png)  
