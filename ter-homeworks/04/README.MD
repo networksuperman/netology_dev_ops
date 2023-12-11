@@ -7,7 +7,8 @@
 Предоставьте скриншот подключения к консоли и вывод команды sudo nginx -t.  
 
 #### Ответ:  
-Процесс создание VM
+Процесс создания VM  
+
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/04/img/ter-04_01.png)  
 
 Подключение к одной из VM по SSH
