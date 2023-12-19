@@ -60,7 +60,8 @@
 Проверил код с помощью tflint и checkov, исправил все предупреждения и ошибки в 'terraform-hotfix', сделал коммит:  
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_10.png)  
 
-
+Ссылка на PR для ревью:  
+[После tflint и checkov исправил ошибки](https://github.com/networksuperman/terraform04/pull/4)  
 
 
 ### Задание 4  
@@ -69,6 +70,18 @@ type=string, description="ip-адрес" — проверка, что значе
 type=list(string), description="список ip-адресов" — проверка, что все адреса верны. Тесты: ["192.168.0.1", "1.1.1.1", "127.0.0.1"] и ["192.168.0.1", "1.1.1.1", "1270.0.0.1"].  
 
 #### Ответ:  
+Написал переменные с валидацией:  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_11.png)  
+
+Если в адресах нет ошибок, то terraform console выведет пустой результат.  
+
+Если в адресах есть ошибки, то terraform console выведет результат валидации:  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_12.png)  
+
+Ссылка на код: 
+[](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/src/validation/variables_4.tf)  
+
 
 ### Задание 5*
 Напишите переменные с валидацией:
@@ -95,5 +108,18 @@ variable "in_the_end_there_can_be_only_one" {
 }
 ```
 #### Ответ:  
+Напишите переменные с валидацией:  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_13.png)  
 
+Если в валидации нет ошибок, то terraform console выведет пустой результат.  
 
+Если в строке будут символы верхнего регистра, то увидим ошибку в terraform console:  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_14.png)  
+
+Если значение Dunkan и Connor будет true или false, то увидим ошибку в terraform console:  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_15.png)  
+
+Ссылка на код: 
+[](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/src/validation/variables_5.tf)  
