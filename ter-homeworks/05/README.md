@@ -8,6 +8,17 @@
 Перечислите, какие типы ошибок обнаружены в проекте (без дублей).  
 
 #### Ответ:  
+С помощью docker контейнера tflint проверяю первый код и получаю результат:  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_1.png)  
+
+С помощью checkov проверяю ошибки во втором коде:  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_2.png)  
+
+Обнаружены следующие ошибки:  
+Не был инициализирован проект, соответственно нет установленного Terraform провайдера, есть объявленные, но неиспользуемые переменные, в модуле test-vm присутствует ссылка на ветку main без указания конкретного коммита. Если ветка main изменится, то после выполнения кода может быть непредсказуемый результат.  
+
 
 ### Задание 2  
 Возьмите ваш GitHub-репозиторий с выполненным ДЗ 4 в ветке 'terraform-04' и сделайте из него ветку 'terraform-05'.  
@@ -18,6 +29,22 @@
 Принудительно разблокируйте state. Пришлите команду и вывод.  
 
 #### Ответ:  
+Создал S3 bucket, yandex service account, назначил права доступа, YDB:  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_3.png)  
+
+Мигрировал state проекта в S3:  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_6.png)  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_7.png)  
+
+Ответ об ошибке доступа к state:  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_8.png)  
+
+Принудительно разблокирую state:  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_9_1.png)  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_9_2.png)  
 
 ### Задание 3  
 Сделайте в GitHub из ветки 'terraform-05' новую ветку 'terraform-hotfix'.  
@@ -26,6 +53,11 @@
 Вставьте в комментарий PR результат анализа tflint и checkov, план изменений инфраструктуры из вывода команды terraform plan.  
 Пришлите ссылку на PR для ревью. Вливать код в 'terraform-05' не нужно.  
 #### Ответ:  
+Проверил код с помощью tflint и checkov, исправил все предупреждения и ошибки в 'terraform-hotfix', сделал коммит:  
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_10.png)  
+
+
+
 
 ### Задание 4  
 Напишите переменные с валидацией и протестируйте их, заполнив default верными и неверными значениями. Предоставьте скриншоты проверок из terraform console.  
