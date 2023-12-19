@@ -80,7 +80,7 @@ type=list(string), description="список ip-адресов" — провер
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_12.png)  
 
 Ссылка на код: 
-[](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/src/validation/variables_4.tf)  
+https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/src/validation/variables_4.tf  
 
 
 ### Задание 5*
@@ -122,4 +122,4 @@ variable "in_the_end_there_can_be_only_one" {
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_15.png)  
 
 Ссылка на код: 
-[](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/src/validation/variables_5.tf)  
+https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/src/validation/variables_5.tf  
