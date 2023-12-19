@@ -33,6 +33,10 @@
 
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_3.png)  
 
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_4_1.png)  
+
+![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_5_1.png)  
+
 Мигрировал state проекта в S3:  
 ![](https://github.com/networksuperman/netology_dev_ops/blob/main/ter-homeworks/05/img/img_6.png)  
 
