@@ -1,0 +1,6 @@
+---
+vector_version: "0.33.0"
+vector_arch: "x86_64"
+vector_path: "{{ ansible_user_dir }}/vector"
+vector_config_path: "{{ vector_path }}/config"
+vector_logs_path: "{{ ansible_user_dir }}/logs"

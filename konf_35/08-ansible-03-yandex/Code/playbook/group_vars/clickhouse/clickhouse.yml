@@ -1,0 +1,13 @@
+---
+clickhouse_version: "22.3.3.44"
+clickhouse_packages:
+  - clickhouse-client
+  - clickhouse-server
+  - clickhouse-common-static
+clickhouse_port: 8123
+vector_user: logger
+vector_password: logger
+clickhouse_db: logs
+table: some_log
+table_engine: Log
+table_create_config: ("file" String, "hosts" String, "message" String, "timestamp" DateTime) Engine={{ table_engine }}

@@ -1,0 +1,58 @@
+---
+- name: Clickhouse
+  block:
+    - name: Get clickhouse distrib
+      ansible.builtin.get_url:
+        url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
+        dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+        mode: "0755"
+      with_items: "{{ clickhouse_packages }}"
+  rescue:
+    - name: Get clickhouse distrib | Rescue
+      ansible.builtin.get_url:
+        url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
+        dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+        mode: "0755"
+- name: Install clickhouse packages
+  become: true
+  ansible.builtin.yum:
+    name:
+      - clickhouse-common-static-{{ clickhouse_version }}.rpm
+      - clickhouse-client-{{ clickhouse_version }}.rpm
+      - clickhouse-server-{{ clickhouse_version }}.rpm
+- name: Copy default user config
+  become: true
+  ansible.builtin.template:
+    src: clickhouse_users.xml.j2
+    dest: /etc/clickhouse-server/users.d/users.xml
+    owner: clickhouse
+    group: clickhouse
+    force: true
+    mode: '0400'
+- name: Copy default config
+  become: true
+  ansible.builtin.template:
+    src: clickhouse_config.xml.j2
+    dest: /etc/clickhouse-server/config.d/config.xml
+    owner: clickhouse
+    group: clickhouse
+    force: true
+    mode: '0400'
+  notify: Start clickhouse service
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+- name: Wait till Start Clickhouse
+  tags: wait
+  ansible.builtin.wait_for_connection:
+    delay: 15
+    timeout: 120
+- name: Create template query
+  ansible.builtin.template:
+    src: clickhouse_query.j2
+    mode: "0644"
+    dest: "/home/ansible/clickhouse_query"
+- name: Create db and table
+  ansible.builtin.command: "clickhouse-client --queries-file '/home/ansible/clickhouse_query'"
+  register: create_table
+  failed_when: create_table.rc != 0 and create_table.rc != 57
+  changed_when: create_table.rc == 0

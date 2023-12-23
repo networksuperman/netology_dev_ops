@@ -1,0 +1,25 @@
+---
+clickhouse:
+  hosts:
+    clickhouse-01:
+%{ for ip in clickhouse ~}
+      ansible_host: ${ip}
+%{ endfor ~}
+      ansible_user: ansible
+      ansible_connection: ssh
+vector:
+  hosts:
+    vector-01:
+%{ for ip in vector ~}
+      ansible_host: ${ip}
+%{ endfor ~}
+      ansible_user: vector
+      ansible_connection: ssh
+lighthouse:
+  hosts:
+    lighthouse-01:
+%{ for ip in lighthouse ~}
+      ansible_host: ${ip}
+%{ endfor ~}
+      ansible_user: lighthouse
+      ansible_connection: ssh
