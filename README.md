@@ -205,3 +205,7 @@
 №87 - [Продвинутые методы работы с Terraform](https://github.com/networksuperman/netology_dev_ops/blob/0fa0ff18ad563426215a9b1b7a60ee1b799ae928/ter-homeworks/04/README.MD)  
 
 №88 - [Использование Terraform в команде](https://github.com/networksuperman/netology_dev_ops/blob/263b306c6faf548f2b36b056199cea1dfee7ebed/ter-homeworks/05/README.md)  
+
+### Система управления конфигурациями  
+
+№89 - [Введение в Ansible](https://github.com/networksuperman/netology_dev_ops/tree/da5fdfa2cd2f2d6d6b0e89072938ca8a3bf0a95f/konf_35/08-ansible-01-base)  
