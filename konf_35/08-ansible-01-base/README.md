@@ -1,4 +1,4 @@
-# Домашнее [задание](https://github.com/netology-code/mnt-homeworks/blob/MNT-video/08-ansible-01-base/README.md) к занятию 1 «Введение в Ansible»
+# Домашнее задание к занятию 1 «Введение в Ansible»
 
 ## Основная часть
 
