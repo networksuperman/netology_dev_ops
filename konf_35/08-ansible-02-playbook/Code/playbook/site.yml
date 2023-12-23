@@ -1,0 +1,103 @@
+---
+- name: Will wait till reachable
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Wait for hosts available
+      ansible.builtin.wait_for_connection:
+        delay: 10
+        timeout: 120
+    - name: Gather facts for the first time
+      ansible.builtin.setup:
+
+- name: Install Clickhouse
+  hosts: clickhouse
+  handlers:
+    - name: Start clickhouse service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+  tasks:
+    - name: Clickhouse
+      block:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
+            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+            mode: "0755"
+          with_items: "{{ clickhouse_packages }}"
+      rescue:
+        - name: Get clickhouse distrib | Rescue
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.{{ clickhouse_arch }}.rpm"
+            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+            mode: "0755"
+    - name: Install clickhouse packages
+      become: true
+      ansible.builtin.yum:
+        name:
+          - clickhouse-common-static-{{ clickhouse_version }}.rpm
+          - clickhouse-client-{{ clickhouse_version }}.rpm
+          - clickhouse-server-{{ clickhouse_version }}.rpm
+      notify: Start clickhouse service
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+    - name: Wait till create database
+      ansible.builtin.wait_for_connection:
+        delay: 15
+        timeout: 120
+    - name: Create database
+      ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+      register: create_db
+      failed_when: create_db.rc != 0 and create_db.rc != 82
+      changed_when: create_db.rc == 0
+
+- name: Install Vector
+  hosts: vector
+  tasks:
+    - name: Ensure vector directory exists
+      ansible.builtin.file:
+        path: "{{ vector_path }}"
+        state: directory
+        mode: "0755"
+    - name: Donwload and unpack Vector archive
+      ansible.builtin.unarchive:
+        src: https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-{{ vector_arch }}-unknown-linux-musl.tar.gz
+        remote_src: true
+        dest: "{{ vector_path }}"
+        extra_opts:
+          - --strip-components=2
+        creates: "{{ vector_path }}/bin"
+    - name: Vector to systemd
+      become: true
+      ansible.builtin.copy:
+        src: "{{ vector_path }}/etc/systemd/vector.service"
+        dest: /etc/systemd/system/
+        remote_src: true
+        mode: preserve
+    - name: Update environment for vector | Update profile
+      ansible.builtin.lineinfile:
+        path: "$HOME/.bash_profile"
+        search_string: "export PATH"
+        line: "export PATH=\"{{ vector_path }}/bin:$PATH\""
+    - name: Configure Vector | Ensure config directory exists
+      ansible.builtin.file:
+        path: "{{ vector_config_path }}"
+        state: directory
+        mode: "0755"
+    - name: Configure Vector | Template config
+      ansible.builtin.template:
+        src: vector.toml.j2
+        mode: "0644"
+        dest: "{{ vector_config_path }}/vector.toml"
+    - name: Start Vector
+      ansible.builtin.shell:
+        cmd: "source $HOME/.bash_profile && vector --config {{ vector_config_path }}/vector.toml"
+        executable: /bin/bash
+        stdin: test
+      changed_when: false
+      register: vector
+    - name: Vector stdout
+      ansible.builtin.debug:
+        var: vector.stdout
