@@ -209,3 +209,5 @@
 ### Система управления конфигурациями  
 
 №89 - [Введение в Ansible](https://github.com/networksuperman/netology_dev_ops/tree/da5fdfa2cd2f2d6d6b0e89072938ca8a3bf0a95f/konf_35/08-ansible-01-base)  
+
+№90 - [Использование Ansible](https://github.com/networksuperman/netology_dev_ops/blob/7dda0bb40575b15380153298278bc86f93954340/konf_35/08-ansible-02-playbook/README.md)  
