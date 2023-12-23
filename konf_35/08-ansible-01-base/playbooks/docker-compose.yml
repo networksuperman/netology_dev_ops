@@ -1,0 +1,17 @@
+version: "3.6"
+
+services:
+  centos7:
+    image: centos:7
+    container_name: centos7
+    command: tail -f /dev/null
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu
+    command: tail -f /dev/null
+  fedora:
+    image: pycontribs/fedora:latest
+    container_name: fedora
+    command: tail -f /dev/null
