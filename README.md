@@ -213,3 +213,5 @@
 №90 - [Работа с Playbook](https://github.com/networksuperman/netology_dev_ops/blob/7dda0bb40575b15380153298278bc86f93954340/konf_35/08-ansible-02-playbook/README.md)  
 
 №91 - [Использование Ansible](https://github.com/networksuperman/netology_dev_ops/blob/76ae3de1d87cdbeebb786f505a3bd54155f6d250/konf_35/08-ansible-03-yandex/README.md)  
+
+№92 - [Работа с roles]()  
