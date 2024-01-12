@@ -214,4 +214,4 @@
 
 №91 - [Использование Ansible](https://github.com/networksuperman/netology_dev_ops/blob/76ae3de1d87cdbeebb786f505a3bd54155f6d250/konf_35/08-ansible-03-yandex/README.md)  
 
-№92 - [Работа с roles]()  
+№92 - [Работа с roles](https://github.com/networksuperman/netology_dev_ops/blob/8eda6e22b260e1f27f513827ee55c5d32f157a0f/konf_35/08-ansible-04-role/README.md)  
