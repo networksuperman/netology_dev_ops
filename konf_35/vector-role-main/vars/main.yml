@@ -1,2 +1,0 @@
----
-vector_arch: "{{ ansible_architecture }}"
