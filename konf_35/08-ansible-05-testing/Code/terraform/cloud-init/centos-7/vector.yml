@@ -1,0 +1,17 @@
+#cloud-config
+groups:
+  - admingroup: [root, sys]
+  - cloud-users
+
+users:
+  - default
+  - name: ansible
+    groups: wheel, users
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+
+package_update: true
+package_upgrade: false
+# packages:
