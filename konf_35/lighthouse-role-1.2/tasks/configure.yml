@@ -1,0 +1,22 @@
+- name: Nginx systemd
+  become: true
+  ansible.builtin.systemd:
+    name: nginx
+    enabled: true
+    state: started
+- name: Change lighthouse default host
+  become: true
+  when: lh_exists.state == "absent"
+  ansible.builtin.replace:
+    path: "{{ lighthouse_path }}/app.js"
+    regexp: '127\.0\.0\.1:8123\/'
+    replace: "{{ clickhouse_ipv4 }}:{{ clickhouse_http_port }}/?user={{ clickhouse_user }}&password={{ clickhouse_password }}"
+    unsafe_writes: true
+  notify: Restart Nginx
+- name: Create Lighthouse config
+  become: true
+  ansible.builtin.template:
+    src: lighthouse.conf.j2
+    dest: /etc/nginx/conf.d/lighthouse.conf
+    mode: "0644"
+  notify: Restart Nginx

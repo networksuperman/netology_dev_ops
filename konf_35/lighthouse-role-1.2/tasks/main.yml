@@ -1,0 +1,8 @@
+---
+- name: Install Nginx and Lighthouse
+  ansible.builtin.include_tasks: install.yml
+- name: Configure Nginx and Lighthouse
+  ansible.builtin.include_tasks: configure.yml
+- name: Print address to connect
+  ansible.builtin.debug:
+    msg: "Lighthouse is available at http://{{ ansible_host }}:{{ lighthouse_http_port }}/"

@@ -1,0 +1,9 @@
+---
+# Clickhouse config
+clickhouse_ipv4: "127.0.0.1"
+clickhouse_http_port: "8123"
+clickhouse_user: "default"
+clickhouse_password: ""
+
+# Lighthouse config
+lighthouse_http_port: 8080
