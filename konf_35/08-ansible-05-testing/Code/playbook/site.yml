@@ -1,0 +1,37 @@
+---
+- name: Will wait till reachable
+  hosts: all
+  gather_facts: false
+  pre_tasks:
+    - name: Wait for hosts available
+      ansible.builtin.wait_for_connection:
+        delay: 10
+        timeout: 120
+    - name: Gather facts for the first time
+      ansible.builtin.setup:
+  tags: wait, terraform
+
+- name: Clickhouse
+  hosts: clickhouse
+  tags: clickhouse
+  roles:
+    - role: clickhouse
+  post_tasks:
+    - name: Create clickhouse table
+      ansible.builtin.command:
+        cmd: "clickhouse-client --query 'CREATE TABLE {{ clickhouse_dbs_custom.0.name }}.{{ table }} {{ table_create_config }};'"
+      register: create_table
+      failed_when: create_table.rc != 0 and create_table.rc != 57
+      changed_when: create_table.rc == 0
+
+- name: Vector
+  hosts: vector
+  tags: vector
+  roles:
+    - role: vector
+
+- name: Lighthouse+Nginx
+  tags: nginx, lighthouse
+  hosts: lighthouse
+  roles:
+    - role: lighthouse
