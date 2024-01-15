@@ -1,0 +1,25 @@
+---
+sources:
+  sample_file:
+    data_dir: /var/lib/vector/
+    exclude:
+      - /var/log/binary-file.log
+    type: file
+    read_from: beginning
+    ignore_older_secs: 600
+    include: 
+      - {{ vector_logs_path }}/*.log
+sinks:
+  to_clickhouse:
+    type: clickhouse
+    inputs:
+      - sample_file
+    endpoint: http://{{ clickhouse_ipv4 }}:{{ clickhouse_http_port }}
+    database: {{ clickhouse_db }}
+    table: {{ clickhouse_table }}
+    auth:
+      strategy: basic
+      password: {{ clickhouse_password }}
+      user: {{ clickhouse_user }}
+    skip_unknown_fields: true
+    compression: gzip

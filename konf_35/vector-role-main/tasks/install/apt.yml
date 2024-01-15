@@ -1,0 +1,12 @@
+---
+- name: Install Vector by APT
+  become: true
+  when: ansible_pkg_mgr=="apt"
+  vars:
+    deb_architecture: {
+      "aarch64": "arm64",
+      "x86_64": "amd64"
+    }
+  ansible.builtin.apt:
+    update_cache: true
+    deb: https://apt.vector.dev/pool/v/ve/vector_{{ vector_version }}-1_{{ [vector_arch] | map('extract', deb_architecture) | first }}.deb

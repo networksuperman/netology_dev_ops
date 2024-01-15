@@ -1,0 +1,15 @@
+---
+# Vector config
+vector_version: "0.33.0"
+vector_logs_path: "{{ ansible_user_dir }}/logs"
+vector_config_path: "{{ ansible_user_dir }}/vector_config"
+# Create or not file for test vector service
+vector_create_test_file: true
+
+# Clickhouse config
+clickhouse_http_port: "8123"
+clickhouse_ipv4: "127.0.0.1"
+clickhouse_db: "database"
+clickhouse_table: "table"
+clickhouse_user: "user"
+clickhouse_password: "password"

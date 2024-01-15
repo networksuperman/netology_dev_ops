@@ -1,0 +1,7 @@
+---
+- name: Install Vector by YUM
+  become: true
+  when: ansible_pkg_mgr=="yum"
+  ansible.builtin.yum:
+    name:
+      - https://yum.vector.dev/stable/vector-0/{{ vector_arch }}/vector-{{ vector_version }}-1.{{ vector_arch }}.rpm

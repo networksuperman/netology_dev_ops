@@ -1,0 +1,40 @@
+---
+- name: Ensure logs directory exists
+  ansible.builtin.file:
+    path: "{{ vector_logs_path }}"
+    state: directory
+    mode: '0755'
+- name: Create test log file
+  ansible.builtin.lineinfile:
+    create: "{{ vector_create_test_file }}"
+    path: "{{ vector_logs_path }}/someone.log"
+    line: "[ERROR] Some log with trace"
+    mode: "0664"
+- name: Install Vector
+  ansible.builtin.include_tasks:
+    file: "{{ lookup('first_found', params) }}"
+    apply:
+      tags: [install]
+  vars:
+    params:
+      files:
+        - "install/{{ ansible_pkg_mgr }}.yml"
+        - 'empty.yml'
+- name: Configure Vector | Ensure config directory exists
+  ansible.builtin.file:
+    path: "{{ vector_config_path }}"
+    state: directory
+    mode: "0755"
+- name: Configure Vector | Template config
+  ansible.builtin.template:
+    src: vector.yml.j2
+    mode: "0644"
+    dest: "{{ vector_config_path }}/vector.yaml"
+  notify: Start Vector service
+- name: Configure Service | Template systemd unit
+  become: true
+  ansible.builtin.template:
+    src: vector.service.j2
+    dest: /etc/systemd/system/vector.service
+    mode: "0644"
+  notify: Start Vector service
