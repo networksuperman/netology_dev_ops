@@ -54,7 +54,7 @@
 ---
 
 ## Решение:
-см. [код роли Vector](https://github.com/networksuperman/netology_dev_ops/tree/main/konf_35/vector-role-main)
+см. [код роли Vector](https://github.com/networksuperman/vector-role)
 
 В Terraform создаются машины на базе CentOS 7 в Yandex Cloud, в cloud-init сразу создаются соответствующие пользователи и устанавливается epel для машины с Lighthouse. Файл inventory для Ansible прокидывается через шаблон `.tftpl`.
 
