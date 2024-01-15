@@ -216,4 +216,4 @@
 
 №92 - [Работа с roles](https://github.com/networksuperman/netology_dev_ops/blob/8eda6e22b260e1f27f513827ee55c5d32f157a0f/konf_35/08-ansible-04-role/README.md)  
 
-№93 - [Тестирование roles](https://github.com/networksuperman/netology_dev_ops/tree/7ee925ec6cc30f97e51470bcafe055f0e3684802/konf_35/08-ansible-05-testing#readme)  
+№93 - [Тестирование roles](https://github.com/networksuperman/netology_dev_ops/blob/7ee925ec6cc30f97e51470bcafe055f0e3684802/konf_35/08-ansible-05-testing/README.md)  
