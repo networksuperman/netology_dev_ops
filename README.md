@@ -218,4 +218,4 @@
 
 №93 - [Тестирование roles](https://github.com/networksuperman/netology_dev_ops/blob/7ee925ec6cc30f97e51470bcafe055f0e3684802/konf_35/08-ansible-05-testing/README.md) 
 
-№94 - [Создание собственных модулей]()  
+№94 - [Создание собственных модулей](https://github.com/networksuperman/my_own_collection/blob/24201c6d77bb5baa6fe6c88e08ae9f62ec9a4494/README.md)  
