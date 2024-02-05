@@ -213,8 +213,17 @@
 №90 - [Работа с Playbook](https://github.com/networksuperman/netology_dev_ops/blob/7dda0bb40575b15380153298278bc86f93954340/konf_35/08-ansible-02-playbook/README.md)  
 
 №91 - [Использование Ansible](https://github.com/networksuperman/netology_dev_ops/blob/76ae3de1d87cdbeebb786f505a3bd54155f6d250/konf_35/08-ansible-03-yandex/README.md)  
+
 №92 - [Работа с roles](https://github.com/networksuperman/netology_dev_ops/blob/8eda6e22b260e1f27f513827ee55c5d32f157a0f/konf_35/08-ansible-04-role/README.md)  
 
 №93 - [Тестирование roles](https://github.com/networksuperman/netology_dev_ops/blob/7ee925ec6cc30f97e51470bcafe055f0e3684802/konf_35/08-ansible-05-testing/README.md) 
 
 №94 - [Создание собственных модулей](https://github.com/networksuperman/netology_dev_ops/tree/61ca80e862a578e4a436958892659131c2d816fa/konf_35/08-ansible-06-testing)  
+
+### Непрерывная разработка и интеграция  
+
+№95 - [Жизненный цикл ПО]()  
+
+
+
+
