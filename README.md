@@ -222,7 +222,7 @@
 
 ### Непрерывная разработка и интеграция  
 
-№95 - [Жизненный цикл ПО]()  
+№95 - [Жизненный цикл ПО](https://github.com/networksuperman/netology_dev_ops/blob/e344c7b50ae3d049e93b6171d26b3b5f41f13a19/cicd-dev-35/09-ci-01-intro/README.md)  
 
 
 
