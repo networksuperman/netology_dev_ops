@@ -226,4 +226,4 @@
 
 №96 - [DevOps и SRE](https://github.com/networksuperman/netology_dev_ops/blob/23b9d78ad005e95fce08f9e7f1ec79ef5e6c04f4/cicd-dev-35/test_dev_ops_sre/README.md)  
 
-
+№97 - [Процессы CI/CD]()  
