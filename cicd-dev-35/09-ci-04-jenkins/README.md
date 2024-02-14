@@ -4,7 +4,7 @@
 
 1. >Создать два VM: для jenkins-master и jenkins-agent.
 
-2 VM
+  2 VM
 - Centos7
 - 2 vCPU
 - 4 RAM
