@@ -230,4 +230,4 @@
 
 №98 - [Jenkins](https://github.com/networksuperman/netology_dev_ops/blob/2bd471338a263ae13c2c799534e9368d552e082e/cicd-dev-35/09-ci-04-jenkins/README.md)  
 
-№99 - [Teamcity]()  
+№99 - [Teamcity](https://github.com/networksuperman/netology_dev_ops/blob/585f8e850ed4603e01a3d7423235f6813c5c55a0/cicd-dev-35/09-ci-05-teamcity/README.md)  
