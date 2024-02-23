@@ -232,4 +232,4 @@
 
 №99 - [Teamcity](https://github.com/networksuperman/netology_dev_ops/blob/585f8e850ed4603e01a3d7423235f6813c5c55a0/cicd-dev-35/09-ci-05-teamcity/README.md)  
 
-№100 - [GitLab]()  
+№100 - [GitLab](https://github.com/networksuperman/netology_dev_ops/blob/0cb4d96bc2257efa49234ae98d3b251b0b23279a/cicd-dev-35/09-ci-06-gitlab/README.md)  
