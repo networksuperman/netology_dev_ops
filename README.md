@@ -240,4 +240,4 @@
 
 №102 - [Средство визуализации Grafana](https://github.com/networksuperman/netology_dev_ops/blob/d9253954f1ea4317a6fbbeb2d0c5d1061ff798fb/monitoring/10-monitoring-03-grafana%20/README.md)  
 
-№103 - [Система сбора логов Elastic Stack]()  
+№103 - [Система сбора логов Elastic Stack](https://github.com/networksuperman/netology_dev_ops/blob/069de4c413c76a177ee63e28891503f13545d5b8/monitoring/10-monitoring-04-elk%20/README.md)  
