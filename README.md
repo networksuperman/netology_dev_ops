@@ -250,5 +250,5 @@
 
 №106 - [Введение в микросервисы](https://github.com/networksuperman/netology_dev_ops/blob/a3c0d6c13676e7e01d352951ebd3c837ae40cadb/micros-homeworks/11-microservices-01-intro/README.md)  
 
-№107 - [Микросервисы: принципы]()  
+№107 - [Микросервисы: принципы](https://github.com/networksuperman/netology_dev_ops/blob/e6ab8a946aea3ccea20bf985105d5ea9b6bd3a75/micros-homeworks/11-microservices-02-principles/README.md)  
 
