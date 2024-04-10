@@ -1,0 +1,9 @@
+Flask==1.1.1
+PyJwt==2.0.1
+passlib==1.7.4
+PyJWT==2.0.1
+prometheus-flask-exporter==0.18.1
+jinja2<3.1.0 # cannot import name 'escape' from 'jinja2' # https://stackoverflow.com/questions/71718167/importerror-cannot-import-name-escape-from-jinja2
+itsdangerous==1.1.0 # cannot import name 'json' from 'itsdangerous' https://exerror.com/importerror-cannot-import-name-json-from-itsdangerous/
+markupsafe==1.1.1 # cannot import name 'json' from 'itsdangerous' https://exerror.com/importerror-cannot-import-name-json-from-itsdangerous/
+werkzeug==2.0.3 # cannot import name 'BaseResponse' from 'werkzeug.wrappers' https://github.com/mjmeijer/donald_2021/issues/4
