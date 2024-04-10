@@ -129,7 +129,7 @@
 > curl -X GET http://localhost/images/4e6df220-295e-4231-82bc-45e4b1484430.jpg
 > ```
 
-Конфиг гейтвея [nginx.conf](./11-microservices-02-principles/gateway/nginx.conf)
+Конфиг гейтвея [nginx.conf](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-02-principles/gateway/nginx.conf)
 
 Проверка работы:
 
