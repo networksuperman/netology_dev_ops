@@ -1,0 +1,27 @@
+# Vector's GraphQL API (disabled by default)
+[api]
+# https://vector.dev/docs/reference/cli/
+# docker exec -it -u 0 vector vector tap - для отладки
+enabled = true
+
+# Random Syslog-formatted logs
+[sources.docker_113]
+type = "docker_logs"
+include_containers = [ "devkub11" ]
+
+[transforms.docker_transformer]
+# "error type: illegal_argument_exception, reason: can't merge a non object mapping [label.com.docker.compose.project] with an object mapping"
+type = "remove_fields"
+inputs = ["docker_113"]
+fields = ["label"]
+
+[sinks.elastic]
+# image: timberio/vector:0.16.1-debian
+type = "elasticsearch"
+inputs = [ "docker_transformer" ]
+endpoint = "${ELASTICSEARCH_HOSTS}"
+mode = "bulk"
+compression = "none"
+auth.strategy = "basic"
+auth.user = "${ELASTICSEARCH_USERNAME}"
+auth.password = "${ELASTICSEARCH_PASSWORD}"

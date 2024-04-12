@@ -1,0 +1,208 @@
+
+networks:
+  devkub113:
+    name: devkub113
+
+volumes:
+  data:
+  prometheus-data:
+  grafana_data:
+
+services:
+  elastic:
+    container_name: devkub11-113-elastic
+    image: elasticsearch:7.17.4
+    expose:
+      - 9200
+      - 9300
+    ports:
+      - 9200:9200
+      - 9300:9300
+    env_file:
+      - .env
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - devkub113
+
+  elasticuser: 
+    container_name: elasticuser
+    image: curlimages/curl:7.81.0 
+    depends_on:
+      - elastic
+    restart: on-failure
+    volumes:
+      - ./logs/elasticuserpassword.sh:/elasticuserpassword.sh
+    env_file:
+      - .env
+    entrypoint:
+      - sh
+      - /elasticuserpassword.sh
+    networks:
+      - devkub113
+
+  vector:
+    container_name: devkub11-113-vector
+    image: timberio/vector:0.22.0-debian
+    expose:
+      - 8686
+    ports:
+      - 8686:8686
+    env_file:
+      - .env
+    volumes:
+      - ./logs/vector.toml:/etc/vector/vector.toml:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - elasticuser
+    networks:
+      - devkub113
+
+  kibana:
+    container_name: devkub11-113-kibana
+    image: kibana:7.17.4
+    env_file:
+      - .env
+    expose:
+      - 5601
+    ports:
+      - 5601:5601
+    networks:
+      - devkub113
+
+  createindex: 
+    container_name: createindex
+    image: curlimages/curl:7.81.0 
+    depends_on:
+      - kibana
+    restart: on-failure
+    volumes:
+      - ./logs/createindex.sh:/createindex.sh 
+    env_file:
+      - .env
+    entrypoint:
+      - sh
+      - -x
+      - /createindex.sh
+    networks:
+      - devkub113
+
+  storage:
+    container_name: devkub11-113-storage
+    image: minio/minio:latest
+    command: server /data --console-address ":37755"
+    restart: always
+    expose: 
+      - 9000
+    ports:
+      - 9000:9000
+      - 37755:37755
+    environment:
+      MINIO_ROOT_USER: ${Storage_AccessKey:-STORAGE_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${Storage_Secret:-STORAGE_SECRET_KEY}
+      MINIO_PROMETHEUS_AUTH_TYPE: public
+      MINIO_PROMETHEUS_URL: http://prometheus:9090
+      MINIO_PROMETHEUS_JOB_ID: storage
+    volumes:
+      - data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    networks:
+      - devkub113
+
+  createbuckets:
+    image: minio/mc
+    container_name: createbuckets
+    depends_on:
+      - storage
+    restart: on-failure
+    entrypoint: > 
+      /bin/sh -c "      
+      /usr/bin/mc config host add storage http://storage:9000 ${Storage_AccessKey-STORAGE_ACCESS_KEY} ${Storage_Secret-STORAGE_SECRET_KEY} &&
+      /usr/bin/mc mb --ignore-existing storage/${Storage_Bucket:-data} &&
+      /usr/bin/mc policy set download storage/${Storage_Bucket:-data} &&
+      exit 0;
+      "
+    networks:
+      - devkub113
+
+  uploader:
+    container_name: devkub11-113-uploader
+    build: ./uploader
+    depends_on:
+      - storage
+      - createbuckets
+    expose: 
+      - 3000
+    ports:
+      - 3002:3000
+    environment:
+      PORT: 3000
+      S3_HOST: storage
+      S3_PORT: 9000
+      S3_ACCESS_KEY: ${Storage_AccessKey:-STORAGE_ACCESS_KEY}
+      S3_ACCESS_SECRET: ${Storage_Secret:-STORAGE_SECRET_KEY}
+      S3_BUCKET: ${Storage_Bucket:-STORAGE_BUCKET}
+    networks:
+      - devkub113
+  
+  security:
+    container_name: devkub11-113-security
+    build: ./security
+    expose: 
+      - 3000
+    ports:
+      - 3003:3000
+    environment:
+      PORT: 3000
+    networks:
+      - devkub113
+
+  gateway:
+    container_name: devkub11-113-gateway
+    image: nginx:alpine
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    depends_on:
+      - storage
+      - uploader
+      - security
+    networks:
+      - devkub113
+
+  prometheus:
+    image: prom/prometheus
+    container_name: devkub11-113-prometheus
+    volumes:
+      - ./mon/prometheus.yml:/etc/prometheus/prometheus.yml
+    expose:
+      - "9090"
+    ports:
+      - "9090:9090"
+    networks:
+      - devkub113
+
+  grafana:
+    image: grafana/grafana-oss
+    container_name: devkub11-113-grafana
+    restart: always
+    expose:
+      - 3000
+    ports:
+      - "8081:8081"
+    env_file:
+      - .env
+    volumes:
+      - ./mon/grafana.ini:/etc/grafana/grafana.ini
+      - ./mon/prometheus_datasource.yml:/etc/grafana/provisioning/datasources/prometheus_datasource.yml
+      - ./mon/prometheus_dashboards.yml:/etc/grafana/provisioning/dashboards/prometheus_dashboards.yml
+      - ./mon/prometheus_dashboard.json:/etc/grafana/provisioning/dashboards/prometheus_dashboard.json
+    networks:
+      - devkub113

@@ -1,0 +1,20 @@
+global:
+  scrape_interval: 15s 
+
+scrape_configs:
+
+  - job_name: 'security'
+    metrics_path: /security_metrics
+    static_configs:
+      - targets: ['gateway']
+
+  - job_name: 'uploader'
+    metrics_path: /uploader_metrics
+    static_configs:
+      - targets: ['gateway']
+
+  - job_name: 'storage'
+    metrics_path: /storage_metrics
+    scheme: http
+    static_configs:
+    - targets: ['gateway']
