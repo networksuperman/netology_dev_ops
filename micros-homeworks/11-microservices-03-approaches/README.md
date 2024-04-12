@@ -102,14 +102,14 @@ PLG стек более производителен, но язык LogQL мен
 
 Порт Kibana я оставил стандартным, 5601. Порт 8081 будет использоваться для Grafana.
 
-- [Изменения docker-compose.yaml]()
-- [vector.toml]()
+- [Изменения docker-compose.yaml](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/docker-compose.yaml)  
+- [vector.toml](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/logs/vector.toml)  
 
 Для настройки пользователя admin в Эластике и создания паттерна индекса Kibana пришлось создать скрипты, т.к. я не нашел более простого способа их провижена:
-- [скрипт настройки пользователя Elastic]()
-- [скрипт создания паттерна индекса Kibana]()
+- [скрипт настройки пользователя Elastic](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/logs/elasticuserpassword.sh)  
+- [скрипт создания паттерна индекса Kibana](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/logs/createindex.sh)  
 
-![Kibana UI]()
+![Kibana UI](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/media/113-kibana.png)  
 
 ## Задача 5: Мониторинг * (необязательная)
 
@@ -128,14 +128,14 @@ PLG стек более производителен, но язык LogQL мен
 > Логин в Grafana должен быть admin пароль qwerty123456
 
 
-- [Изменения docker-compose.yaml]()
-- [Изменения nginx.conf]()
-- [Конфигурация Prometheus]()
-- [Конфигурация Grafana]()
-- [Дешборд в JSON]()
+- [Изменения docker-compose.yaml](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/docker-compose.yaml)  
+- [Изменения nginx.conf](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/gateway/nginx.conf)  
+- [Конфигурация Prometheus](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/mon/prometheus.yml)  
+- [Конфигурация Grafana](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/mon/grafana.ini)  
+- [Дешборд в JSON](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/mon/prometheus_dashboard.json)  
 
 Провижен Grafana:
-- [Datasource]()
-- [Dashboard]()
+- [Datasource](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/mon/prometheus_datasource.yml)  
+- [Dashboard](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/mon/prometheus_dashboards.yml)  
 
-![Grafana]()
+![Grafana](https://github.com/networksuperman/netology_dev_ops/blob/main/micros-homeworks/11-microservices-03-approaches/media/113-grafana.png)  
