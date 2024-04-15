@@ -254,6 +254,6 @@
 
 №108 - [Микросервисы: подходы](https://github.com/networksuperman/netology_dev_ops/tree/b06e526fef96d70751106132cbeda8794d930660/micros-homeworks/11-microservices-03-approaches)  
 
-№109 - [Микросервисы: масштабирование]()  
+№109 - [Микросервисы: масштабирование](https://github.com/networksuperman/netology_dev_ops/blob/60d56b84ddbc432e0d9719700dcf8a1168f49045/micros-homeworks/11-microservices-04-scaling/README.md)  
 
 ### Kubernetes: основы, применение и администрирование  
