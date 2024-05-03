@@ -258,4 +258,4 @@
 
 ### Kubernetes: основы, применение и администрирование  
 
-№110 - [Kubernetes. Причины появления. Команда kubectl]()  
+№110 - [Kubernetes. Причины появления. Команда kubectl](https://github.com/networksuperman/netology_dev_ops/blob/35d2fc6b60963eddb684db3407bf3b42007ac83b/kuber-homeworks/1.1/README.md)  
