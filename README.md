@@ -257,3 +257,5 @@
 №109 - [Микросервисы: масштабирование](https://github.com/networksuperman/netology_dev_ops/blob/60d56b84ddbc432e0d9719700dcf8a1168f49045/micros-homeworks/11-microservices-04-scaling/README.md)  
 
 ### Kubernetes: основы, применение и администрирование  
+
+№110 - [Kubernetes. Причины появления. Команда kubectl]()  
