@@ -260,4 +260,4 @@
 
 №110 - [Kubernetes. Причины появления. Команда kubectl](https://github.com/networksuperman/netology_dev_ops/blob/35d2fc6b60963eddb684db3407bf3b42007ac83b/kuber-homeworks/1.1/README.md)  
 
-№111 - [Базовые объекты K8S]()  
+№111 - [Базовые объекты K8S](https://github.com/networksuperman/netology_dev_ops/blob/a2ef0d74eafcec7afdcfcf20960c72077b5705e3/kuber-homeworks/1.2/README.md)  
