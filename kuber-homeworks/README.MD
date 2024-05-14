@@ -338,3 +338,140 @@ service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   6d22h
 ### Решение задания 2.
 
 1. Создаем Deployment приложения nginx и описываем старт контейнера только после того, как будет запущен сервис этого приложения. Запуск сервиса будет отслеживаться из Init-контейнера busybox. Опишем Deployment в yaml-файле [deployment-4.yaml](./configs/deployment-4.yaml):
+```
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-4
+  labels:
+    app: deployment-4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deployment-4
+  template:
+    metadata:
+      labels:
+        app: deployment-4
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+      initContainers:
+        - name: busybox
+          image: busybox
+          command: ['sh', '-c', 'until nslookup service-2.default.svc.cluster.local; do echo Waiting for service-2!; sleep 5; done;']
+```
+* Включаем поддержку DNS
+```
+sysadmin@sysadmin:~$ microk8s enable dns
+Infer repository core for addon dns
+Enabling DNS
+Using host configuration from /run/systemd/resolve/resolv.conf
+Applying manifest
+serviceaccount/coredns created
+configmap/coredns created
+deployment.apps/coredns created
+service/kube-dns created
+clusterrole.rbac.authorization.k8s.io/coredns created
+clusterrolebinding.rbac.authorization.k8s.io/coredns created
+Restarting kubelet
+DNS is enabled
+```
+2. Развертываем Deployment и убеждаемся, что контейнер nginx не стартует
+```
+sysadmin@sysadmin:~$ kubectl create -f deployment-4.yaml
+deployment.apps/deployment-4 created
+sysadmin@sysadmin:~$ kubectl get pods
+NAME                            READY   STATUS     RESTARTS   AGE
+deployment-4-7cbfc96f75-dtc75   0/1     Init:0/1   0          46s
+```
+* Проверяем логи Пода:
+```
+sysadmin@sysadmin:~$ kubectl logs --tail=10 --all-containers=true --prefix=true deployment-4-7cbfc96f75-dtc75
+
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Waiting for service-2!
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Server:             10.152.183.10
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Address:    10.152.183.10:53
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] ** server can't find service-2.default.svc.cluster.local: NXDOMAIN
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] ** server can't find service-2.default.svc.cluster.local: NXDOMAIN
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Waiting for service-2!
+Error from server (BadRequest): container "nginx" in pod "deployment-4-7cbfc96f75-dtc75" is waiting to start: PodInitializing
+
+3. Создаем Service. Опишем Service в yaml-файле [service-2.yaml](./configs/service-2.yaml):
+
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-2
+spec:
+  selector:
+    app: deployment-4
+  ports:
+    - name: nginx-http
+      port: 80
+      targetPort: 80
+```
+4. Запустим сервис. Продемонстрируем состояние пода до и после запуска сервиса:
+```
+sysadmin@sysadmin:~$ kubectl get pods
+NAME                            READY   STATUS     RESTARTS   AGE
+deployment-4-7cbfc96f75-dtc75   0/1     Init:0/1   0          3m7s
+sysadmin@sysadmin:~$  kubectl get deployments.apps
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment-4   0/1     1            0          3m57s
+sysadmin@sysadmin:~$  kubectl create -f service-2.yaml
+service/service-2 created
+sysadmin@sysadmin:~$  kubectl get pods
+NAME                            READY   STATUS    RESTARTS   AGE
+deployment-4-7cbfc96f75-dtc75   1/1     Running   0          4m12s
+sysadmin@sysadmin:~$  kubectl get deployments.apps
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment-4   1/1     1            1           4m21s
+
+* Проверяем логи Пода:
+```
+sysadmin@sysadmin:~$ kubectl logs --tail=10 --all-containers=true --prefix=true deployment-4-7cbfc96f75-dtc75
+
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] ** server can't find service-2.default.svc.cluster.local: NXDOMAIN
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Waiting for service-2!
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Server:             10.152.183.10
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Address:    10.152.183.10:53
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Name:       service-2.default.svc.cluster.local
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] Address: 10.152.183.54
+[pod/deployment-4-7cbfc96f75-dtc75/busybox] 
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] /docker-entrypoint.sh: Configuration complete; ready for start up
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: using the "epoll" event method
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: nginx/1.25.5
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: OS: Linux 5.15.0-105-generic
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 65536:65536
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: start worker processes
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: start worker process 28
+[pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: start worker process 29
+```
+* Pod `deployment-4-7cbfc96f75-dtc75` c контейнером `nginx` успешно запустился.
+* Подтвердим результат скриншотами: 
+* Состояние Пода до запуска сервиса ![K8s_12.3.6](./images/K8s_12.3.6.PNG)
+* Состояние Пода после запуска сервиса ![K8s_12.3.7](./TASK_12.3/K8s_12.3.7.PNG)
+
+5. Удалим развернутые ресурсы (Deployment и Service):
+```
+sysadmin@sysadmin:~$ kubectl delete -f deployment-4.yaml -f service-2.yaml
+deployment.apps "deployment-4" deleted
+service "service-2" deleted
+sysadmin@sysadmin:~$ kubectl get all
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   6d23h
