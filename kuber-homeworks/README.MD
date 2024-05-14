@@ -312,3 +312,29 @@ Server: nginx/1.24.0
 ```
 * Видим, что pod-1 имеет доступ к открытым портам других подов. Подтвердим результат скриншотом: 
 ![K8s_12.3.5](./images/K8s_12.3.5.PNG)
+
+6. Удалим развернутые ресурсы (Deployment, Service и Pod):
+```
+sysadmin@sysadmin:~$ kubectl delete -f deployment-3.yaml -f service-1.yaml -f pod-1.yaml
+deployment.apps "deployment-2" deleted
+service "service-1" deleted
+pod "pod-1" deleted
+sysadmin@sysadmin:~$ kubectl get all
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   6d22h
+```
+
+------
+
+### Задание 2. Создать Deployment и обеспечить старт основного контейнера при выполнении условий
+
+1. Создать Deployment приложения nginx и обеспечить старт контейнера только после того, как будет запущен сервис этого приложения.
+2. Убедиться, что nginx не стартует. В качестве Init-контейнера взять busybox.
+3. Создать и запустить Service. Убедиться, что Init запустился.
+4. Продемонстрировать состояние пода до и после запуска сервиса.
+
+------
+
+### Решение задания 2.
+
+1. Создаем Deployment приложения nginx и описываем старт контейнера только после того, как будет запущен сервис этого приложения. Запуск сервиса будет отслеживаться из Init-контейнера busybox. Опишем Deployment в yaml-файле [deployment-4.yaml](./configs/deployment-4.yaml):
