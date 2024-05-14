@@ -212,9 +212,12 @@ sysadmin@sysadmin:~$ kubectl get deployments.apps deployment-2
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
 deployment-2   2/2     2            2           4m21s
 ```
-* Подтвердим результат скриншотами: 
-* До масштабирования ![K8s_12.3.1](./images/K8s_12.3.1.PNG.png)  
-* После масштабирования ![K8s_12.3.2](./images/K8s_12.3.2.png)  
+* Подтвердим результат скриншотами:
+* 
+* До масштабирования ![K8s_12.3.1](./images/K8s_12.3.1.PNG.png)
+* 
+* После масштабирования ![K8s_12.3.2](./images/K8s_12.3.2.png)
+* 
 
 4. Создаем Service, который обеспечит доступ до реплик приложений из п.1. Опишем сервис в yaml-файле [service-1.yaml](./configs/service-1.yaml):
 ```
@@ -261,9 +264,12 @@ Forwarding from 127.0.0.1:41180 -> 1180
 Forwarding from [::1]:41180 -> 1180
 Handling connection for 41180
 ```
-* Подтвердим результат скриншотами: 
-* Обращение к nginx ![K8s_12.3.3](./config/K8s_12.3.3.png)  
-* Обращение к multitool![K8s_12.3.4](./config/K8s_12.3.4.png)  
+* Подтвердим результат скриншотами:
+* 
+* Обращение к nginx ![K8s_12.3.3](./config/K8s_12.3.3.png)
+* 
+* Обращение к multitool![K8s_12.3.4](./config/K8s_12.3.4.png)
+* 
 
 5. Создаем отдельный Pod с приложением multitool. Опишем Pod в yaml-файле [pod-1.yaml](./configs/pod-1.yaml):
 
@@ -311,7 +317,8 @@ Server: nginx/1.25.5
 sysadmin@sysadmin:~$ kubectl exec pod-1 -- curl --silent -i 10.1.12.158:1180 | grep Server
 Server: nginx/1.24.0
 ```
-* Видим, что pod-1 имеет доступ к открытым портам других подов. Подтвердим результат скриншотом: 
+* Видим, что pod-1 имеет доступ к открытым портам других подов. Подтвердим результат скриншотом:
+* 
 ![K8s_12.3.5](./images/K8s_12.3.5.png)  
 
 6. Удалим развернутые ресурсы (Deployment, Service и Pod):
@@ -464,9 +471,12 @@ sysadmin@sysadmin:~$ kubectl logs --tail=10 --all-containers=true --prefix=true 
 [pod/deployment-4-7cbfc96f75-dtc75/nginx] 2024/05/14 09:50:38 [notice] 1#1: start worker process 29
 ```
 * Pod `deployment-4-7cbfc96f75-dtc75` c контейнером `nginx` успешно запустился.
-* Подтвердим результат скриншотами: 
-* Состояние Пода до запуска сервиса ![K8s_12.3.6](./images/K8s_12.3.6.png)  
-* Состояние Пода после запуска сервиса ![K8s_12.3.7](./TASK_12.3/K8s_12.3.7.png)  
+* Подтвердим результат скриншотами:
+* 
+* Состояние Пода до запуска сервиса ![K8s_12.3.6](./images/K8s_12.3.6.png)
+* 
+* Состояние Пода после запуска сервиса ![K8s_12.3.7](./TASK_12.3/K8s_12.3.7.png)
+* 
 
 5. Удалим развернутые ресурсы (Deployment и Service):
 ```
