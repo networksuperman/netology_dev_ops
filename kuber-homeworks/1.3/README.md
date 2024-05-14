@@ -267,10 +267,10 @@ Handling connection for 41180
 ```
 * Подтвердим результат скриншотами:
 * Обращение к nginx  
-![K8s_12.3.3](./config/K8s_12.3.3.png)  
+![K8s_12.3.3](./images/K8s_12.3.3.png)  
   
 * Обращение к multitool  
-![K8s_12.3.4](./config/K8s_12.3.4.png)  
+![K8s_12.3.4](./images/K8s_12.3.4.png)  
 
 
 5. Создаем отдельный Pod с приложением multitool. Опишем Pod в yaml-файле [pod-1.yaml](./configs/pod-1.yaml):
@@ -479,7 +479,7 @@ sysadmin@sysadmin:~$ kubectl logs --tail=10 --all-containers=true --prefix=true 
 ![K8s_12.3.6](./images/K8s_12.3.6.png)  
 
 * Состояние Пода после запуска сервиса  
-![K8s_12.3.7](./TASK_12.3/K8s_12.3.7.png)  
+![K8s_12.3.7](./images/K8s_12.3.7.png)  
 
 
 5. Удалим развернутые ресурсы (Deployment и Service):
