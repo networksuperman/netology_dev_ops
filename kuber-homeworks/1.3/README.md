@@ -413,7 +413,7 @@ sysadmin@sysadmin:~$ kubectl logs --tail=10 --all-containers=true --prefix=true 
 [pod/deployment-4-7cbfc96f75-dtc75/busybox] 
 [pod/deployment-4-7cbfc96f75-dtc75/busybox] Waiting for service-2!
 Error from server (BadRequest): container "nginx" in pod "deployment-4-7cbfc96f75-dtc75" is waiting to start: PodInitializing
-
+```
 3. Создаем Service. Опишем Service в yaml-файле [service-2.yaml](./configs/service-2.yaml):
 
 ```
@@ -446,7 +446,7 @@ deployment-4-7cbfc96f75-dtc75   1/1     Running   0          4m12s
 sysadmin@sysadmin:~$  kubectl get deployments.apps
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
 deployment-4   1/1     1            1           4m21s
-
+```
 * Проверяем логи Пода:
 ```
 sysadmin@sysadmin:~$ kubectl logs --tail=10 --all-containers=true --prefix=true deployment-4-7cbfc96f75-dtc75
@@ -490,3 +490,4 @@ service "service-2" deleted
 sysadmin@sysadmin:~$ kubectl get all
 NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   6d23h
+```
