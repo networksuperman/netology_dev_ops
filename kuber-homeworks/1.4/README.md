@@ -140,8 +140,10 @@ Server: nginx/1.25.5
 sysadmin@sysadmin:~$ kubectl exec pod-1 -- curl --silent -i 10.1.12.146:8080  | grep Server
 Server: nginx/1.24.0
 ```
-* Видим, что pod-1 имеет доступ к открытым портам других подов. Подтвердим результат скриншотом: 
-![K8s_12.4.1](./images/K8s_12.4.1.png)
+* Видим, что pod-1 имеет доступ к открытым портам других подов. Подтвердим результат скриншотом:
+
+![K8s_12.4.1](./images/K8s_12.4.1.png)  
+
 * Проверяем с помощью `curl`, что из пода есть доступ до приложений из п.1. через сервис (по портам 9001 и 9002):
 ```
 sysadmin@sysadmin:~$ kubectl get services
@@ -153,8 +155,10 @@ Server: nginx/1.25.5
 sysadmin@sysadmin:~$ kubectl exec pod-1 -- curl --silent -i 10.152.183.147:9002 | grep Server
 Server: nginx/1.24.0
 ```
-* Видим, что pod-1 имеет доступ к открытым портам сервиса. Подтвердим результат скриншотом: 
-![K8s_12.4.2](./images/K8s_12.4.2.PNG.png)
+* Видим, что pod-1 имеет доступ к открытым портам сервиса. Подтвердим результат скриншотом:
+
+![K8s_12.4.2](./images/K8s_12.4.2.PNG.png)  
+
 4. Продемонстрируем доступ с помощью `curl` по доменному имени сервиса (и по короткому, и по полному):
 ```
 sysadmin@sysadmin:~$ kubectl exec pod-1 -- curl --silent -i service-1:9001 | grep Server
@@ -166,8 +170,10 @@ Server: nginx/1.25.5
 sysadmin@sysadmin:~$ kubectl exec pod-1 -- curl --silent -i service-1.default.svc.cluster.local:9002 | grep Server
 Server: nginx/1.24.0
 ```
-* Подтвердим результат скриншотом: 
-![K8s_12.4.3](./images/K8s_12.4.3.png)
+* Подтвердим результат скриншотом:  
+
+![K8s_12.4.3](./images/K8s_12.4.3.png)  
+
 5. Все манифесты представлены в файлах: 
 [deployment-1.yaml](./configs/deployment-1.yaml),
 [service-1.yaml](./configs/service-1.yaml),
@@ -236,8 +242,10 @@ ens18            UP             192.168.6.196/21 fe80::be24:11ff:feca:b95b/64
 sysadmin@sysadmin:~$ curl --silent -i 192.168.6.196:30000 | grep Server
 Server: nginx/1.25.5
 ```
-* Подтвердим результат скриншотом: 
-![K8s_12.4.4](./images/K8s_12.4.4.png)
+* Подтвердим результат скриншотом:
+
+![K8s_12.4.4](./images/K8s_12.4.4.png)  
+
 3. Манифест представлен в файле [service-2.yaml](./configs/service-2.yaml).
 4. Удалим созданные ресурсы:
 ```
