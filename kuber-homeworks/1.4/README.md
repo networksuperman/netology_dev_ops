@@ -196,3 +196,57 @@ kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   45h
 3. Предоставить манифест и Service в решении, а также скриншоты или вывод команды п.2.
 
 ------
+1. Создаем отдельный Service приложения из Задания 1 с возможностью доступа снаружи кластера к nginx, используя тип NodePort. Подготовим следующее yaml-описание в файле [service-2.yaml](./configs/service-2.yaml):
+```
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-2
+spec:
+  type: NodePort
+  selector:
+    app: deployment-1
+  ports:
+    - name: nginx-http
+      port: 9001
+      targetPort: 80
+      nodePort: 30000
+```
+* Запускаем развертывание сервиса и проверяем его состояние:
+```
+sysadmin@sysadmin:~$ kubectl create -f service-2.yaml
+service/service-2 created
+sysadmin@sysadmin:~$ kubectl get services
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes   ClusterIP   10.152.183.1    <none>        443/TCP          45h
+service-2    NodePort    10.152.183.91   <none>        9001:30000/TCP   5s
+```
+2. Продемонстрируем доступ с помощью `curl` с локального компьютера (в качестве локального компьютера возьмем zabbix-sever1 с IP 192.168.1.84/16):
+* Определим внешний IP-адрес ноды:
+```
+sysadmin@sysadmin:~$ kubectl get nodes -o yaml | grep IPv4Addr
+      projectcalico.org/IPv4Address: 192.168.6.196/21
+```
+* Проверим доступ с помощью `curl` с локального компьютера:
+```
+sysadmin@sysadmin:~$ ip -br a
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens18            UP             192.168.6.196/21 fe80::be24:11ff:feca:b95b/64
+sysadmin@sysadmin:~$ curl --silent -i 192.168.6.196:30000 | grep Server
+Server: nginx/1.25.5
+```
+* Подтвердим результат скриншотом: 
+![K8s_12.4.4](./images/K8s_12.4.4.PNG)
+3. Манифест представлен в файле [service-2.yaml](./configs/service-2.yaml).
+4. Удалим созданные ресурсы:
+```
+sysadmin@sysadmin:~$ kubectl delete -f service-2.yaml
+service "service-2" deleted
+sysadmin@sysadmin:~$ kubectl delete -f deployment-1.yaml
+deployment.apps "deployment-1" deleted
+sysadmin@sysadmin:~$ kubectl get all
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   45h
+```
+  
