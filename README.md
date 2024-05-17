@@ -263,3 +263,5 @@
 №111 - [Базовые объекты K8S](https://github.com/networksuperman/netology_dev_ops/blob/a2ef0d74eafcec7afdcfcf20960c72077b5705e3/kuber-homeworks/1.2/README.md)  
 
 №112 - [Запуск приложений в K8S](https://github.com/networksuperman/netology_dev_ops/blob/da28f6d54931154b70e06f551158ea4e1da88ccd/kuber-homeworks/1.3/README.md)  
+
+№113 - [Сетевое взаимодействие в K8S. Часть 1]()  
