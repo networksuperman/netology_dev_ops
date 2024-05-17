@@ -154,7 +154,7 @@ sysadmin@sysadmin:~$ kubectl exec pod-1 -- curl --silent -i 10.152.183.147:9002 
 Server: nginx/1.24.0
 ```
 * Видим, что pod-1 имеет доступ к открытым портам сервиса. Подтвердим результат скриншотом: 
-![K8s_12.4.2](./images/K8s_12.4.2.png)
+![K8s_12.4.2](./images/K8s_12.4.2.PNG.png)
 4. Продемонстрируем доступ с помощью `curl` по доменному имени сервиса (и по короткому, и по полному):
 ```
 sysadmin@sysadmin:~$ kubectl exec pod-1 -- curl --silent -i service-1:9001 | grep Server
