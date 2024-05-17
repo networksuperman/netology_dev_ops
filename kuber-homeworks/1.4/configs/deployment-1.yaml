@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-1
+  labels:
+    app: deployment-1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: deployment-1
+  template:
+    metadata:
+      labels:
+        app: deployment-1
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+        - name: multitool
+          image: wbitt/network-multitool
+          env:
+            - name: HTTP_PORT
+              value: "8080"
+            - name: HTTPS_PORT
+              value: "11443"
