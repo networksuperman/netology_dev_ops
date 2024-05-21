@@ -265,3 +265,5 @@
 №112 - [Запуск приложений в K8S](https://github.com/networksuperman/netology_dev_ops/blob/da28f6d54931154b70e06f551158ea4e1da88ccd/kuber-homeworks/1.3/README.md)  
 
 №113 - [Сетевое взаимодействие в K8S. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/f7dc6a380a92c672a72a0594c70a34b8942f8c8c/kuber-homeworks/1.4/README.md)  
+
+№114 - [Сетевое взаимодействие в K8S. Часть 2]()  
