@@ -257,9 +257,11 @@ sysadmin@sysadmin:~/1.5$ kubectl get nodes -o yaml | grep IPv4Addr
 ```
 * Проверим доступ с помощью `curl` с локального компьютера (только по адресу без добавления `/api`):
 ```
-sysadmin@sysadmin:~/1.5$ curl --silent -i 192.168.6.196
+Выполнял в WARP терминале поэтому вывод такой, на скрине ниже покажу, что это другой ПК
+
+curl --silent -i 192.168.6.196
 HTTP/1.1 200 OK
-Date: Tue, 21 May 2024 07:48:14 GMT
+Date: Tue, 21 May 2024 08:16:26 GMT
 Content-Type: text/html
 Content-Length: 615
 Connection: keep-alive
@@ -295,17 +297,17 @@ Commercial support is available at
 ![K8s_12.5.2](./images/K8s_12.5.2.png)
 * Еще раз проверим доступ с помощью `curl` с локального компьютера (по адресу c добавлением `/api`):
 ```
-sysadmin@sysadmin:~/1.5$ curl --silent -i 192.168.6.196/api
+curl --silent -i 192.168.6.196/api
 HTTP/1.1 200 OK
-Date: Tue, 21 May 2024 07:52:15 GMT
+Date: Tue, 21 May 2024 08:22:28 GMT
 Content-Type: text/html
 Content-Length: 155
 Connection: keep-alive
-Last-Modified: Tue, 21 May 2024 07:18:47 GMT
-ETag: "664c4ad7-9b"
+Last-Modified: Tue, 21 May 2024 08:14:51 GMT
+ETag: "664c57fb-9b"
 Accept-Ranges: bytes
 
-WBITT Network MultiTool (with NGINX) - deployment-backend-75899758b4-ttpv5 - 10.1.12.141 - HTTP: 1180 , HTTPS: 11443 . (Formerly praqma/network-multitool)
+WBITT Network MultiTool (with NGINX) - deployment-backend-75899758b4-njkjf - 10.1.12.138 - HTTP: 1180 , HTTPS: 11443 . (Formerly praqma/network-multitool)
 ```
 * Подтвердим результат скриншотом: 
 ![K8s_12.5.3](./images/K8s_12.5.3.png)
