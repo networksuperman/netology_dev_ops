@@ -55,7 +55,7 @@ NAME                  READY   UP-TO-DATE   AVAILABLE   AGE
 deployment-frontend   3/3     3            3           16s
 ```
 2. Создаем Deployment приложения _backend_ из образа multitool. 
-* Подготовим следующее yaml-описание в файле [deployment-2.yaml](./TASK_12.5/deployment-2.yaml):
+* Подготовим следующее yaml-описание в файле [deployment-2.yaml](./configs/deployment-2.yaml):
 ```
 ---
 apiVersion: apps/v1
@@ -114,7 +114,7 @@ spec:
       port: 9001
       targetPort: 80
 ```
-* Подготовим следующее yaml-описание для приложения _backend_ в файле [service-backend.yaml](./TASK_12.5/service-backend.yaml):
+* Подготовим следующее yaml-описание для приложения _backend_ в файле [service-backend.yaml](./configs/service-backend.yaml):
 ```
 ---
 apiVersion: v1
