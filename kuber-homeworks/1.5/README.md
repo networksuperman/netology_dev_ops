@@ -249,7 +249,7 @@ Events:
   ----    ------  ----  ----                      -------
   Normal  Sync    14s   nginx-ingress-controller  Scheduled for sync
 ```
-3. Продемонстрируем доступ с помощью `curl` с локального компьютера (в качестве локального компьютера возьмем zabbix-sever1 с IP 192.168.1.84/16):
+3. Продемонстрируем доступ с помощью `curl` с локального компьютера:
 * Определим внешний IP-адрес ноды:
 ```
 sysadmin@sysadmin:~/1.5$ kubectl get nodes -o yaml | grep IPv4Addr
