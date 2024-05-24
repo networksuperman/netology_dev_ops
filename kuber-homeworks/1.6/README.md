@@ -175,7 +175,18 @@ May 24 09:55:34 sysadmin systemd[1]: run-containerd-runc-k8s.io-b4b864a1bcc131db
 May 24 09:55:35 sysadmin systemd[1]: run-containerd-runc-k8s.io-e3b360157849decc249c1bb629ef9fe2c50aee13fb95cdfcfcc21c1e421ee547-runc.4fXrwP.mount: Deactivated successfully.
 May 24 09:55:36 sysadmin systemd[1]: run-containerd-runc-k8s.io-b4b864a1bcc131dbd10f0082426343f64453d9e90a5765be46265fb8a639e45d-runc.eGQo4j.mount: Deactivated successfully.
 ```
+
 ![](./images/kube-stor-2.png)  
 
 [./configs/daemonset1.yaml](daemonset1.yaml)  
 
+Удалим все развернутые ресурсы
+```
+sysadmin@sysadmin:~/1.6$ kubectl delete -f deployment1.yaml 
+deployment.apps "deployment1" deleted
+sysadmin@sysadmin:~/1.6$ kubectl delete -f daemonset1.yaml 
+daemonset.apps "deployment2" deleted
+sysadmin@sysadmin:~/1.6$ kubectl get all
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   8d
+```
