@@ -268,5 +268,5 @@
 
 №114 - [Сетевое взаимодействие в K8S. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/88e0508abc833af74f46d3a6768e835d4ce4bc20/kuber-homeworks/1.5/README.md)  
 
-№115 - [Хранение в K8s. Часть 1]()  
+№115 - [Хранение в K8s. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/683d2e547e1dbe18b664192b022d1383efdd593a/kuber-homeworks/1.6/README.md)  
 
