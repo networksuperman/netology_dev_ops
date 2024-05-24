@@ -104,7 +104,7 @@ busybox message!
 ```
 ![](./images/kube-stor-1.png)
 
-[./configs/deployment1.yaml](deployment1.yaml)
+[deployment1.yaml](./configs/deployment1.yaml)
 
 ------
 
@@ -178,7 +178,7 @@ May 24 09:55:36 sysadmin systemd[1]: run-containerd-runc-k8s.io-b4b864a1bcc131db
 
 ![](./images/kube-stor-2.png)  
 
-[./configs/daemonset1.yaml](daemonset1.yaml)  
+[daemonset1.yaml](./configs/daemonset1.yaml)  
 
 Удалим все развернутые ресурсы
 ```
