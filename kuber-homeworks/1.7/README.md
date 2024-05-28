@@ -41,7 +41,7 @@ deployment.apps/netology-kube   0/1     1            0           33s
 NAME                                       DESIRED   CURRENT   READY   AGE
 replicaset.apps/netology-kube-7778678889   1         1         0       33s
 ```
-2. Создаем persistentvolume [persistentvolume.yaml](persistentvolume.yaml) и развертываем `kubectl apply -f persistentvolume.yaml`
+2. Создаем persistentvolume [persistentvolume.yaml](./configs/persistentvolume.yaml) и развертываем `kubectl apply -f persistentvolume.yaml`
    
 Создаем persistentvolumeclaim [persistentvolumeclaim.yaml](./configs/persistentvolumeclaim.yaml) и развертываем `kubectl apply -f persistentvolumeclaim.yaml`
 ```
