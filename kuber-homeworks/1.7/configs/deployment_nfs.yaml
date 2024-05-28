@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netology-kube-nfs
+  labels:
+    app: netology-kube-nfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netology-kube-nfs
+  template:
+    metadata:
+      labels:
+        app: netology-kube-nfs
+    spec:
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+        command: ['sh', '-c', 'while true; do date >> /folder/output.txt; sleep 5; cat /folder/output.txt; sleep 10; done']
+        volumeMounts:
+        - name: vol-nfs
+          mountPath: /folder
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "1"
+      volumes:
+      - name: vol-nfs
+        persistentVolumeClaim:
+          claimName: pvc-nfs
+--- 
