@@ -270,3 +270,4 @@
 
 №115 - [Хранение в K8s. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/683d2e547e1dbe18b664192b022d1383efdd593a/kuber-homeworks/1.6/README.md)  
 
+№116 - [Хранение в K8s. Часть 2]()  
