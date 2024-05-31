@@ -1,0 +1,89 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: index-html-configmap
+data:
+  index.html: |
+    <html>
+    <h1>Welcome</h1>
+    </br>
+    <h1>Hi! This is a configmap Index file </h1>
+    </html
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-tls
+type: kubernetes.io/tls
+data:
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDVENDQWZHZ0F3SUJBZ0lVS3dxODZwMW51N3Z1eWFIcUU2N01xZXNKVTJrd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0ZERVNNQkFHQTFVRUF3d0piRzlqWVd4b2IzTjBNQjRYRFRJME1EVXpNVEV5TlRJeE1sb1hEVEkxTURVegpNVEV5TlRJeE1sb3dGREVTTUJBR0ExVUVBd3dKYkc5allXeG9iM04wTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGCkFBT0NBUThBTUlJQkNnS0NBUUVBdFFLSDFNYUtVVXFEb0FYZWw2MmVWNFIvbjhDeWJqZzR0bWh1NTFvZXFYOGIKSzZqRjZHUDFSL0dsZStnTFp4WGl4R1UrUUJlb280MkVWRFBuZDljM1M3UHM3cmNKNVJjNzVUUDZDRGVLWE1LTgpnWDd4UHh1MWdRSjhrSmdYdTBPWUo4ZGtYYkFhTmhMRzhRUjdkdWRWSnNTT25NVkNiWEdiNXQ4bE9hUy95cUM3Cko3YnM4eFUrSUNGMmxQcER5eER1ZEE4ZmE3bUZyWXZ1SGhlYThSamo0YWIvdHdMRW5oaTM2RjlSK29peDlHaHUKUSt2Rlc3WXVSSDR5SDhhVTNRT2xCSEIrVktTc2E0SzBiKzhGU1hLWHFncXNDazRYNnV0QnFLcjAzS2RnVEUzbwo1d25RUEx0WWdxdlRmdk96eFFPRHFSQWFzRlNYMFR0S24rYlk0SjZMcXdJREFRQUJvMU13VVRBZEJnTlZIUTRFCkZnUVVOWWlIYWtjWFpqMVltTTVHcTdaNEdtMjAzRVF3SHdZRFZSMGpCQmd3Rm9BVU5ZaUhha2NYWmoxWW1NNUcKcTdaNEdtMjAzRVF3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBU0lJZwoyc3FIT0NVekhQV3ErdXpRbVN4UzFsdE9sMUJVajNlMWlnUWZwU3lJY2FwWHRveWxOQU1XdTFFV04rQUxaTmNjCmRXMnRSeXdCZk1LOWRaT3JWTG9idmFCM3llR0dJNGFiVEN3OGdpQkNFWmxVTGxCYmE0a1p4S2NqUXVXbkIyWWsKOTQ4SXZXT2xHS0tyUUdzZGJQWldRLzNZUmlYWlc2YWFCV3NOMGpmdlRGZTZqZU5TUHBtTXFBcCs0QzJrYnFFawpKVnhzMlg2clA2VER6azNLaDRLWkNiUVJmRXRaQ2FDdWdRN2VNeWJnVjQwWE1HY2FrclVhSVlnSWQ4d0lHSlFpCldVUStnd0Y4SEdnVytROVlTNlFSK3BHd2U1c0RiRytzT1ZXR3BWTVMxTFN3L2M3VXZjOTBmV1ZXUUE1ZWFPNFgKMVpTMlZWNTh5Q0Mxc2d4YjJnPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  tls.key: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2UUlCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktjd2dnU2pBZ0VBQW9JQkFRQzFBb2ZVeG9wUlNvT2cKQmQ2WHJaNVhoSCtmd0xKdU9EaTJhRzduV2g2cGZ4c3JxTVhvWS9WSDhhVjc2QXRuRmVMRVpUNUFGNmlqallSVQpNK2QzMXpkTHMrenV0d25sRnp2bE0vb0lONHBjd28yQmZ2RS9HN1dCQW55UW1CZTdRNWdueDJSZHNCbzJFc2J4CkJIdDI1MVVteEk2Y3hVSnRjWnZtM3lVNXBML0tvTHNudHV6ekZUNGdJWGFVK2tQTEVPNTBEeDlydVlXdGkrNGUKRjVyeEdPUGhwdiszQXNTZUdMZm9YMUg2aUxIMGFHNUQ2OFZidGk1RWZqSWZ4cFRkQTZVRWNINVVwS3hyZ3JSdgo3d1ZKY3BlcUNxd0tUaGZxNjBHb3F2VGNwMkJNVGVqbkNkQTh1MWlDcTlOKzg3UEZBNE9wRUJxd1ZKZlJPMHFmCjV0amdub3VyQWdNQkFBRUNnZ0VBQ09ROE8wdG5iV1Nqd0dXekE1YVpPNE1pbThseHdNb2FCSzQ3bTUvdktxZFIKZEtsNkJuMnM2KzNteE5NYVUzMkRvZDhlR2M0V0hPblQwU2tRd1R5V3NFYk4yMm9UeEtlak9LdGxkU2VzZlB5YQp5a2xlOXBrbHdOWGs3eWd4ZDlielNTbS94UmVYa0d5aEd1Lzc3ZFJ1Uks2TlROckFLUm53RTMwZ0RVdTgvVkNOClV1SzF5WWJZRUFrTDhvZjNlclRtRk1uSHZSZHlFNCsvNjR5N0EwWkd3MmRLOWZ0WkREdUVuTUhMQ2l0QkI4bmEKKy9SbnFHQUhKa2s2clhuL3l6ZUwwNnVxdnExdnpLeWkvUitpcFdSSm0yR3hXbEtCVUNMamt0OGdTblUrSzVieApjQUhTTHlLWGRybGdzbkxQQnBKeCtrZ0llZmliOFExQUE5KzdLVXg5RFFLQmdRRHBYWXRpQS9QQ00xdFpNRld1Ckc1QXQwOWhIbnVZSkdyRC9VdE85V0xRMUVMc1QvRUpQYy9oZUZ3bU5TOHB6YWNhNzczdlpOZXZhT2hHcW0xZTYKZTZhbEExK1dEcDQrWW5qMlhMeElsaEpYci9sRHhxeEtRczBlVklSM2VvQlZUNXpIeWpJaEZtUjQwa0RvZDR6dwo2STg1M25lOW5WRnpmWXc0UjhNd2tLcE1aUUtCZ1FER2tRQU1GcFFRM0R1Zm5Bc3NVcnB0OXlZa1BNS2hmcEZHClJrRlpDTTNlaytDVGV0TWNYWjVZNjg2VGNFblBnd1BEYVBaWHZZUXlnWC9kR01HY3ZpY0dxcWpncE56VG14Y2MKMzltVzFzQitXTjFCVEVtR1l5STFhaTk2ZzVTSVJOVHRZWEt6c2FFVENNRG81VXR1bkY3L0pzUXkxU3VmN2JVawpSalFwd05ST3p3S0JnUUMzbWx1UlVCNjJTZ1d5MUM1MC8wYWVaN0FnR1VwUEcycnFWdFkwZ05lM2NHUmZ3dmJBCjRETW1nK1dGLzMxVzlIL2hXUGdOMnppbXgwMGk5M2s4UlJERmZ6UHpNYWthMkFybmVlckJDU0dCVC9oRGRNb1UKMngzYW9SQmZtRWZqMXZFNDEwSTllZ3F1YkcyWStJWXcvQ2ZEbGQ2TGxueUE2dVFwVzN5Y2R4VWxhUUtCZ0V1YgpSb05UellrbDhtWHh5cWRUMEx5eVVJbVh3Und3enl3TThERHdrMExlMTdJUUlIWTZoMktnVndYNHlZSUVCdGpQCkRJMllFZEFSVXhoaXBzWUIrV1ltY1Nzb1d4VVBocHR0K0xIZ2oyY01leUt6NDRNU0dDSnlqaVYrR0g1U2h5amoKNUFMYjdkTUxrRGlkcGowMXVVNDUrcGJJYUZYNjh2QWU4eG02M0p3dEFvR0FlK0xPNWM4aFRHRk9hejN3bS9DRwpkZUs5djNiMlM0N21vZWJhM0g3TWg4dVFyZXBiSWkyNW56OUFPOVJ1WFpENFMzRTJobTJsWkVDRXVRWW1YdGgyClJuNmN4dGJTbDk4WDZIT3hUU0RESkszUGRhQkN4SklodTJwbFJQMnNLV25CNENFWXZsWmhseEpOdjN2WjduR20KdXNmZTY1WmlGMERMaDJjNTJhUXZxNk09Ci0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: mirror.gcr.io/nginx:latest
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+        volumeMounts:
+            - name: nginx-index-file
+              mountPath: /usr/share/nginx/html/
+      volumes:
+      - name: nginx-index-file
+        configMap:
+          name: index-html-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
+  tls:
+    - hosts:
+        - localhost
+      secretName: test-tls

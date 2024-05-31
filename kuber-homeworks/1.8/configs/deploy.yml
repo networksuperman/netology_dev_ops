@@ -1,0 +1,93 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+data:
+  HTTP_PORT: "1180"
+  HTTPS_PORT: "11443" 
+  index.html: |
+    <html>
+    <h1>Welcome</h1>
+    </br>
+    <h1>My test page for nginx!! </h1>
+    </html
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-kuber
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main
+  template:
+    metadata:
+      labels:
+        app: main
+    spec:
+      containers:
+      - name: nginx
+        image: mirror.gcr.io/nginx:1.24.0
+        volumeMounts:
+          - name: nginx-index-file
+            mountPath: /usr/share/nginx/html/
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 200m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+      - image: mirror.gcr.io/wbitt/network-multitool
+        imagePullPolicy: IfNotPresent
+        name: network-multitool
+        env:
+          - name: HTTP_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: my-configmap
+                key: HTTP_PORT
+          - name: HTTPS_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: my-configmap
+                key: HTTPS_PORT  
+        ports:
+        - containerPort: 1180
+          name: http-port
+        - containerPort: 11443
+          name: https-port
+        resources:
+           limits:
+             cpu: 200m
+             memory: 512Mi
+           requests:
+             cpu: 100m
+             memory: 256Mi
+      volumes:
+      - name: nginx-index-file
+        configMap:
+          name: my-configmap
+          items:
+          - key: "index.html"
+            path: "index.html"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc
+spec:
+  ports:
+    - name: web
+      port: 80
+      nodePort: 30080
+    - name: tool
+      port: 1180
+      nodePort: 30180
+  selector:
+    app: main
+  type: NodePort
+---
