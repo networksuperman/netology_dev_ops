@@ -67,7 +67,7 @@ sysadmin@sysadmin:~/1.8$ curl 10.152.183.209
 
 ## Решение:
 
-[index.yml](./configs/deploy2.yml)
+[[deploy2.yml](./configs/deploy2.yml)
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=localhost"
 
