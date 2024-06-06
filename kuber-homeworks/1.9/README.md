@@ -113,7 +113,7 @@ Error from server (Forbidden): pods is forbidden: User "testuser" cannot list re
 * Видим, что по умолчанию какие-либо действия новому пользователю `testuser` запрещены.
 
 3. Создаем роли и все необходимые настройки для пользователя `testuser`.
-* Подготовим следующее yaml-описание для `Role` в файле [role-1.yaml](./configs/role-1.yaml):
+* Подготовим следующее yaml-описание для `Role` в файле [role-1.yaml](./role-1.yaml):
 ```
 ---
 apiVersion: rbac.authorization.k8s.io/v1
