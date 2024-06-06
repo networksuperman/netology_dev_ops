@@ -274,4 +274,4 @@
 
 №117 - [Конфигурация приложений](https://github.com/networksuperman/netology_dev_ops/blob/fdfb76244c1ae193fe95bf68b72c6699709b346e/kuber-homeworks/1.8/README.md)  
 
-№118 - [Управление доступом]()  
+№118 - [Управление доступом](https://github.com/networksuperman/netology_dev_ops/blob/f90e208a9696af092d91ffb2850d0aa63dc7d486/kuber-homeworks/1.9/README.md)  
