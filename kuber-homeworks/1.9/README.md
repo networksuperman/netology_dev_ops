@@ -126,7 +126,7 @@ rules:
     resources: ["pods", "pods/log"]
     verbs: ["get", "watch", "list"]
 ```
-* Подготовим следующее yaml-описание для `RoleBinding` в файле [rolebinding-1.yaml](./configs/rolebinding-1.yaml):
+* Подготовим следующее yaml-описание для `RoleBinding` в файле [rolebinding-1.yaml](./rolebinding-1.yaml):
 ```
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -247,7 +247,7 @@ Replacing default HTTP port (80) with the value specified by the user - (HTTP_PO
 Replacing default HTTPS port (443) with the value specified by the user - (HTTPS_PORT: 10443).
 ```
 5. Манифесты и конфигурации представлены в файлах:
-[pod-1.yaml](./configs/pod-1.yaml)
-[role-1.yaml](./configs/role-1.yaml)
-[rolebinding-1.yaml](./configs/rolebinding-1.yaml)
-[kubeconfig](./configs/certs/kubeconfig)
+[pod-1.yaml](./pod-1.yaml)  
+[role-1.yaml](./role-1.yaml)  
+[rolebinding-1.yaml](./rolebinding-1.yaml)  
+[kubeconfig](./certs/kubeconfig)  
