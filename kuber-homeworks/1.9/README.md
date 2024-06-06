@@ -246,7 +246,7 @@ WBITT Network MultiTool (with NGINX) - pod-1 - 10.1.12.138 - HTTP: 1080 , HTTPS:
 Replacing default HTTP port (80) with the value specified by the user - (HTTP_PORT: 1080).
 Replacing default HTTPS port (443) with the value specified by the user - (HTTPS_PORT: 10443).
 ```
-5. Манифесты и конфигурации представлены в файлах:
+5. Манифесты и конфигурации представлены в файлах:  
 [pod-1.yaml](./pod-1.yaml)  
 [role-1.yaml](./role-1.yaml)  
 [rolebinding-1.yaml](./rolebinding-1.yaml)  
