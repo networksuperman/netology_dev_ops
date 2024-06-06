@@ -273,3 +273,5 @@
 №116 - [Хранение в K8s. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/0e8f42c162aa5b8f11c47f2f4578d09e09b39dac/kuber-homeworks/1.7/README.md)  
 
 №117 - [Конфигурация приложений](https://github.com/networksuperman/netology_dev_ops/blob/fdfb76244c1ae193fe95bf68b72c6699709b346e/kuber-homeworks/1.8/README.md)  
+
+№118 - [Управление доступом]()  
