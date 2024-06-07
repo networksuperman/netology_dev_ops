@@ -258,6 +258,8 @@
 
 ### Kubernetes: основы, применение и администрирование  
 
+#### Основы Kubernetes
+
 №110 - [Kubernetes. Причины появления. Команда kubectl](https://github.com/networksuperman/netology_dev_ops/blob/35d2fc6b60963eddb684db3407bf3b42007ac83b/kuber-homeworks/1.1/README.md)  
 
 №111 - [Базовые объекты K8S](https://github.com/networksuperman/netology_dev_ops/blob/a2ef0d74eafcec7afdcfcf20960c72077b5705e3/kuber-homeworks/1.2/README.md)  
@@ -268,6 +270,8 @@
 
 №114 - [Сетевое взаимодействие в K8S. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/88e0508abc833af74f46d3a6768e835d4ce4bc20/kuber-homeworks/1.5/README.md)  
 
+#### Применение Kubernetes
+
 №115 - [Хранение в K8s. Часть 1](https://github.com/networksuperman/netology_dev_ops/blob/683d2e547e1dbe18b664192b022d1383efdd593a/kuber-homeworks/1.6/README.md)  
 
 №116 - [Хранение в K8s. Часть 2](https://github.com/networksuperman/netology_dev_ops/blob/0e8f42c162aa5b8f11c47f2f4578d09e09b39dac/kuber-homeworks/1.7/README.md)  
@@ -275,3 +279,9 @@
 №117 - [Конфигурация приложений](https://github.com/networksuperman/netology_dev_ops/blob/fdfb76244c1ae193fe95bf68b72c6699709b346e/kuber-homeworks/1.8/README.md)  
 
 №118 - [Управление доступом](https://github.com/networksuperman/netology_dev_ops/blob/f90e208a9696af092d91ffb2850d0aa63dc7d486/kuber-homeworks/1.9/README.md)  
+
+№119 - [Helm]()  
+
+#### Администрирование Kubernetes
+
+
