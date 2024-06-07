@@ -107,8 +107,6 @@ appVersion: "1.18.0"
 
 ```
 sysadmin@sysadmin:~/kubernetes-for-beginners/40-helm/01-templating/charts$ helm template 01-simple
-WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/sysadmin/.kube/config
-WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/sysadmin/.kube/config
 ---
 # Source: hard/templates/service.yaml
 apiVersion: v1
