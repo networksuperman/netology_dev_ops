@@ -280,7 +280,7 @@
 
 №118 - [Управление доступом](https://github.com/networksuperman/netology_dev_ops/blob/f90e208a9696af092d91ffb2850d0aa63dc7d486/kuber-homeworks/1.9/README.md)  
 
-№119 - [Helm]()  
+№119 - [Helm](https://github.com/networksuperman/netology_dev_ops/blob/b7f828cd612f65005b4f346076ec047f6fb7f346/kuber-homeworks/1.10/README.md)  
 
 #### Администрирование Kubernetes
 
