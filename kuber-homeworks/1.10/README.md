@@ -31,9 +31,9 @@ version.BuildInfo{Version:"v3.15.1", GitCommit:"e211f2aa62992bd72586b395de50979e
 sysadmin@sysadmin:~$ git clone https://github.com/aak74/kubernetes-for-beginners.git
 
 sysadmin@sysadmin:~/kubernetes-for-beginners/40-helm/01-templating/charts$ 
-
+```
 Создаем шаблон
-
+```
 sysadmin@sysadmin:~/kubernetes-for-beginners/40-helm/01-templating/charts$ helm template 01-simple
 ---
 # Source: hard/templates/service.yaml
