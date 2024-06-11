@@ -284,4 +284,4 @@
 
 #### Администрирование Kubernetes
 
-№120 - [Компоненты Kubernetes]()  
+№120 - [Компоненты Kubernetes](https://github.com/networksuperman/netology_dev_ops/tree/3fad0f4bf3d8a8d390424684fdbe4d7b4ba1f4c0/kuber-homeworks/1.11)  
