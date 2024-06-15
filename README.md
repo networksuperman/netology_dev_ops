@@ -286,4 +286,4 @@
 
 №120 - [Компоненты Kubernetes](https://github.com/networksuperman/netology_dev_ops/tree/3fad0f4bf3d8a8d390424684fdbe4d7b4ba1f4c0/kuber-homeworks/1.11)  
 
-№121 - [Установка Kubernetes]()  
+№121 - [Установка Kubernetes](https://github.com/networksuperman/netology_dev_ops/blob/f72217e7354de3cd457130481eb674dfeee5c554/kuber-homeworks/1.12/README.md)  
