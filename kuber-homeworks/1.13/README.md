@@ -248,3 +248,240 @@ deployment.apps/deployment-frontend created
 admin@kube-master-01:~$ kubectl create -f service-frontend.yaml
 service/service-frontend created
 ```
+8. Создадим deployment и service для приложения `backend`:
+
+* Опишем конфигурационный файл deployment-backend.yaml:
+```
+admin@kube-master-01:~$ cat deployment-backend.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-backend
+  name: deployment-backend
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-multitool
+          image: wbitt/network-multitool
+```
+* Опишем конфигурационный файл service-backend.yaml:
+```
+admin@kube-master-01:~$ cat service-backend.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-backend
+  namespace: app
+spec:
+  selector:
+    app: backend
+  ports:
+    - name: port-80
+      port: 80
+      targetPort: 80
+```
+* Применим deployment и service для приложения `backend`:
+```
+admin@kube-master-01:~$ kubectl create -f deployment-backend.yaml
+deployment.apps/deployment-backend created
+admin@kube-master-01:~$ kubectl create -f service-backend.yaml
+service/service-backend created
+```
+9. Создадим deployment и service для приложения `cache`:
+
+* Опишем конфигурационный файл deployment-cache.yaml:
+```
+admin@kube-master-01:~$ cat deployment-cache.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deployment-cache
+  name: deployment-cache
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cache
+  template:
+    metadata:
+      labels:
+        app: cache
+    spec:
+      containers:
+        - name: cache-multitool
+          image: wbitt/network-multitool
+```
+* Опишем конфигурационный файл service-cache.yaml:
+```
+admin@kube-master-01:~$ cat service-cache.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-cache
+  namespace: app
+spec:
+  selector:
+    app: cache
+  ports:
+    - name: port-80
+      port: 80
+      targetPort: 80
+```
+* Применим deployment и service для приложения `cache`:
+```
+admin@kube-master-01:~$ kubectl create -f deployment-cache.yaml
+deployment.apps/deployment-cache created
+admin@kube-master-01:~$ kubectl create -f service-cache.yaml
+service/service-cache created
+```
+10. Убедимся в успешности развертывания подов и сервисов:
+```
+admin@kube-master-01:~$ kubectl get pods,services -n app -o wide
+NAME                                      READY   STATUS    RESTARTS   AGE     IP             NODE    NOMINATED NODE   READINESS GATES
+pod/deployment-backend-59f8c49bdb-zqcwb   1/1     Running   0          5m33s   10.233.75.3    node2   <none>           <none>
+pod/deployment-cache-69b486bc58-8x8db     1/1     Running   0          2m13s   10.233.71.2    node3   <none>           <none>
+pod/deployment-frontend-8cc5b69b4-lrxn4   1/1     Running   0          9m31s   10.233.74.66   node4   <none>           <none>
+
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/service-backend    ClusterIP   10.233.9.28     <none>        80/TCP    5m25s   app=backend
+service/service-cache      ClusterIP   10.233.32.40    <none>        80/TCP    2m6s    app=cache
+service/service-frontend   ClusterIP   10.233.17.252   <none>        80/TCP    9m20s   app=frontend
+```
+11. Перед конфигурированием сетевых политик убедимся, что поды имеют неограниченный доступ друг к другу внутри namespace `app`:
+```
+admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-backend.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+admin@kube-master-01:~$ kubectl exec -it service/service-backend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+admin@kube-master-01:~$ kubectl exec -it service/service-cache -n app -- curl --silent -i service-frontend.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+```
+12. Создадим и применим сетевую политику, запрещающую подключения, не разрешённые специально:
+* Опишем конфигурационный файл netpolicy-default.yaml:
+```
+admin@kube-master-01:~$ cat netpolicy-default.yaml
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: app
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+```
+* Применим политику по умолчанию:
+```
+admin@kube-master-01:~$ kubectl create -f netpolicy-default.yaml
+networkpolicy.networking.k8s.io/default-deny-ingress created
+```
+13. Создадим и применим сетевую политику, разрешающую подключения от `frontend` к `backend`:
+* Опишем конфигурационный файл netpolicy-front-back.yaml:
+```
+admin@kube-master-01:~$ cat netpolicy-front-back.yaml
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontend-to-backend-policy
+  namespace: app
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: frontend
+      ports:
+        - protocol: TCP
+          port: 80
+        - protocol: TCP
+          port: 443
+```
+* Применим политику, разрешающую подключения от `frontend` к `backend`:
+```
+admin@kube-master-01:~$ kubectl create -f netpolicy-front-back.yaml
+networkpolicy.networking.k8s.io/frontend-to-backend-policy created
+```
+14. Создадим и применим сетевую политику, разрешающую подключения от `backend` к `cache`:
+* Опишем конфигурационный файл netpolicy-back-cache.yaml:
+```
+admin@kube-master-01:~$ cat netpolicy-back-cache.yaml
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-to-cache-policy
+  namespace: app
+spec:
+  podSelector:
+    matchLabels:
+      app: cache
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            app: backend
+      ports:
+        - protocol: TCP
+          port: 80
+        - protocol: TCP
+          port: 443
+```
+* Применим политику, разрешающую подключения от `backend` к `cache`:
+```
+admin@kube-master-01:~$ kubectl create -f netpolicy-back-cache.yaml
+networkpolicy.networking.k8s.io/backend-to-cache-policy created
+```
+15. Проверим примененные сетевые политики:
+```
+admin@kube-master-01:~$ kubectl get networkpolicy -A
+NAMESPACE   NAME                         POD-SELECTOR   AGE
+app         backend-to-cache-policy      app=cache      59s
+app         default-deny-ingress         <none>         6m15s
+app         frontend-to-backend-policy   app=backend    3m5s
+```
+16. Проверим работу настроенных сетевых политик:
+* Доступ должен быть от `frontend` к `backend`:
+```
+admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-backend.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+```
+* Доступ должен быть от `backend` к `cache`:
+```
+admin@kube-master-01:~$ kubectl exec -it service/service-backend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
+Server: nginx/1.24.0
+```
+* Доступа не должно быть в иных случаях:
+```
+admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
+command terminated with exit code 28
+admin@kube-master-01:~$ kubectl exec -it service/service-cache -n app -- curl --silent -i service-frontend.app.svc.cluster.local | grep Server
+command terminated with exit code 28
+```
+* Всё работает корректно. Есть доступ от `frontend` к `backend` и от `backend` к `cache`. Проверено, что нет доступа от `backend` к `cache` и от `cache` к `frontend`. В последних случаях происходит "зависание" на 2 минуты, потом выполнение команды завершается с кодом возврата 28.
