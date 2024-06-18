@@ -288,4 +288,4 @@
 
 №121 - [Установка Kubernetes](https://github.com/networksuperman/netology_dev_ops/blob/5d38eb010c5b418c4064371d1fed39e9e2419ef1/kuber-homeworks/1.12/README.md)  
 
-№122 - [Как работает сеть в K8s]()  
+№122 - [Как работает сеть в K8s](https://github.com/networksuperman/netology_dev_ops/blob/df7577bbbece7f596fdff0f073ee3d15981d601f/kuber-homeworks/1.13/README.md)  
