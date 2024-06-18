@@ -28,13 +28,13 @@
 
 ### Решение  
 
-1. Создадим виртуальные машины в Яндекс Облако: 1 master и 3 worker ноды.
+Создадим виртуальные машины в Яндекс Облако: 1 master и 3 worker ноды.  
 
 ![](./images/kuber-net-1.png)  
 
-3. На `kube-master-01` выполняем:
+На `kube-master-01` выполняем:  
 
-* Подготовим kubespray (для переменной `IPS` указываем IP-адреса виртуальных машин в Яндекс Облако, начиная с мастер-ноды):
+Подготовим kubespray (для переменной `IPS` указываем IP-адреса виртуальных машин в Яндекс Облако, начиная с мастер-ноды):  
 ```
 apt-get update -y
 apt-get install git pip -y
@@ -44,7 +44,7 @@ pip3 install -r requirements.txt
 cp -rfp inventory/sample inventory/mycluster
 declare -a IPS=(192.168.0.3 192.168.0.24 192.168.0.42 192.168.0.14)
 ```
-* Генерируем inventory-файл `hosts.yaml` для Ansible с использованием заданной переменной `IPS`:
+Генерируем inventory-файл `hosts.yaml` для Ansible с использованием заданной переменной `IPS`:  
 ```
 root@kube-master-01:~/kubespray# CONFIG_FILE=inventory/mycluster/hosts.yaml python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 DEBUG: Adding group all
@@ -67,7 +67,7 @@ DEBUG: adding host node2 to group kube_node
 DEBUG: adding host node3 to group kube_node
 DEBUG: adding host node4 to group kube_node
 ```
-* В inventory-файл `hosts.yaml` сделает так, чтобы `node1` был master, остальные - worker. Etcd оставляем только на мастере:
+В inventory-файл `hosts.yaml` сделает так, чтобы `node1` был master, остальные - worker. Etcd оставляем только на мастере:  
 ```
 root@kube-master-01:~/kubespray# cat inventory/mycluster/hosts.yaml
 all:
@@ -107,16 +107,16 @@ all:
     calico_rr:
       hosts: {}
 ```
-* Копируем закрытый ключ на master:
+Копируем закрытый ключ на master:  
 ```
 rsync --rsync-path="sudo rsync" /root/.ssh/id_rsa admin@51.250.90.121:/root/.ssh/id_rsa
 ```
-Проверим
+Проверим  
 ```
 root@kube-master-01:~# ls .ssh/
 authorized_keys  id_rsa
 ```
-3. Применяем конфигурацию Ansible для узлов кластера и создадим kubeconfig-файл для пользователя admin:
+Применяем конфигурацию Ansible для узлов кластера и создадим kubeconfig-файл для пользователя admin:  
 ```
 root@kube-master-01:~/kubespray# ansible-playbook -i inventory/mycluster/hosts.yaml -u admin -b -v --private-key=/root/.ssh/id_rsa cluster.yml
 ------ ВЫВОД ------
@@ -136,13 +136,13 @@ node2                      : ok=514  changed=94   unreachable=0    failed=0    s
 node3                      : ok=514  changed=94   unreachable=0    failed=0    skipped=779  rescued=0    ignored=1
 node4                      : ok=514  changed=94   unreachable=0    failed=0    skipped=779  rescued=0    ignored=1
 ```
-* Создадим и настроим kubeconfig-файла для пользователя admin:
+Создадим и настроим kubeconfig-файла для пользователя admin:  
 ```
 admin@kube-master-01:~$ mkdir -p $HOME/.kube
 admin@kube-master-01:~$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 admin@kube-master-01:~$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
-4. Проверим состояние нод в кластере Kubernetes:
+Проверим состояние нод в кластере Kubernetes:  
 ```
 admin@kube-master-01:~$ kubectl get nodes
 NAME    STATUS   ROLES           AGE     VERSION
@@ -151,7 +151,7 @@ node2   Ready    <none>          8m34s   v1.28.2
 node3   Ready    <none>          8m29s   v1.28.2
 node4   Ready    <none>          8m29s   v1.28.2
 ```
-5. Проверим состояние подов в кластере Kubernetes. Видим в списке подов, что в качестве сетевого плагина используется calico. 
+Проверим состояние подов в кластере Kubernetes. Видим в списке подов, что в качестве сетевого плагина используется calico. 
 ```
 admin@kube-master-01:~$ kubectl get po -A
 NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE
@@ -178,8 +178,9 @@ kube-system   nodelocaldns-82xrs                         1/1     Running   0    
 kube-system   nodelocaldns-8wqtz                         1/1     Running   0          14m
 kube-system   nodelocaldns-s6w8x                         1/1     Running   0          14m
 ```
-6. Создадим namespace `app`
-* Опишем конфигурационный файл namespace.yaml:
+Создадим namespace `app`  
+
+Опишем конфигурационный файл namespace.yaml:  
 ```
 admin@kube-master-01:~$ cat namespace.yaml
 apiVersion: v1
@@ -187,7 +188,7 @@ kind: Namespace
 metadata:
   name: app
 ```
-* Применим конфигурацию:
+Применим конфигурацию:  
 ```
 admin@kube-master-01:~$ kubectl create -f namespace.yaml
 namespace/app created
@@ -199,8 +200,9 @@ kube-node-lease   Active   35m
 kube-public       Active   35m
 kube-system       Active   35m
 ```
-7. Создадим deployment и service для приложения `frontend`:
-* Опишем конфигурационный файл deployment-frontend.yaml:
+Создадим deployment и service для приложения `frontend`:  
+
+Опишем конфигурационный файл deployment-frontend.yaml:  
 ```
 admin@kube-master-01:~$ cat deployment-frontend.yaml
 ---
@@ -225,7 +227,7 @@ spec:
         - name: frontend-multitool
           image: wbitt/network-multitool
 ```
-* Опишем конфигурационный файл service-frontend.yaml:
+Опишем конфигурационный файл service-frontend.yaml:  
 ```
 admin@kube-master-01:~$ cat service-frontend.yaml
 ---
@@ -242,16 +244,16 @@ spec:
       port: 80
       targetPort: 80
 ```
-* Применим deployment и service для приложения `frontend`:
+Применим deployment и service для приложения `frontend`:  
 ```
 admin@kube-master-01:~$ kubectl create -f deployment-frontend.yaml
 deployment.apps/deployment-frontend created
 admin@kube-master-01:~$ kubectl create -f service-frontend.yaml
 service/service-frontend created
 ```
-8. Создадим deployment и service для приложения `backend`:
+Создадим deployment и service для приложения `backend`:  
 
-* Опишем конфигурационный файл deployment-backend.yaml:
+Опишем конфигурационный файл deployment-backend.yaml:  
 ```
 admin@kube-master-01:~$ cat deployment-backend.yaml
 ---
@@ -276,7 +278,7 @@ spec:
         - name: backend-multitool
           image: wbitt/network-multitool
 ```
-* Опишем конфигурационный файл service-backend.yaml:
+Опишем конфигурационный файл service-backend.yaml:  
 ```
 admin@kube-master-01:~$ cat service-backend.yaml
 ---
@@ -293,16 +295,16 @@ spec:
       port: 80
       targetPort: 80
 ```
-* Применим deployment и service для приложения `backend`:
+Применим deployment и service для приложения `backend`:  
 ```
 admin@kube-master-01:~$ kubectl create -f deployment-backend.yaml
 deployment.apps/deployment-backend created
 admin@kube-master-01:~$ kubectl create -f service-backend.yaml
 service/service-backend created
 ```
-9. Создадим deployment и service для приложения `cache`:
+Создадим deployment и service для приложения `cache`:  
 
-* Опишем конфигурационный файл deployment-cache.yaml:
+Опишем конфигурационный файл deployment-cache.yaml:  
 ```
 admin@kube-master-01:~$ cat deployment-cache.yaml
 ---
@@ -327,7 +329,7 @@ spec:
         - name: cache-multitool
           image: wbitt/network-multitool
 ```
-* Опишем конфигурационный файл service-cache.yaml:
+Опишем конфигурационный файл service-cache.yaml:  
 ```
 admin@kube-master-01:~$ cat service-cache.yaml
 ---
@@ -344,14 +346,14 @@ spec:
       port: 80
       targetPort: 80
 ```
-* Применим deployment и service для приложения `cache`:
+Применим deployment и service для приложения `cache`:  
 ```
 admin@kube-master-01:~$ kubectl create -f deployment-cache.yaml
 deployment.apps/deployment-cache created
 admin@kube-master-01:~$ kubectl create -f service-cache.yaml
 service/service-cache created
 ```
-10. Убедимся в успешности развертывания подов и сервисов:
+Убедимся в успешности развертывания подов и сервисов:  
 ```
 admin@kube-master-01:~$ kubectl get pods,services -n app -o wide
 NAME                                      READY   STATUS    RESTARTS   AGE     IP             NODE    NOMINATED NODE   READINESS GATES
@@ -364,7 +366,7 @@ service/service-backend    ClusterIP   10.233.9.28     <none>        80/TCP    5
 service/service-cache      ClusterIP   10.233.32.40    <none>        80/TCP    2m6s    app=cache
 service/service-frontend   ClusterIP   10.233.17.252   <none>        80/TCP    9m20s   app=frontend
 ```
-11. Перед конфигурированием сетевых политик убедимся, что поды имеют неограниченный доступ друг к другу внутри namespace `app`:
+Перед конфигурированием сетевых политик убедимся, что поды имеют неограниченный доступ друг к другу внутри namespace `app`:  
 ```
 admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-backend.app.svc.cluster.local | grep Server
 Server: nginx/1.24.0
@@ -375,8 +377,9 @@ Server: nginx/1.24.0
 admin@kube-master-01:~$ kubectl exec -it service/service-cache -n app -- curl --silent -i service-frontend.app.svc.cluster.local | grep Server
 Server: nginx/1.24.0
 ```
-12. Создадим и применим сетевую политику, запрещающую подключения, не разрешённые специально:
-* Опишем конфигурационный файл netpolicy-default.yaml:
+Создадим и применим сетевую политику, запрещающую подключения, не разрешённые специально:  
+
+Опишем конфигурационный файл netpolicy-default.yaml:  
 ```
 admin@kube-master-01:~$ cat netpolicy-default.yaml
 ---
@@ -390,13 +393,14 @@ spec:
   policyTypes:
     - Ingress
 ```
-* Применим политику по умолчанию:
+Применим политику по умолчанию:  
 ```
 admin@kube-master-01:~$ kubectl create -f netpolicy-default.yaml
 networkpolicy.networking.k8s.io/default-deny-ingress created
 ```
-13. Создадим и применим сетевую политику, разрешающую подключения от `frontend` к `backend`:
-* Опишем конфигурационный файл netpolicy-front-back.yaml:
+Создадим и применим сетевую политику, разрешающую подключения от `frontend` к `backend`:  
+
+Опишем конфигурационный файл netpolicy-front-back.yaml:  
 ```
 admin@kube-master-01:~$ cat netpolicy-front-back.yaml
 ---
@@ -422,13 +426,14 @@ spec:
         - protocol: TCP
           port: 443
 ```
-* Применим политику, разрешающую подключения от `frontend` к `backend`:
+Применим политику, разрешающую подключения от `frontend` к `backend`:  
 ```
 admin@kube-master-01:~$ kubectl create -f netpolicy-front-back.yaml
 networkpolicy.networking.k8s.io/frontend-to-backend-policy created
 ```
-14. Создадим и применим сетевую политику, разрешающую подключения от `backend` к `cache`:
-* Опишем конфигурационный файл netpolicy-back-cache.yaml:
+Создадим и применим сетевую политику, разрешающую подключения от `backend` к `cache`:  
+
+Опишем конфигурационный файл netpolicy-back-cache.yaml:  
 ```
 admin@kube-master-01:~$ cat netpolicy-back-cache.yaml
 ---
@@ -454,12 +459,12 @@ spec:
         - protocol: TCP
           port: 443
 ```
-* Применим политику, разрешающую подключения от `backend` к `cache`:
+Применим политику, разрешающую подключения от `backend` к `cache`:  
 ```
 admin@kube-master-01:~$ kubectl create -f netpolicy-back-cache.yaml
 networkpolicy.networking.k8s.io/backend-to-cache-policy created
 ```
-15. Проверим примененные сетевые политики:
+Проверим примененные сетевые политики:  
 ```
 admin@kube-master-01:~$ kubectl get networkpolicy -A
 NAMESPACE   NAME                         POD-SELECTOR   AGE
@@ -467,22 +472,23 @@ app         backend-to-cache-policy      app=cache      59s
 app         default-deny-ingress         <none>         6m15s
 app         frontend-to-backend-policy   app=backend    3m5s
 ```
-16. Проверим работу настроенных сетевых политик:
-* Доступ должен быть от `frontend` к `backend`:
+Проверим работу настроенных сетевых политик:  
+
+Доступ должен быть от `frontend` к `backend`:  
 ```
 admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-backend.app.svc.cluster.local | grep Server
 Server: nginx/1.24.0
 ```
-* Доступ должен быть от `backend` к `cache`:
+Доступ должен быть от `backend` к `cache`:  
 ```
 admin@kube-master-01:~$ kubectl exec -it service/service-backend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
 Server: nginx/1.24.0
 ```
-* Доступа не должно быть в иных случаях:
+Доступа не должно быть в иных случаях:  
 ```
 admin@kube-master-01:~$ kubectl exec -it service/service-frontend -n app -- curl --silent -i service-cache.app.svc.cluster.local | grep Server
 command terminated with exit code 28
 admin@kube-master-01:~$ kubectl exec -it service/service-cache -n app -- curl --silent -i service-frontend.app.svc.cluster.local | grep Server
 command terminated with exit code 28
 ```
-* Всё работает корректно. Есть доступ от `frontend` к `backend` и от `backend` к `cache`. Проверено, что нет доступа от `backend` к `cache` и от `cache` к `frontend`. В последних случаях происходит "зависание" на 2 минуты, потом выполнение команды завершается с кодом возврата 28.
+Всё работает корректно. Есть доступ от `frontend` к `backend` и от `backend` к `cache`. Проверено, что нет доступа от `backend` к `cache` и от `cache` к `frontend`. В последних случаях происходит "зависание" на 2 минуты, потом выполнение команды завершается с кодом возврата 28.  
