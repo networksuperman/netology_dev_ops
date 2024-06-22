@@ -136,7 +136,7 @@ authorized_keys  id_rsa
 Результат применения ansible-playbook:  
 ```
 root@node1:~/kubespray# ansible-playbook -i inventory/mycluster/hosts.yaml -u admin -b -v --private-key=/root/.ssh/id_rsa cluster.yml
----------------------------------ВЫВОД ПРОПУЩЕН------------------------------------------
+---ВЫВОД ---
 TASK [network_plugin/calico : Check if inventory match current cluster configuration] *******************************************************************************************************************************************************
 ok: [node1] => {
     "changed": false,
