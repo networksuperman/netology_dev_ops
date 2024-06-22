@@ -80,7 +80,6 @@ DEBUG: adding host node4 to group kube_node
 
 Скорректируем inventory-файл `hosts.yaml` так, чтобы `node1` был master, остальные - worker. Etcd оставляем только на master:  
 ```
-root@node1:~/kubespray# vim inventory/mycluster/hosts.yaml
 root@node1:~/kubespray# cat inventory/mycluster/hosts.yaml
 all:
   hosts:
