@@ -290,4 +290,4 @@
 
 №122 - [Как работает сеть в K8s](https://github.com/networksuperman/netology_dev_ops/blob/df7577bbbece7f596fdff0f073ee3d15981d601f/kuber-homeworks/1.13/README.md)  
 
-#123 - [Обновление приложений]()  
+№123 - [Обновление приложений](https://github.com/networksuperman/netology_dev_ops/blob/1fcf984f9a73f0c265a9620752f89904ed43360b/kuber-homeworks/1.14/README.md)  
