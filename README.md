@@ -292,4 +292,4 @@
 
 №123 - [Обновление приложений](https://github.com/networksuperman/netology_dev_ops/blob/1fcf984f9a73f0c265a9620752f89904ed43360b/kuber-homeworks/1.14/README.md)  
 
-№124 - [Troubleshooting]()  
+№124 - [Troubleshooting](https://github.com/networksuperman/netology_dev_ops/blob/2635b33942e9a6e79c8afece724ebdad294acf25/kuber-homeworks/1.15/README.md)  
