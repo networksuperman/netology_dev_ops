@@ -24,6 +24,8 @@ kubectl apply -f https://raw.githubusercontent.com/netology-code/kuber-homeworks
 
 Создадим виртуальные машины в Яндекс Облако: 1 master и 3 worker ноды.  
 
+![](./images/trb-1.png)  
+
 Сконфигурируем `kube-master-01`:  
 
 Выполним подготовку kubespray (для переменной `IPS` указываем IP-адреса виртуальных машин в Яндекс Облаке, начиная с master ноды):  
