@@ -179,5 +179,198 @@ Error from server (NotFound): error when creating "https://raw.githubusercontent
 ```
 В кластере не хватает namespace `web` и `data`. Создадим:
 ```
-
+admin@node1:~$ kubectl create namespace web
+namespace/web created
+admin@node1:~$ kubectl create namespace data
+namespace/data created
+admin@node1:~$ kubectl get namespaces
+NAME              STATUS   AGE
+app               Active   1h
+data              Active   36m
+default           Active   1h
+kube-node-lease   Active   1h
+kube-public       Active   1h
+kube-system       Active   1h
+web               Active   36m
 ```
+Попробуем запустить предложенный в задании манифест:
+```
+admin@node1:~$ kubectl apply -f https://raw.githubusercontent.com/netology-code/kuber-homeworks/main/3.5/files/task.yaml
+deployment.apps/web-consumer created
+deployment.apps/auth-db created
+service/auth-db created
+```
+Развертывание прошло успешно:
+```
+admin@node1:~$ kubectl get all -n data -o wide
+NAME                           READY   STATUS    RESTARTS   AGE     IP             NODE    NOMINATED NODE   READINESS GATES
+pod/auth-db-7b5cdbdc77-zpt9c   1/1     Running   0          2m17s   10.233.71.12   node3   <none>           <none>
+
+NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/auth-db   ClusterIP   10.233.62.168   <none>        80/TCP    2m17s   app=auth-db
+
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES         SELECTOR
+deployment.apps/auth-db   1/1     1            1           2m17s   nginx        nginx:1.19.1   app=auth-db
+
+NAME                                 DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES         SELECTOR
+replicaset.apps/auth-db-7b5cdbdc77   1         1         1       2m17s   nginx        nginx:1.19.1   app=auth-db,pod-template-hash=7b5cdbdc77
+admin@node1:~$
+
+admin@node1:~$ kubectl get all -n web -o wide
+NAME                                READY   STATUS    RESTARTS   AGE     IP             NODE    NOMINATED NODE   READINESS GATES
+pod/web-consumer-5f87765478-cv5cp   1/1     Running   0          2m24s   10.233.75.14   node2   <none>           <none>
+pod/web-consumer-5f87765478-wd7mq   1/1     Running   0          2m24s   10.233.74.79   node4   <none>           <none>
+
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                    SELECTOR
+deployment.apps/web-consumer   2/2     2            2           2m24s   busybox      radial/busyboxplus:curl   app=web-consumer
+
+NAME                                      DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES                    SELECTOR
+replicaset.apps/web-consumer-5f87765478   2         2         2       2m24s   busybox      radial/busyboxplus:curl   app=web-consumer,pod-template-hash=5f87765478
+```
+Все ресурсы созданы корректно в пространствах имен `data` и `web`. Для дальнейшего поиска проблемы оценим логи deployment `auth-db` и `web-consumer`:
+```
+admin@node1:~$ kubectl logs deployment/auth-db -n data
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+admin@node1:~$
+admin@node1:~$ kubectl logs deployment/web-consumer -n web
+Found 2 pods, using pod/web-consumer-5f87765478-cv5cp
+curl: (6) Couldn't resolve host 'auth-db'
+curl: (6) Couldn't resolve host 'auth-db'
+-----ВЫВОД ПРОПУЩЕН-----
+curl: (6) Couldn't resolve host 'auth-db'
+```
+Под web-consumer-5f87765478-cv5cp не может выполнить разрешение имени `auth-db`. Для уточнения ситуации попробуем выполнить разрешение имени `auth-db` изнутри пода:
+```
+admin@node1:~$ kubectl -n web exec pod/web-consumer-5f87765478-cv5cp -- curl auth-db
+curl: (6) Couldn't resolve host 'auth-db'
+command terminated with exit code 6
+```
+Разрешение имени не работает изнутри пода. Попробуем выполнить разрешение изнутри пода по полному имени:
+```
+admin@node1:~$ kubectl -n web exec pod/web-consumer-5f87765478-cv5cp -- curl auth-db.data.svc.cluster.local
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+100   612  100   612    0     0   188k      0 --:--:-- --:--:-- --:--:--  597k
+```
+По полному имени разрешение изнутри пода работает. Необходимо выполнить редактирование манифеста для deployment `web-consumer`, заменив в нем сокращенное имя 'auth-db' на полное имя 'auth-db.data.svc.cluster.local' в следующем фрагменте конфигурации в блоке `- command:`:
+```
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: web-consumer
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web-consumer
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c
+        - while true; do curl auth-db.data.svc.cluster.local; sleep 5; done
+        image: radial/busyboxplus:curl
+        imagePullPolicy: IfNotPresent
+        name: busybox
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+```
+Завершим редактирование манифеста и поды пересоздадутся автоматически:
+```
+admin@node1:~$ kubectl edit -n web deployments/web-consumer
+deployment.apps/web-consumer edited
+```
+Проверим логи deployment `auth-db` и `web-consumer`:
+```
+admin@node1:~$ kubectl logs deployment/auth-db -n data
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+10.233.75.14 - - [25/Jun/2024:12:13:15 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.35.0" "-"
+10.233.74.80 - - [25/Jun/2024:12:13:15 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.35.0" "-"
+10.233.71.13 - - [25/Jun/2024:12:13:15 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.35.0" "-"
+-----ВЫВОД ПРОПУЩЕН-----
+10.233.71.13 - - [25/Jun/2024:12:16:23 +0000] "GET / HTTP/1.1" 200 612 "-" "curl/7.35.0" "-"
+
+admin@node1:~$ kubectl logs deployment/web-consumer -n web
+Found 2 pods, using pod/web-consumer-6fb89747cf-24lsf
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   612  100   612    0     0   121k      0 --:--:-- --:--:-- --:--:--  298k
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+-----ВЫВОД ПРОПУЩЕН-----
+```
+Приложение web-consumer получило доступ к приложению auth-db. Проблема решена.
