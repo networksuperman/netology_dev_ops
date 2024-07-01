@@ -177,7 +177,7 @@ resource "yandex_compute_instance" "nat-instance" {
     nat       = true
   }
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("~/.ssh/id_ed25519.pub")}"
   }
 }
 ```
@@ -202,7 +202,7 @@ resource "yandex_compute_instance" "public-instance" {
     nat       = true
   }
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("~/.ssh/id_ed25519.pub")}"
   }
 }
 ```
@@ -333,7 +333,7 @@ resource "yandex_compute_instance" "private-instance" {
     subnet_id = yandex_vpc_subnet.private.id
   }
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
+    ssh-keys = "ubuntu:${file("~/.ssh/id_ed25519.pub")}"
   }
 }
 ```
