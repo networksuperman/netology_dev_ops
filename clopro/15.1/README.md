@@ -60,8 +60,8 @@ terraform -v
 Terraform v1.9.0
 on windows_amd64
 ```
-Выполним настройку зеркала провайдера Yandex Cloud для Terraform, добавив файл `terraform.rc` в папке %APPDATA% вашего пользователя.
-Чтобы узнать абсолютный путь к папке %APPDATA%, выполните команду echo %APPDATA% для cmd или $env:APPDATA для PowerShell
+Выполним настройку зеркала провайдера Yandex Cloud для Terraform, добавив файл `terraform.rc` в папке `%APPDATA%` вашего пользователя.
+Чтобы узнать абсолютный путь к папке `%APPDATA%`, выполните команду `echo %APPDATA%` для cmd или `$env:APPDATA` для PowerShell
 ```
 provider_installation {
   network_mirror {
