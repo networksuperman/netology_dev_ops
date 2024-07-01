@@ -112,7 +112,7 @@ If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
-Дополним файл `main.tf` для Terraform необходимой информацией для создания VPC и публичной подсети в Yandex Cloud:
+Дополним файл `main.tf` для Terraform необходимой информацией для создания VPC и публичной подсети в Yandex Cloud:  
 Добавим блок переменных, определяющих основные параметры Yandex Cloud:
 ```
 # Variables
@@ -289,7 +289,7 @@ rtt min/avg/max/mdev = 21.012/21.183/21.648/0.269 ms
 ```
 Destroy complete! Resources: 4 destroyed.
 ```
-Дополним файл `main.tf` для Terraform необходимой информацией для создания приватной подсети в Yandex Cloud:
+Дополним файл `main.tf` для Terraform необходимой информацией для создания приватной подсети в Yandex Cloud:  
 Опишем создание приватной подсети с именем `private`:
 ```
 # Private subnet
