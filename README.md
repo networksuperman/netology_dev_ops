@@ -299,4 +299,4 @@
 
 №125 - [Организация сети](https://github.com/networksuperman/netology_dev_ops/blob/a6fb6c957a636f2dff2557955340e4242c991105/clopro/15.1/README.md)  
 
-№126 - [Вычислительные мощности. Балансировщики нагрузки]()  
+№126 - [Вычислительные мощности. Балансировщики нагрузки](https://github.com/networksuperman/netology_dev_ops/blob/5bb6df76f0873b708fe23b7e768d031036b56475/clopro/15.2/README.md)  
