@@ -92,10 +92,5 @@ external_load_balancer_ip = "158.160.172.141"
 ```
 ### Общая конфигурация [Terraform](https://github.com/networksuperman/netology_dev_ops/tree/main/clopro/15.2/configs)
 
-Полезные документы:
-
-- [Compute instance group](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/compute_instance_group).
-- [Network Load Balancer](https://registry.terraform.io/providers/yandex-cloud/yandex/latest/docs/resources/lb_network_load_balancer).
-- [Группа ВМ с сетевым балансировщиком](https://cloud.yandex.ru/docs/compute/operations/instance-groups/create-with-balancer).
 
 
