@@ -302,3 +302,5 @@
 №126 - [Вычислительные мощности. Балансировщики нагрузки](https://github.com/networksuperman/netology_dev_ops/blob/5bb6df76f0873b708fe23b7e768d031036b56475/clopro/15.2/README.md)  
 
 №127 - [Безопасность в облачных провайдерах](https://github.com/networksuperman/netology_dev_ops/blob/1aa7ae3ec3cc363499ae81229ecab14a5241379b/clopro/15.3/README.md)  
+
+№128 - [Кластеры. Ресурсы под управлением облачных провайдеров]()  
