@@ -83,3 +83,5 @@ replicaset.apps/phpmyadmin-deployment-bb95f7df7   1         1         1       73
 ![](./images/img3.png)
 
 ![](./images/img4.png)
+
+[Конфиги](https://github.com/networksuperman/netology_dev_ops/tree/main/clopro/15.4/configs)  
