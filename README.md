@@ -303,4 +303,4 @@
 
 №127 - [Безопасность в облачных провайдерах](https://github.com/networksuperman/netology_dev_ops/blob/1aa7ae3ec3cc363499ae81229ecab14a5241379b/clopro/15.3/README.md)  
 
-№128 - [Кластеры. Ресурсы под управлением облачных провайдеров]()  
+№128 - [Кластеры. Ресурсы под управлением облачных провайдеров](https://github.com/networksuperman/netology_dev_ops/blob/5c68658418ae8f0f3f39690f0d89b91eda7a746a/clopro/15.4/README.md)  
